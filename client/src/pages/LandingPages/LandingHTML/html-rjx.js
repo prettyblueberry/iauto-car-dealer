@@ -1,7 +1,11 @@
 import {useEffect, useState, useRef} from "react";
 import { listOpen } from "api/auction";
 import Grid from "@mui/material/Grid";
-import { url } from "constant/url.js";
+import MKBox from "components/MKBox";
+import { Link } from "react-router-dom";
+// import { Link } from "@mui/icons-material";
+import AuctionCard from './auctionCard.js';
+import VehicleAuctionCard from "components/VehicleCards/VehicleAuctionCard";
 
 function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -3699,7 +3703,7 @@ function HtmlRJX() {
                                                         stm-template-front-loop
                                                         ev-filter-loop
                                                     " key={new Date() + index}>
-                                                        <a href={"http://localhost:3000/pages/auctionPage/bidAuction/" + auction._id} className="rmv_txt_drctn xx">
+                                                        <Link to={"pages/auctionPage/bidAuction/" + auction._id} className="rmv_txt_drctn xx">
                                                             <div className="image">
                                                                 <div className="interactive-hoverable">
                                                                     <div className="hoverable-wrap">
@@ -3799,7 +3803,7 @@ function HtmlRJX() {
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 )
                                                 })
