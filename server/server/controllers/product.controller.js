@@ -3,7 +3,7 @@ import extend from 'lodash/extend'
 import errorHandler from './../helpers/dbErrorHandler'
 import formidable from 'formidable'
 import fs from 'fs'
-import defaultImage from './../../client/assets/images/default.png'
+import defaultImage from './../../assets/images/default.png'
 
 const create = (req, res, next) => {
   let form = new formidable.IncomingForm()
