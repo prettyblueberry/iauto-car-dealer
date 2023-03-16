@@ -10,5 +10,4 @@ const config = {
   stripe_test_secret_key: 'pk_test_trtKTfzHcBU3Wwh3HmWSYcol003V3nb4wF',
   stripe_test_api_key: 'sk_test_nvFyasCVrO6uUNIOtyCZyM0L00eqn9vlgM' 
 }
-console.log(config);
 export default config
