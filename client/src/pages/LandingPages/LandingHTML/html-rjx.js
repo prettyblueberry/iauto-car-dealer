@@ -1,8 +1,7 @@
 import {useEffect, useState, useRef} from "react";
 import { listOpen } from "api/auction";
 import Grid from "@mui/material/Grid";
-import MKBox from "components/MKBox";
-import VehicleAuctionCard from "components/VehicleCards/VehicleAuctionCard";
+import { url } from "constant/url.js";
 
 function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -24,6 +23,7 @@ const timeNow = Date.now();
 function HtmlRJX() {
     const [nowTime, setNowTime] = useState(Date.now());
     const [auctions, setAuctions] = useState([]);
+    const [fixedValue, setFixedValue] = useState(0);
     const actionProps = {
         type: "internal",
         route: "pages/AuctionPage/BidAuction",
@@ -592,7 +592,7 @@ function HtmlRJX() {
             jQuery(window).off("scroll");
         }
     },[]);
-
+    
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
@@ -609,7 +609,8 @@ function HtmlRJX() {
         return function cleanup(){
           abortController.abort()
         }
-    }, [])
+    }, [fixedValue])
+
     const dateStart = new Date(timeNow);
 
     return (
@@ -3684,31 +3685,128 @@ function HtmlRJX() {
                                             </a>
                                         </div>
                                     </div>
+                                    <br/>
+                                    <div className="title_nav">
+                                    <div className="title heading-font" style={{fontSize: '50px', fontFamily: 'rubic verdana' ,fontWeight: 'bold'}}>Recently Auctions</div>
+                                    </div>
+                                    <div className="row car-listing-row">
+                                        <Grid  sx={{ mt: 3 }}>
+                                            {
+                                                auctions.map((auction, index) => {
+                                                return (
+                                                    <div className="
+                                                        col-md-3 col-sm-4 col-xs-12 col-xxs-12
+                                                        stm-template-front-loop
+                                                        ev-filter-loop
+                                                    " key={new Date() + index}>
+                                                        <a href={"http://localhost:3000/pages/auctionPage/bidAuction/" + auction._id} className="rmv_txt_drctn xx">
+                                                            <div className="image">
+                                                                <div className="interactive-hoverable">
+                                                                    <div className="hoverable-wrap">
+                                                                        <div className="hoverable-unit active">
+                                                                            <div className="thumb">
+                                                                                {/* <AuctionCard image = {auction.image} className="lazy img-responsive"/> */}
+                                                                                <img
+                                                                                    // data-src="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg"
+                                                                                    // srcSet="
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg 1x,
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-510x320.jpg 2x" 
+                                                                                    src={`data:${auction.image.contentType[0]};base64,${auction.image.data[0]}`}
+                                                                                    className="lazy img-responsive"
+                                                                                    alt={auction.itemName}/>
+                                                                                    
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="hoverable-unit">
+                                                                            <div className="thumb">
+                                                                            <img
+                                                                                    // data-src="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg"
+                                                                                    // srcSet="
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg 1x,
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-510x320.jpg 2x" 
+                                                                                    src={`data:${auction.image.contentType[1]};base64,${auction.image.data[1]}`}
+                                                                                    className="lazy img-responsive"
+                                                                                    alt={auction.itemName}/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="hoverable-unit">
+                                                                            <div className="thumb">
+                                                                            <img
+                                                                                    // data-src="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg"
+                                                                                    // srcSet="
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg 1x,
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-510x320.jpg 2x" 
+                                                                                    src={`data:${auction.image.contentType[2]};base64,${auction.image.data[2]}`}
+                                                                                    className="lazy img-responsive"
+                                                                                    alt={auction.itemName}/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="hoverable-unit">
+                                                                            <div className="thumb">
+                                                                            <img
+                                                                                    // data-src="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg"
+                                                                                    // srcSet="
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg 1x,
+                                                                                    //             https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-510x320.jpg 2x" 
+                                                                                    src={`data:${auction.image.contentType[3]};base64,${auction.image.data[3]}`}
+                                                                                    className="lazy img-responsive"
+                                                                                    alt={auction.itemName}/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="hoverable-indicators">
+                                                                        <div className="indicator active"/>
+                                                                        <div className="indicator"/>
+                                                                        <div className="indicator"/>
+                                                                        <div className="indicator"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="stm-listing-compare stm-compare-directory-new"
+                                                                    data-post-type="listings" data-id={657}
+                                                                    data-title="Hyundai 2019 Ioniq 295 " data-toggle="tooltip"
+                                                                    data-placement="right" 
+                                                                    data-original-title="Add to compare">
+                                                                    <i className="stm-boats-icon-add-to-compare"/>
+                                                                </div>
+                                                            </div>
+                                                            {/* image */}
+                                                            <div className="listing-car-item-meta"
+                                                                style={{minHeight: '187.25px'}}>
+                                                                <div className="car-meta-top heading-font clearfix">
+                                                                    <div className="car-title">
+                                                                        <div className="labels"></div>
+                                                                        {auction.itemName}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="car-meta-bottom">
+                                                                    <ul>
+                                                                        <li title="Electric Range">
+                                                                            <i className="stm-icon-location-flag"/>
+                                                                            <span>410mi</span>
+                                                                        </li>
+                                                                        <li title="Battery Size">
+                                                                            <i className="stm-icon-battery"/>
+                                                                            <span>78.4kWh</span>
+                                                                        </li>
+                                                                        <li title="Power">
+                                                                            <i className="stm-icon-charge-bolt"/>
+                                                                            <span>164kW</span>
+                                                                        </li>
+                                                                        <li title="0-60 mph">
+                                                                            <i className="stm-icon-speedometer-circular-tool"/>
+                                                                            <span>4.0s</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                )
+                                                })
+                                            }
+                                        </Grid>
+                                    </div>
                                 </div>
-                                <div className="title heading-font" style={{fontSize: '50px', fontFamily: 'rubic verdana' ,fontWeight: 'bold'}}>Recently Auctions</div>
-                                <Grid container spacing={3} sx={{ mt: 3 }}>
-                                    {
-                                        auctions.map((auction, index) => {
-                                        return (
-                                            <Grid item xs={12} md={6} lg={3} key={auction._id}>
-                                            <MKBox mt={3}>
-                                                <VehicleAuctionCard
-                                                image={auction.image}
-                                                auction={auction}
-                                                now={nowTime}
-                                                title={auction.itemName}
-                                                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                                                timeData={{ timeStart: auction.bidStart, timeEnd: auction.bidEnd }}
-                                                topBidPrice={auction.startingBid}
-                                                allBidCount={auction.bids.length}
-                                                action={actionProps}
-                                                />
-                                            </MKBox>
-                                            </Grid>
-                                        )
-                                        })
-                                    }
-                                </Grid>
                             </div>
                         </div>
                     </div>
