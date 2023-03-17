@@ -1,11 +1,8 @@
 import {useEffect, useState, useRef} from "react";
 import { listOpen } from "api/auction";
 import Grid from "@mui/material/Grid";
-import MKBox from "components/MKBox";
 import { Link } from "react-router-dom";
 // import { Link } from "@mui/icons-material";
-import AuctionCard from './auctionCard.js';
-import VehicleAuctionCard from "components/VehicleCards/VehicleAuctionCard";
 
 function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -28,18 +25,6 @@ function HtmlRJX() {
     const [nowTime, setNowTime] = useState(Date.now());
     const [auctions, setAuctions] = useState([]);
     const [fixedValue, setFixedValue] = useState(0);
-    const actionProps = {
-        type: "internal",
-        route: "pages/AuctionPage/BidAuction",
-        color: "success",
-        label: "place a bid",
-      };
-      const actionProps1 = {
-        type: "internal",
-        route: "/",
-        color: "success",
-        label: "add to my cart",
-      };
 
     useInterval(() => {
         setNowTime(nowTime + 1000);

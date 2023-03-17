@@ -45,6 +45,8 @@ import SignInBasicPage from "layouts/authentication/sign-in/basic";
 import SignUpCoverPage from "layouts/authentication/sign-up/cover";
 import BidAuctionPage from "layouts/pages/AuctionPage/BidAuction";
 import CreateAuctionPage from "layouts/pages/AuctionPage/CreateAuction";
+import ProfilePage from "layouts/User/Profile"
+// import UserAdminPage from "layouts/User/UserAdmin"
 
 const routes = [
   // {
@@ -118,17 +120,17 @@ const routes = [
     collapse: [
       {
         name: "STANDARD INVENTORY",
-        route: "/pages/landing-pages/rental",
+        route: "/",
         component: <Rental />,
       },
       {
         name: "MODERN INVENTORY",
-        route: "/pages/landing-pages/rental",
+        route: "/",
         component: <Rental />,
       },
       {
         name: "SOLD INVENTORY",
-        route: "/pages/landing-pages/rental",
+        route: "/",
         component: <Rental />,
       },
     ],
@@ -183,6 +185,28 @@ const routes = [
           },
         ],
       },
+      {
+        name: "profile",
+        dropdown: true,
+        collapse: [
+          {
+            name: "profile",
+            route: "/user/profile",
+            component: <ProfilePage />,
+          },
+        ],
+      },
+      // {
+      //   name: "user",
+      //   dropdown: true,
+      //   collapse: [
+      //     {
+      //       name: "profile",
+      //       route: "/user/userAdmin",
+      //       component: <UserAdminPage />,
+      //     },
+      //   ],
+      // },
     ],
   },
 ];
