@@ -15,7 +15,7 @@ Coded by www.creative-tim.com
 
 // react-router-dom components
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // @mui material components
 import Card from "@mui/material/Card";
 import Checkbox from "@mui/material/Checkbox";
@@ -38,7 +38,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import { useNavigate } from "react-router-dom";
 // Images
-import bgImage from "assets/image/car1.jpg";
+import bgImage from "assets/image/car2.jpg";
 
 function Profile() {
   const [values, setValues] = useState({
@@ -53,6 +53,9 @@ function Profile() {
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
+  useEffect(() => {
+    jQuery("#wrapper").css("min-height", "");
+  }, [])
   const clickSubmit = () => {
     if(values.policy){
       const user = {
@@ -107,10 +110,10 @@ function Profile() {
           textAlign="center"
         >
           <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Join us today
+            Edit your profile
           </MKTypography>
           <MKTypography display="block" variant="button" color="white" my={1}>
-            Enter your email and password to register
+            Enter your email and password to update
           </MKTypography>
         </MKBox>
         <MKBox p={3}>

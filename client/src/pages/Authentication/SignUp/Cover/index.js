@@ -38,7 +38,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import { useNavigate } from "react-router-dom";
 // Images
-import bgImage from "assets/image/car2.jpg";
+import bgImage from "assets/image/car1.jpg";
 
 function Cover() {
   const [values, setValues] = useState({
@@ -107,10 +107,10 @@ function Cover() {
           textAlign="center"
         >
           <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Edit your profile
+            Join us today
           </MKTypography>
           <MKTypography display="block" variant="button" color="white" my={1}>
-            Enter your email and password to update
+            Enter your email and password to register
           </MKTypography>
         </MKBox>
         <MKBox p={3}>

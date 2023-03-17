@@ -191,7 +191,7 @@ const routes = [
         collapse: [
           {
             name: "profile",
-            route: "/user/profile",
+            route: "/pages/user/profile",
             component: <ProfilePage />,
           },
         ],
@@ -202,7 +202,7 @@ const routes = [
       //   collapse: [
       //     {
       //       name: "profile",
-      //       route: "/user/userAdmin",
+      //       route: "/pages/user/userAdmin",
       //       component: <UserAdminPage />,
       //     },
       //   ],

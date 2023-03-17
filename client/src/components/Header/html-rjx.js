@@ -437,6 +437,19 @@ function HtmlRJX() {
                                         "
                                       >
                                         <Link
+                                          to="pages/user/profile"
+                                          >
+                                            profile
+                                        </Link>
+                                      </li>
+                                        <li
+                                        class="
+                                          menu-item
+                                          menu-item-type-post_type
+                                          menu-item-object-page menu-item-922
+                                        "
+                                      >
+                                        <Link
                                           to="pages/auctionPage/createAuction"
                                           >
                                             Create Auction
