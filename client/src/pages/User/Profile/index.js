@@ -37,6 +37,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import { useNavigate } from "react-router-dom";
+import { update, read } from "api/user";
 // Images
 import bgImage from "assets/image/car2.jpg";
 
@@ -44,56 +45,61 @@ function Profile() {
   const [values, setValues] = useState({
     name: "",
     password: "",
-    email: "",
     open: false,
     error: "",
-    policy: true,
-  });
-  const navigate = useNavigate();
-  const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
-  };
-  useEffect(() => {
-    jQuery("#wrapper").css("min-height", "");
-  }, [])
-  const clickSubmit = () => {
-    if(values.policy){
-      const user = {
-        name: values.name || undefined,
-        email: values.email || undefined,
-        password: values.password || undefined,
-      };
-      create(user).then((data) => {
-        if (data.error) {
-          setValues({ ...values, error: data.error });
-        } else {
-          if(data.message === "This email already used."){
-            setValues({ ...values, error: data.message });
-          }else{
-            setValues({ ...values, error: "", open: true });
-          }
-        }
-      });
-    }
-    else{
-      setValues({ ...values, error: 'You must follow our policy!' });
-    }
-  };
-
-  const onClickOKBtn = () => {
-    const user = {
-      email: values.email || undefined,
-      password: values.password || undefined,
-    }
-    signin(user).then((data) => {
-      auth.authenticate(data, () => {
-        localStorage.setItem('auth', JSON.stringify({...data, auth: true }));
-        setTimeout(() => {
-          navigate('/');
-        }, 2000);
-      })
+});
+const jwt = auth.isAuthenticated()
+useEffect(() => {
+    const abortController = new AbortController()
+    const signal = abortController.signal
+    read({
+      userId: JSON.parse(localStorage.getItem('auth')).user._id
+    }, {t: jwt.token}, signal).then((data) => {
+      if (data && data.error) {
+        setRedirectToSignin(true)
+      } else {
+        console.log(data.name);
+        setValues({...values, name: data.name})
+      }
     })
-  }
+}, [])
+const navigate = useNavigate();
+
+const handleChange = (name) => (event) => {
+    console.log()
+    setValues({ ...values, [name]: event.target.value });
+};
+    
+useEffect(() => {
+    jQuery("#wrapper").css("min-height", "");
+}, [])
+
+const clickSubmit = () => {
+    const user = {
+    name: values.name || undefined,
+    password: values.password || undefined,
+    };
+    console.log(user);
+    update({userId: JSON.parse(localStorage.getItem('auth')).user._id
+    }, {t: jwt.token}, user).then((data) => {
+        if (data && data.error) {
+            setRedirectToSignin(true)
+        } else {
+          console.log(data);
+          setValues({...values, name: data.name})
+          setValues({...values, open: true})
+        }
+    })
+};
+
+const onClickOKBtn = () => {
+    let userData = JSON.parse(localStorage.getItem('auth'));
+    userData.user.name = values.name;
+    localStorage.setItem('auth', JSON.stringify(userData));
+    setTimeout(() => {
+        navigate('/');
+    }, 1000);
+}
 
   return (
     <BasicLayout image={bgImage}>
@@ -119,10 +125,7 @@ function Profile() {
         <MKBox p={3}>
           <MKBox component="form" role="form">
             <MKBox mb={2}>
-              <MKInput type="text" label="Name" fullWidth onChange={handleChange("name")} outline={false}/>
-            </MKBox>
-            <MKBox mb={2}>
-              <MKInput type="email" label="Email" fullWidth onChange={handleChange("email")}/>
+              <MKInput type="text" label="Name" fullWidth onChange={handleChange("name")} value={values.name}/>
             </MKBox>
             <MKBox mb={2}>
               <MKInput type="password" label="Password" fullWidth onChange={handleChange("password")}/>
@@ -135,55 +138,19 @@ function Profile() {
                 {values.error}
               </MKTypography>
             )}
-            <MKBox display="flex" alignItems="center" ml={-1}>
-              <Checkbox onChange={handleChange("policy")}/>
-              <MKTypography
-                variant="button"
-                fontWeight="regular"
-                color="text"
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-              >
-                &nbsp;&nbsp;I agree the&nbsp;
-              </MKTypography>
-              <MKTypography
-                component="a"
-                href="#"
-                variant="button"
-                fontWeight="bold"
-                color="info"
-                textGradient
-              >
-                Terms and Conditions
-              </MKTypography>
-            </MKBox>
             <MKBox mt={3} mb={1}>
               <MKButton variant="gradient" color="info" fullWidth onClick={clickSubmit}>
-                sign up
+                Update Profile
               </MKButton>
-            </MKBox>
-            <MKBox mt={3} mb={1} textAlign="center">
-              <MKTypography variant="button" color="text">
-                Already have an account?{" "}
-                <MKTypography
-                  component={Link}
-                  to="/authentication/sign-in/basic"
-                  variant="button"
-                  color="info"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  Sign In
-                </MKTypography>
-              </MKTypography>
             </MKBox>
           </MKBox>
         </MKBox>
       </Card>
       <Dialog open={values.open}>
-        <DialogTitle>New Account</DialogTitle>
+        <DialogTitle>Account Updated</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            New account successfully created.
+            Your account updated.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
