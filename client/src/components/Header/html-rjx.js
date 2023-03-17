@@ -428,9 +428,9 @@ function HtmlRJX() {
                           menu-item-900
                         ">
                                         <a >Pages</a>
-                                        <ul class="sub-menu">
+                                        <ul className="sub-menu">
                                         <li
-                                        class="
+                                        className="
                                           menu-item
                                           menu-item-type-post_type
                                           menu-item-object-page menu-item-922
@@ -456,7 +456,7 @@ function HtmlRJX() {
                                         </Link>
                                       </li> 
                                         <li
-                                        class="
+                                        className="
                                           menu-item
                                           menu-item-type-post_type
                                           menu-item-object-page menu-item-922

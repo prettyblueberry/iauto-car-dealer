@@ -317,265 +317,6 @@ function HtmlRJX() {
         })(jQuery);
 
 
-        jQuery(document).ready(function ($) {
-            var center, map;
-            function init() {
-                var mapStyles = [
-                    {
-                        featureType: "all",
-                        elementType: "all",
-                        stylers: [
-                            {
-                                visibility: "on",
-                            },
-                        ],
-                    },
-                ];
-
-                mapStyles = [
-                    {
-                        featureType: "water",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#e9e9e9",
-                            },
-                            {
-                                lightness: 17,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "landscape",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#f5f5f5",
-                            },
-                            {
-                                lightness: 20,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "geometry.fill",
-                        stylers: [
-                            {
-                                color: "#ffffff",
-                            },
-                            {
-                                lightness: 17,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "geometry.stroke",
-                        stylers: [
-                            {
-                                color: "#ffffff",
-                            },
-                            {
-                                lightness: 29,
-                            },
-                            {
-                                weight: 0.2,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "road.arterial",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#ffffff",
-                            },
-                            {
-                                lightness: 18,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "road.local",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#ffffff",
-                            },
-                            {
-                                lightness: 16,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "poi",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#f5f5f5",
-                            },
-                            {
-                                lightness: 21,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "poi.park",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#dedede",
-                            },
-                            {
-                                lightness: 21,
-                            },
-                        ],
-                    },
-                    {
-                        elementType: "labels.text.stroke",
-                        stylers: [
-                            {
-                                visibility: "on",
-                            },
-                            {
-                                color: "#ffffff",
-                            },
-                            {
-                                lightness: 16,
-                            },
-                        ],
-                    },
-                    {
-                        elementType: "labels.text.fill",
-                        stylers: [
-                            {
-                                saturation: 36,
-                            },
-                            {
-                                color: "#333333",
-                            },
-                            {
-                                lightness: 40,
-                            },
-                        ],
-                    },
-                    {
-                        elementType: "labels.icon",
-                        stylers: [
-                            {
-                                visibility: "off",
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "transit",
-                        elementType: "geometry",
-                        stylers: [
-                            {
-                                color: "#f2f2f2",
-                            },
-                            {
-                                lightness: 19,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "administrative",
-                        elementType: "geometry.fill",
-                        stylers: [
-                            {
-                                color: "#fefefe",
-                            },
-                            {
-                                lightness: 20,
-                            },
-                        ],
-                    },
-                    {
-                        featureType: "administrative",
-                        elementType: "geometry.stroke",
-                        stylers: [
-                            {
-                                color: "#fefefe",
-                            },
-                            {
-                                lightness: 17,
-                            },
-                            {
-                                weight: 1.2,
-                            },
-                        ],
-                    },
-                ];
-
-                center = new google.maps.LatLng(40.690968, -73.929045);
-                var mapOptions = {
-                    zoom: 15,
-                    center: center,
-                    styles: mapStyles,
-                    scrollwheel: true,
-                    zoomControl: false,
-                    mapTypeControl: false,
-                    scaleControl: false,
-                    streetViewControl: false,
-                    rotateControl: false,
-                    fullscreenControl: false,
-                };
-                var mapElement = document.getElementById("stm_map-82402");
-                map = new google.maps.Map(mapElement, mapOptions);
-                var marker = new google.maps.Marker({
-                    position: center,
-                    icon: "https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/pin_location.png",
-                    map: map,
-                });
-            }
-
-            $(".vc_tta-tab").on("click", function () {
-                if (typeof map != "undefined" && typeof center != "undefined") {
-                    setTimeout(function () {
-                        google.maps.event.trigger(map, "resize");
-                        map.setCenter(center);
-                    }, 1000);
-                }
-            });
-
-            $("a").on("click", function () {
-                if (
-                    typeof $(this).data("vc-accordion") !== "undefined" &&
-                    typeof map != "undefined" &&
-                    typeof center != "undefined"
-                ) {
-                    setTimeout(function () {
-                        google.maps.event.trigger(map, "resize");
-                        map.setCenter(center);
-                    }, 1000);
-                }
-            });
-
-            $(".wpb_tour_tabs_wrapper.ui-tabs ul.wpb_tabs_nav > li").on(
-                "click",
-                function () {
-                    if (typeof map != "undefined" && typeof center != "undefined") {
-                        setTimeout(function () {
-                            google.maps.event.trigger(map, "resize");
-                            map.setCenter(center);
-                        }, 1000);
-                    }
-                }
-            );
-
-            $(window).on("resize", function () {
-                if (typeof map != "undefined" && typeof center != "undefined") {
-                    setTimeout(function () {
-                        map.setCenter(center);
-                    }, 1000);
-                }
-            });
-
-            // initialize map
-            init();
-        });
         return () => {
             jQuery(window).off("load");
             jQuery(window).off("scroll");
@@ -587,11 +328,8 @@ function HtmlRJX() {
         const signal = abortController.signal
         listOpen(signal).then((result) => {
           if (!result) {
-            console.log('read falied');
             // setRedirectToSignin(true)
           } else {
-            console.log('read success');
-            console.log(result);
             setAuctions(result);
           }
         })
@@ -2774,8 +2512,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={772}
                                                          data-title="Volkswagen 2021 e-Golf 330 "
-                                                         data-toggle="tooltip" data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-toggle="tooltip" data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -2899,8 +2636,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={759}
                                                          data-title="Toyota 2021 Prius 320 " data-toggle="tooltip"
-                                                         data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -3021,8 +2757,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={741}
                                                          data-title="Tesla 2022 Model X 350 " data-toggle="tooltip"
-                                                         data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -3142,8 +2877,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={730}
                                                          data-title="Tesla 2021 Model S 320 " data-toggle="tooltip"
-                                                         data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -3264,7 +2998,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={709}
                                                          data-title="Peugeot 2022 e2008 321 " data-toggle="tooltip"
-                                                         data-placement="right" title
+                                                         data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -3389,7 +3123,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={693}
                                                          data-title="Nissan 2022 Leaf 292 " data-toggle="tooltip"
-                                                         data-placement="right" title
+                                                         data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -3514,7 +3248,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={683}
                                                          data-title="Mercedes-Benz 2021 EQS 315 "
-                                                         data-toggle="tooltip" data-placement="right" title
+                                                         data-toggle="tooltip" data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -3636,7 +3370,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={657}
                                                          data-title="Hyundai 2019 Ioniq 295 " data-toggle="tooltip"
-                                                         data-placement="right" title
+                                                         data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -5191,7 +4925,7 @@ function HtmlRJX() {
                                                                                     <span
                                                                                         id="0D1CB9E7-2A06-40ED-8C95-C6D74FCA203E"
                                                                                         style={{display: 'none'}}>To navigate, press the arrow keys.</span>
-                                                                                <div title style={{
+                                                                                <div style={{
                                                                                     width: '85px',
                                                                                     height: '85px',
                                                                                     overflow: 'hidden',

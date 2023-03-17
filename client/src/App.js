@@ -40,13 +40,13 @@ export default function App() {
   }, [pathname]);
 
   const getRoutes = (allRoutes) =>
-    allRoutes.map((route) => {
+    allRoutes.map((route, index) => {
       if (route.collapse) {
         return getRoutes(route.collapse);
       }
 
       if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
+        return <Route exact path={route.route} element={route.component} key={index} />;
       }
 
       return null;
@@ -64,7 +64,7 @@ export default function App() {
           <Header />
           <Routes>
               {getRoutes(routes)}
-              <Route path="/" exact element={<Presentation />} />
+              <Route path="/" exact element={<Presentation />} key="presentation"/>
           </Routes>
       </ThemeProvider>
       // <>
