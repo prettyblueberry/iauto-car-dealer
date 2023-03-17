@@ -17766,7 +17766,7 @@ jQuery(function (r) {
     };
 
     function n() {
-        r.ajax(e)
+        // r.ajax(e)
     }
 
     if (t) {
