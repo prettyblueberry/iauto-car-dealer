@@ -2515,8 +2515,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={772}
                                                          data-title="Volkswagen 2021 e-Golf 330 "
-                                                         data-toggle="tooltip" data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-toggle="tooltip" data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -2640,8 +2639,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={759}
                                                          data-title="Toyota 2021 Prius 320 " data-toggle="tooltip"
-                                                         data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -2762,8 +2760,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={741}
                                                          data-title="Tesla 2022 Model X 350 " data-toggle="tooltip"
-                                                         data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -2883,8 +2880,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={730}
                                                          data-title="Tesla 2021 Model S 320 " data-toggle="tooltip"
-                                                         data-placement="right" title
-                                                         data-original-title="Add to compare">
+                                                         data-placement="right" data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
                                                 </div>
@@ -3005,7 +3001,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={709}
                                                          data-title="Peugeot 2022 e2008 321 " data-toggle="tooltip"
-                                                         data-placement="right" title
+                                                         data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -3130,7 +3126,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={693}
                                                          data-title="Nissan 2022 Leaf 292 " data-toggle="tooltip"
-                                                         data-placement="right" title
+                                                         data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -3255,7 +3251,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={683}
                                                          data-title="Mercedes-Benz 2021 EQS 315 "
-                                                         data-toggle="tooltip" data-placement="right" title
+                                                         data-toggle="tooltip" data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -3377,7 +3373,7 @@ function HtmlRJX() {
                                                     <div className="stm-listing-compare stm-compare-directory-new"
                                                          data-post-type="listings" data-id={657}
                                                          data-title="Hyundai 2019 Ioniq 295 " data-toggle="tooltip"
-                                                         data-placement="right" title
+                                                         data-placement="right"
                                                          data-original-title="Add to compare">
                                                         <i className="stm-boats-icon-add-to-compare"/>
                                                     </div>
@@ -4932,7 +4928,7 @@ function HtmlRJX() {
                                                                                     <span
                                                                                         id="0D1CB9E7-2A06-40ED-8C95-C6D74FCA203E"
                                                                                         style={{display: 'none'}}>To navigate, press the arrow keys.</span>
-                                                                                <div title style={{
+                                                                                <div style={{
                                                                                     width: '85px',
                                                                                     height: '85px',
                                                                                     overflow: 'hidden',
