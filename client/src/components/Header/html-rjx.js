@@ -442,6 +442,19 @@ function HtmlRJX() {
                                             profile
                                         </Link>
                                       </li>
+                                      <li
+                                        class="
+                                          menu-item
+                                          menu-item-type-post_type
+                                          menu-item-object-page menu-item-922
+                                        "
+                                      >
+                                        <Link
+                                          to="pages/user/userAdmin"
+                                          >
+                                            Users
+                                        </Link>
+                                      </li> 
                                         <li
                                         className="
                                           menu-item

@@ -47,7 +47,7 @@ import BidAuctionPage from "layouts/pages/AuctionPage/BidAuction";
 import BiddingAuctionPage from "layouts/pages/AuctionPage/bidding-auction";
 import CreateAuctionPage from "layouts/pages/AuctionPage/CreateAuction";
 import ProfilePage from "layouts/User/Profile"
-// import UserAdminPage from "layouts/User/UserAdmin"
+import UserAdminPage from "layouts/User/UserAdmin"
 
 const routes = [
   // {
@@ -202,17 +202,17 @@ const routes = [
           },
         ],
       },
-      // {
-      //   name: "user",
-      //   dropdown: true,
-      //   collapse: [
-      //     {
-      //       name: "profile",
-      //       route: "/pages/user/userAdmin",
-      //       component: <UserAdminPage />,
-      //     },
-      //   ],
-      // },
+      {
+        name: "user",
+        dropdown: true,
+        collapse: [
+          {
+            name: "userAdmin",
+            route: "/pages/user/userAdmin",
+            component: <UserAdminPage />,
+          },
+        ],
+      },
     ],
   },
 ];
