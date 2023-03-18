@@ -89,7 +89,7 @@ function HtmlRJX() {
                               menu-item-type-post_type
                               menu-item-object-page menu-item-1305
                             ">
-                                                <a href="/">Bidding auction</a>
+                                                <a href="/">Bid auction</a>
                                             </li>
                                             <li id="menu-item-915" className="
                               menu-item
@@ -453,6 +453,19 @@ function HtmlRJX() {
                                           to="pages/auctionPage/createAuction"
                                           >
                                             Create Auction
+                                        </Link>
+                                      </li>
+                                        <li
+                                        className="
+                                          menu-item
+                                          menu-item-type-post_type
+                                          menu-item-object-page menu-item-922
+                                        "
+                                      >
+                                        <Link
+                                          to="/pages/auctionPage/biddingAuction"
+                                          >
+                                            bidding Auction
                                         </Link>
                                       </li>
                                     </ul>

@@ -44,6 +44,7 @@ import Rental from "layouts/pages/landing-pages/rental";
 import SignInBasicPage from "layouts/authentication/sign-in/basic";
 import SignUpCoverPage from "layouts/authentication/sign-up/cover";
 import BidAuctionPage from "layouts/pages/AuctionPage/BidAuction";
+import BiddingAuctionPage from "layouts/pages/AuctionPage/bidding-auction";
 import CreateAuctionPage from "layouts/pages/AuctionPage/CreateAuction";
 import ProfilePage from "layouts/User/Profile"
 // import UserAdminPage from "layouts/User/UserAdmin"
@@ -103,6 +104,11 @@ const routes = [
         name: "AUCTION ROOM",
         route: "/pages/auctionPage/bidAuction/:auctionId",
         component: <BidAuctionPage />,
+      },
+      {
+        name: "BIDDING AUCTION",
+        route: "/pages/auctionPage/biddingAuction",
+        component: <BiddingAuctionPage />,
       },
       {
         name: "CREATE AUCTION",
