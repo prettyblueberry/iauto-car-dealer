@@ -43,51 +43,12 @@ import Icon from "@mui/material/Icon";
 import Rental from "layouts/pages/landing-pages/rental";
 import SignInBasicPage from "layouts/authentication/sign-in/basic";
 import SignUpCoverPage from "layouts/authentication/sign-up/cover";
-import BidAuctionPage from "layouts/pages/AuctionPage/BidAuction";
-import BiddingAuctionPage from "layouts/pages/AuctionPage/bidding-auction";
-import CreateAuctionPage from "layouts/pages/AuctionPage/CreateAuction";
+import BiddingAuctionPage from "layouts/pages/auction-pages/bidding-auction";
+import CreateAuctionPage from "layouts/pages/auction-pages/create-auction";
 import ProfilePage from "layouts/User/Profile"
-import UserAdminPage from "layouts/User/UserAdmin"
 
 const routes = [
-  // {
-  //   name: "pages",
-  //   icon: <Icon>dashboard</Icon>,
-  //   columns: 3,
-  //   rowsPerColumn: 2,
-  //   collapse: [
-  //     {
-  //       name: "landing pages",
-  //       collapse: [
-  //         {
-  //           name: "rental",
-  //           route: "/pages/landing-pages/rental",
-  //           component: <Rental />,
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       name: "landing pages",
-  //       collapse: [
-  //         {
-  //           name: "bid auction",
-  //           route: "/pages/AuctionPage/BidAuction/:auctionId",
-  //           component: <BidAuctionPage />,
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       name: "landing pages",
-  //       collapse: [
-  //         {
-  //           name: "create auction",
-  //           route: "/pages/AuctionPage/CreateAuction",
-  //           component: <CreateAuctionPage />,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+
   {
     name: "HOME",
     route: "/pages/landing-pages/rental",
@@ -101,69 +62,16 @@ const routes = [
     icon: <Icon>diamond</Icon>,
     collapse: [
       {
-        name: "AUCTION ROOM",
-        route: "/pages/auctionPage/bidAuction/:auctionId",
-        component: <BidAuctionPage />,
-      },
-      {
         name: "BIDDING AUCTION",
-        route: "/pages/auctionPage/biddingAuction",
+        route: "/pages/auction-pages/bidding-auction/:auctionId",
         component: <BiddingAuctionPage />,
       },
       {
         name: "CREATE AUCTION",
-        route: "/pages/auctionPage/createAuction",
+        route: "/pages/auction-pages/create-auction",
         component: <CreateAuctionPage />,
       },
     ]
-  },
-  {
-    name: "INVENTORY",
-    route: "/",
-    icon: <Icon>inventory</Icon>,
-    // columns: 2,
-    // rowsPerColumn: 3,
-    collapse: [
-      {
-        name: "STANDARD INVENTORY",
-        route: "/",
-        component: <Rental />,
-      },
-      {
-        name: "MODERN INVENTORY",
-        route: "/",
-        component: <Rental />,
-      },
-      {
-        name: "SOLD INVENTORY",
-        route: "/",
-        component: <Rental />,
-      },
-    ],
-  },
-  {
-    name: "NEWS",
-    route: "/",
-    icon: <Icon>feeds</Icon>,
-    columns: 3,
-    rowsPerColumn: 2,
-    component: <Rental />
-  },
-  {
-    name: "SHOP",
-    route: "/",
-    icon: <Icon>shop</Icon>,
-    columns: 3,
-    rowsPerColumn: 2,
-    component: <Rental />
-  },
-  {
-    name: "CONTACT",
-    route: "/",
-    icon: <Icon>message</Icon>,
-    columns: 3,
-    rowsPerColumn: 2,
-    component: <Rental />
   },
   {
     name: "account",
@@ -199,17 +107,6 @@ const routes = [
             name: "profile",
             route: "/pages/user/profile",
             component: <ProfilePage />,
-          },
-        ],
-      },
-      {
-        name: "user",
-        dropdown: true,
-        collapse: [
-          {
-            name: "userAdmin",
-            route: "/pages/user/userAdmin",
-            component: <UserAdminPage />,
           },
         ],
       },

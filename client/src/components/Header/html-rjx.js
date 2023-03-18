@@ -442,19 +442,6 @@ function HtmlRJX() {
                                             profile
                                         </Link>
                                       </li>
-                                      <li
-                                        class="
-                                          menu-item
-                                          menu-item-type-post_type
-                                          menu-item-object-page menu-item-922
-                                        "
-                                      >
-                                        <Link
-                                          to="pages/user/userAdmin"
-                                          >
-                                            Users
-                                        </Link>
-                                      </li> 
                                         <li
                                         className="
                                           menu-item
@@ -463,22 +450,9 @@ function HtmlRJX() {
                                         "
                                       >
                                         <Link
-                                          to="pages/auctionPage/createAuction"
+                                          to="pages/auction-pages/create-auction"
                                           >
                                             Create Auction
-                                        </Link>
-                                      </li>
-                                        <li
-                                        className="
-                                          menu-item
-                                          menu-item-type-post_type
-                                          menu-item-object-page menu-item-922
-                                        "
-                                      >
-                                        <Link
-                                          to="/pages/auctionPage/biddingAuction"
-                                          >
-                                            bidding Auction
                                         </Link>
                                       </li>
                                     </ul>
