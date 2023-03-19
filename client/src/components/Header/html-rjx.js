@@ -68,7 +68,6 @@ function HtmlRJX() {
                                 <ul className="header-menu clearfix">
                                     {routes.map((r, i) => {
                                         if(r.dropdown){
-                                            console.log(r);
 
                                             return <li key={i} className="
                                               menu-item
@@ -93,7 +92,6 @@ function HtmlRJX() {
                                                 </ul>
                                             </li>
                                         } else {
-                                            console.log("1", r);
                                             return <li key={i} className="
                                               menu-item
                                               menu-item-type-post_type
