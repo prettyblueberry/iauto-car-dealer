@@ -1,12 +1,20 @@
-import MKBox from "components/MKBox";
 import bgImage from "assets/image/car1.jpg"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { read } from "api/auction";
 import { Link } from "@mui/material";
 import AuctionCountdown from "components/VehicleCards/VehicleAuctionCard/AuctionCountdown";
-import MKInput from "components/MKInput";
+import auth from "api/auth/auth-helper";
+import Modal from "@mui/material/Modal";
+import Slide from "@mui/material/Slide";
+import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
+import Divider from "@mui/material/Divider";
+import MKButton from "components/MKButton";
 
+const io = require('socket.io-client')
+// const socket = io('https://api.iauto.no');
+const socket = io('http://localhost:3001');
 const customStyle = {
     sideNav: {
         width: '150%',
@@ -34,26 +42,56 @@ const customStyle = {
     }
 }
 
+
+function useInterval(callback, delay) {
+    const savedCallback = useRef();
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+    // Set up the interval.
+    useEffect(() => {
+      const id = setInterval(() => {
+        savedCallback.current();
+      }, delay);
+      return () => clearInterval(id);
+    }, [delay]);
+}
+
 function HtmlRjx(){
     const [auction, setAuction] = useState({});
+    const [bids, setBids] = useState([])
     const [status, setStatus] = useState('');
     const [round, setRound] = useState(0);
     const [remain, setRemain] = useState('');
     const [bidEnd, setBidEnd] = useState('');
     const [bid, setBid] = useState(0);
     const [myBid, setMyBid] = useState(0);
+    const [autoBidPrice, setAutoBidPrice] = useState(0);
     const [enableBid, setEnableBid] = useState(false);
+    const [isAutomatic, setIsAutomatic] = useState(false);
+    const [completeAuction, setCompleteAuction] = useState(false);
 
     const navigate = useNavigate();
     const {auctionId} = useParams();
+    const jwt = auth.isAuthenticated();
     
     jQuery(window).off("load");
     jQuery(window).off("scroll");
+    
+    useInterval(() => {
+        if (Date.now() > new Date(auction.bidEnd)) {
+            setEnableBid(false);
+            setCompleteAuction(true);
+        }
+    }, 1000);
+
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal;
         if(sessionStorage.getItem('jwt') === null)navigate('/authentication/sign-in/basic');
         read({auctionId: auctionId}, signal).then((data) => {
+            console.log(data);
             if(data){
                 if( new Date() - new Date(data.bidStart) > 0){  // already started??
                     setAuction(data);
@@ -69,28 +107,31 @@ function HtmlRjx(){
                     }
                     setRound(data.bids.length);
                     if(data.bids.length === 0){
-                        // setMine(0);
                         setBid(data.startingBid);
                         setMyBid(data.startingBid);
+                        setBids([]);
+                        setRound(0);
                     }else{
+                        console.log('here');
                         setBid(data.bids[0].bid);
                         setMyBid(data.bids[0].bid);
+                        setRound(data.bids.length);
+                        setBids(data.bids);
                         // data.bids.forEach(bid => {
                         //     if(bid.bidder._id === JSON.parse(localStorage.getItem('auth')).user._id){
                         //         setMine(bid.bidder.name);
                         //     }
                         // });
                     }
-                    // setMine(0);
                     setBidEnd(data.bidEnd);
                 }else{    //not started yet??
                     setAuction(data);
                     setStatus('Preparing')
                     setRemain('');
                     setRound(0);
+                    setBids([]);
                     setBid(data.startingBid);
                     setMyBid(data.startingBid);
-                    // setMine(0);
                     setBidEnd(data.bidEnd);
                 }
             }else{
@@ -107,6 +148,51 @@ function HtmlRjx(){
         else setEnableBid(false);
     }, [myBid])
     
+    useEffect(() => {
+        socket.emit('join_auction_room', {room: auctionId})
+        return () => {
+            socket.emit('leave auction room', {
+              room: auctionId
+            })
+          }
+    }, [])
+
+    useEffect(() => {
+        socket.on('new bid', payload => {
+            console.log(payload);
+            if(!isAutomatic){
+                updateAuction(payload);
+            }else{
+                updateAuction(payload);
+                if((payload.bids[0].bidder._id !== JSON.parse(localStorage.getItem('auth')).user._id) && (payload.bids[0].bid < autoBidPrice)){
+                    setTimeout(() => {
+                        onClickBidBtn(Number(payload.bids[0].bid) + 1000);
+                    }, 2000);
+                }
+            }
+        })
+        return () => {
+            socket.off('new bid')
+        }
+    })
+
+    const updateAuction = (data) => {
+        if(new Date(bidEnd) - new Date() < 60000) {
+            let time1, time2;
+            time1 = new Date ();
+            time2 = new Date ( time1 );
+            time2.setMinutes ( time1.getMinutes() + 3 );
+            data.bidEnd = time2;
+        }else{
+            data.bidEnd = auction.bidEnd;
+        }
+        // setAuction(data);
+        setBids(data.bids);
+        setRound(data.bids.length);
+        setBidEnd(data.bidEnd);
+        setBid(data.bids[0].bid);
+    }
+
     const onPlusBtnClick = () => {
         setMyBid(myBid + 1000);
     }
@@ -122,12 +208,24 @@ function HtmlRjx(){
     const onLeaveMyBid = () => {
         setMyBid(myBid - myBid % 1000);
     }
-    const onClickBidBtn = () => {
-        console.log(myBid)
+    const onClickBidBtn = (val) => {
+        let newBid = {
+            bid: val,
+            time: new Date(),
+            bidder: jwt.user,
+        }
+        socket.emit('new bid', {
+            room: auctionId,
+            bidInfo:  newBid
+        })
+        setEnableBid(false);
     }
     const onClickAutoBid = () => {
-        console.log(myBid);
-
+        setIsAutomatic(true);
+        setAutoBidPrice(myBid);
+    }
+    const onClickOkBtn = () => {
+        navigate('/');
     }
     return (
         <>
@@ -256,22 +354,6 @@ function HtmlRjx(){
                                                                 {auction.image && 
                                                                     <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[0]};base64,${auction.image.data[0]}`}/>
                                                                 }
-                                                                {/* <div className="slick-track" style={{width: '21719px', left: '-1174px', opacity: 1}}>
-                                                                    <div data-index={-1} tabIndex={-1} className="slick-slide slick-cloned" aria-hidden="true" style={{width: '587px'}}>
-                                                                        <div>
-                                                                            <div className="slider-img-wrapper" tabIndex={-1} style={{width: '100%', display: 'inline-block'}}>
-                                                                                <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0"  src={bgImage}/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div data-index={0} className="slick-slide slick-current" tabIndex={-1} aria-hidden="true" style={{outline: 'none', width: '587px'}}>
-                                                                        <div>
-                                                                            <div className="slider-img-wrapper" tabIndex={-1} style={{width: '100%', display: 'inline-block'}}>
-                                                                                <img data-savepage-src="https://localhost:3000/assets/image/car2.jpg" alt="Volvo" data-cy="car-images-slide-0"  src="assets/image/car2.jpg"/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> */}
                                                             </div>
                                                             <button type="button" data-role="none" className="slick-arrow slick-next" style={customStyle.mainNavButton}>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px', boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'}}>
@@ -497,7 +579,7 @@ function HtmlRjx(){
                                             <div className="u-hidden@until-tablet" />
                                                 <div className="is-relative">
                                                     <div>
-                                                        <span>Remain time: <AuctionCountdown timeEnd={bidEnd}/></span>
+                                                        <span>Remain time: <AuctionCountdown  container timeEnd={`${new Date(bidEnd)}`}/></span>
                                                         <div className="o-level o-level--spaced">
                                                             <div className="o-level__item">
                                                                 <div className="c-stat">
@@ -520,7 +602,7 @@ function HtmlRjx(){
                                                                     </div>
                                                                     <div className="c-stat__value">
                                                                         <div className="auction-time-wrapper" data-cy="timer-static">
-                                                                            {auction.bidEnd && 
+                                                                            { auction.bidEnd && 
                                                                                 <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{auction.bidEnd.split('T')[0] + ' at ' +  auction.bidEnd.split('T')[1].split('.')[0]}</font></font></span>
                                                                             }
                                                                         </div>
@@ -580,10 +662,10 @@ function HtmlRjx(){
                                                             <div className="o-level o-level--equal o-level--margin-tiny u-margin-bottom-small u-margin-top" style={{display: 'flex'}}>
                                                                 <div className="o-level__item">
                                                                     {!enableBid? 
-                                                                        <button type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--disabled" style={customStyle.rightNav.main} onClick={onClickBidBtn}>
+                                                                        <button type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--disabled" style={customStyle.rightNav.main} onClick={() => onClickBidBtn(myBid)}>
                                                                             <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', fontSize: '14px'}}>Make an offer</font></font>
                                                                         </button>:
-                                                                        <button type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary" style={customStyle.rightNav.main} onClick={onClickBidBtn}>
+                                                                        <button type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary" style={customStyle.rightNav.main} onClick={() => onClickBidBtn(myBid)}>
                                                                             <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', fontSize: '14px'}}>Make an offer</font></font>
                                                                         </button>
                                                                     }
@@ -624,10 +706,9 @@ function HtmlRjx(){
                                                 </h3>
                                             </div>
                                             <ul className="c-bid-list c-bid-list--scrollable">
-                                                {
-                                                    auction.bids &&
-                                                    auction.bids.map((bid, index) => {
-                                                        <div className="c-bid-list__item o-level o-level--spaced o-level--equal" key={new Date() + bid.bidder.name}>
+                                                {   auction.bids &&
+                                                    bids.map((bid, index) => {
+                                                        return (<div className="c-bid-list__item o-level o-level--spaced o-level--equal" key={new Date() + index}>
                                                             <div className="o-level__item">
                                                                 <div className="u-h6 u-color-black">
                                                                     <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{bid.bidder.name}</font></font>
@@ -650,7 +731,7 @@ function HtmlRjx(){
                                                                     <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK {bid.bid}</font></font>
                                                                 </h3>
                                                             </div>
-                                                        </div>
+                                                        </div>) 
                                                     })
                                                 }
                                             </ul>
@@ -663,6 +744,43 @@ function HtmlRjx(){
                 </div>
             </div>
         </div>
+        <Modal open={completeAuction} sx={{ display: "grid", placeItems: "center" }}>
+            <Slide direction="down" in={completeAuction} timeout={500}>
+                <MKBox
+                position="relative"
+                width="500px"
+                display="flex"
+                flexDirection="column"
+                borderRadius="xl"
+                bgColor="white"
+                shadow="xl"
+                >
+                <MKBox display="flex" alginItems="center" justifyContent="space-between" p={2}>
+                    <MKTypography variant="h5">Completed Auction</MKTypography>
+                </MKBox>
+                <Divider sx={{ my: 0 }} />
+                <MKBox p={2}>
+                    <MKTypography variant="h2" color="secondary" fontWeight="regular">
+                        {bids.length?'Congratulations!': 'Notification'}
+                    </MKTypography>
+                    <MKTypography variant="body2" color="secondary" fontWeight="regular">
+                        {bids.length && bids[bids.length - 1].bidder? <>
+                        Hi! {bids[bids.length - 1].bidder.name}<br/>
+                        You won this auction.
+                        At this auction, for the price of {bid} NOK, you won.<br/>
+                        congratulations!. Would you like to continue participating in the auction?</>
+                        :<>This auction was finished without any bidders.<br/>Please try again.</> }
+                    </MKTypography>
+                </MKBox>
+                <Divider sx={{ my: 0 }} />
+                <MKBox display="flex" justifyContent="space-between" p={1.5}>
+                    <MKButton variant="gradient" color="info" onClick={onClickOkBtn}>
+                    Okay
+                    </MKButton>
+                </MKBox>
+                </MKBox>
+            </Slide>
+        </Modal>
         </>     
     );
 }

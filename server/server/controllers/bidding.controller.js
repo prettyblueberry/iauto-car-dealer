@@ -5,17 +5,13 @@ export default (server) => {
     io.on('connection', function(socket){
         console.log(socket.id);
         socket.on('join_auction_room', data => {
-            console.log('join!!')
             socket.join(data.room)
         })
         socket.on('leave auction room', data => {
-            console.log('out!!')
             socket.leave(data.room)
         })
         socket.on('new bid', data => {
-            console.log('bid!!')
-            console.log(data);
-            // bid(data.bidInfo, data.room)
+            bid(data.bidInfo, data.room)
         })
     })
     const bid = async (bid, auction) => {
@@ -24,7 +20,6 @@ export default (server) => {
                                   .populate('bids.bidder', '_id name')
                                   .populate('seller', '_id name')
                                   .exec()
-                                  console.log(result);
             io
             .to(auction)
             .emit('new bid', result)
