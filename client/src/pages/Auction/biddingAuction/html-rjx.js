@@ -3,6 +3,8 @@ import bgImage from "assets/image/car1.jpg"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { read } from "api/auction";
+import { Link } from "@mui/material";
+import AuctionCountdown from "components/VehicleCards/VehicleAuctionCard/AuctionCountdown";
 
 const customStyle = {
     sideNav: {
@@ -21,11 +23,20 @@ const customStyle = {
     },
     mainNavButton: {
         boxShadow: "5px 0 30px rgba(1, 41, 112, 0)"
+    },
+    rightPriceButton: {
+        boxShadow: "5px 0 30px rgba(1, 41, 112, 0)"
     }
 }
 
 function HtmlRjx(){
     const [auction, setAuction] = useState({});
+    const [status, setStatus] = useState('');
+    const [round, setRound] = useState(0);
+    const [remain, setRemain] = useState('');
+    const [bidEnd, setBidEnd] = useState('');
+    const [bid, setBid] = useState(0);
+    const [mine, setMine] = useState(0);
     const navigate = useNavigate();
     const {auctionId} = useParams();
     
@@ -36,29 +47,43 @@ function HtmlRjx(){
         const signal = abortController.signal;
         if(sessionStorage.getItem('jwt') === null)navigate('/authentication/sign-in/basic');
         read({auctionId: auctionId}, signal).then((data) => {
-            if (!data) {
-                navigate('/authentication/sign-in/basic');
-            } else {
-                console.log(data);
-                if(data.bids.length === 0){
-                    // if(new Date(data.bidEnd) < new Date(auction.bidEnd)){
-                    //     data.bidEnd = auction.bidEnd;   
-                    // }
-                    console.log(data);
+            if(data){
+                if( new Date() - new Date(data.bidStart) > 0){  // already started??
                     setAuction(data);
-                    // setPrice(data.startingBid);
-                    // setSeller(data.seller.name);
-                    // if(data.seller._id === JSON.parse(localStorage.getItem('auth')).user._id)setIsSeller(true);
-                }else{
-                    // if(new Date(data.bidEnd) < new Date(auction.bidEnd)){
-                    //     data.bidEnd = auction.bidEnd;   
-                    // }
-                    console.log('here!!!')
+                    if(new Date(data.bidEnd) - new Date() < 0){
+                        setStatus('Finished');
+                        setRemain('');
+                    }else{
+                        setStatus('Closing')
+                        let mNow = new Date();
+                        let mEnd = new Date(data.bidEnd);
+                        let mUpcoming = mEnd.getMinutes() - mNow.getMinutes();
+                        setRemain(mUpcoming);
+                    }
+                    setRound(data.bids.length);
+                    if(data.bids.length === 0){
+                        setMine(0);
+                        setBid(data.startingBid);
+                    }else{
+                        setBid(data.bids[0].bid);
+                        data.bids.forEach(bid => {
+                            if(bid.bidder._id === JSON.parse(localStorage.getItem('auth')).user._id){
+                                setMine(bid.bidder.name);
+                            }
+                        });
+                    }
+                    setMine(0);
+                    setBidEnd(data.bidEnd);
+                }else{    //not started yet??
                     setAuction(data);
-                    // setPrice(data.bids[0].bid);
-                    // setSeller(data.seller.name);
-                    // if(data.seller._id === JSON.parse(localStorage.getItem('auth')).user._id)setIsSeller(true);
+                    setStatus('Preparing')
+                    setRemain('');
+                    setRound(0);
+                    setMine(0);
+                    setBidEnd(data.bidEnd);
                 }
+            }else{
+                console.log('data fetch error');
             }
         })
         return function cleanup(){
@@ -80,7 +105,7 @@ function HtmlRjx(){
                                 <div className="u-padding-top" style={customStyle.sideNav}>
                                     <ul className="c-sidenav__list">
                                         <li>
-                                            <a data-cy="navigation-item-on-auction" data-savepage-href="/dashboard/dealer/cars-to-buy" href="/">
+                                            <Link data-cy="navigation-item-on-auction" data-savepage-href="/dashboard/dealer/cars-to-buy" to="/">
                                                 <img src="/assets-bid/icons/icons_nav_cars.svg" alt="This is buy car icon" width={18} height={15} style={{marginRight: '30px'}} />
                                                 <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
@@ -94,10 +119,10 @@ function HtmlRjx(){
                                                     </font>
                                                     </font>
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a data-cy="navigation-item-upcoming" data-savepage-href="/dashboard/dealer/cars-to-buy-later" href="/">
+                                            <Link data-cy="navigation-item-upcoming" data-savepage-href="/dashboard/dealer/cars-to-buy-later" to="/">
                                                 <img src="/assets-bid/icons/icons_nav_upcoming.svg" alt="This is upcoming icon" width={19} height={19} style={{marginRight: '30px'}} />
                                                 <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
@@ -111,10 +136,10 @@ function HtmlRjx(){
                                                     </font>
                                                     </font>
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a data-savepage-href="/dashboard/dealer/cars-with-bids" href="/">
+                                            <Link data-savepage-href="/dashboard/dealer/cars-with-bids" to="/">
                                                 <img src="/assets-bid/icons/icons_nav_my_bids.svg" alt="This is bid icon" width={19} height={19} style={{marginRight: '30px'}} />
                                                 <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
@@ -123,14 +148,13 @@ function HtmlRjx(){
                                                 </font>
                                                 <span className="list-counter no-counts">
                                                     <font style={{verticalAlign: 'inherit'}}>
-                                                    <font style={{verticalAlign: 'inherit'}}>0
-                                                    </font>
+                                                        <font style={{verticalAlign: 'inherit'}}>0</font>
                                                     </font>
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a data-cy="navigation-item-favorites" data-savepage-href="/dashboard/dealer/cars-favourites" href="/">
+                                            <Link data-cy="navigation-item-favorites" data-savepage-href="/dashboard/dealer/cars-favourites" to="/">
                                                 <img src="/assets-bid/icons/icons_nav_favorites.svg" alt="This is favourite icon" width={21} height={18} style={{marginRight : '30PX'}} />
                                                 <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
@@ -142,10 +166,10 @@ function HtmlRjx(){
                                                         <font style={{verticalAlign: 'inherit'}}>0</font>
                                                     </font>
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a data-cy="navigation-item-my-purchases" data-savepage-href="/dashboard/dealer/cars-won" href="/">
+                                            <Link data-cy="navigation-item-my-purchases" data-savepage-href="/dashboard/dealer/cars-won" to="/">
                                                 <img src="/assets-bid/icons/icons_nav_bought.svg" alt="This is purchases icon" width={19} height={19} style={{marginRight: '30px'}} />
                                                 <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
@@ -157,11 +181,11 @@ function HtmlRjx(){
                                                     <font style={{verticalAlign: 'inherit'}}>0</font>
                                                     </font>
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li><span className="menu-separator" /></li>
                                         <li>
-                                            <a data-cy="dealer-faq-sidebar-link" data-savepage-href="/dashboard/dealer/faq" href="https://portal.nettbil.no/dashboard/dealer/faq">
+                                            <Link data-cy="dealer-faq-sidebar-link" data-savepage-href="/dashboard/dealer/faq" to="/">
                                                 <img src="/assets-bid/icons/faq_question.svg" alt="This is faq_question icon" width={20} height={20} style={{marginRight: '30px'}} />
                                                 <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
@@ -169,7 +193,7 @@ function HtmlRjx(){
                                                     </font>
                                                 </font>
                                                 <span className="list-counter" />
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -194,7 +218,6 @@ function HtmlRjx(){
                                                                 {auction.image && 
                                                                     <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[0]};base64,${auction.image.data[0]}`}/>
                                                                 }
-
                                                                 {/* <div className="slick-track" style={{width: '21719px', left: '-1174px', opacity: 1}}>
                                                                     <div data-index={-1} tabIndex={-1} className="slick-slide slick-cloned" aria-hidden="true" style={{width: '587px'}}>
                                                                         <div>
@@ -436,25 +459,32 @@ function HtmlRjx(){
                                             <div className="u-hidden@until-tablet" />
                                                 <div className="is-relative">
                                                     <div>
+                                                        <span>Remain time: <AuctionCountdown timeEnd={bidEnd}/></span>
                                                         <div className="o-level o-level--spaced">
                                                             <div className="o-level__item">
                                                                 <div className="c-stat">
                                                                     <div className="c-stat__label">
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Highest bid</font></font>
+                                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                                            <font style={{verticalAlign: 'inherit'}}>Highest bid</font>
+                                                                        </font>
                                                                     </div>
                                                                     <div className="c-stat__value c-stat__value--large">
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK 3,000</font></font>
+                                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                                            <font style={{verticalAlign: 'inherit'}}>NOK {bid}</font>
+                                                                        </font>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="o-level__item u-1/2 u-text-right">
                                                                 <div className="c-stat">
                                                                     <div className="c-stat__label">
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Closing</font></font>
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{status}</font></font>
                                                                     </div>
                                                                     <div className="c-stat__value">
                                                                         <div className="auction-time-wrapper" data-cy="timer-static">
-                                                                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>20.03.2023 at </font><font style={{verticalAlign: 'inherit'}}>10:09 a.m</font></font></span>
+                                                                            {auction.bidEnd && 
+                                                                                <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{auction.bidEnd.split('T')[0] + ' at ' +  auction.bidEnd.split('T')[1].split('.')[0]}</font></font></span>
+                                                                            }
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -467,16 +497,16 @@ function HtmlRjx(){
                                                             </div>
                                                             <div className="u-margin-bottom">
                                                                 <div className="c-input-increment">
-                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-decrement">
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>-</font></font>
+                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-decrement" style={customStyle.rightPriceButton}>
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(35, 61, 62, 1)'}}>-</font></font>
                                                                     </button>
                                                                     <div className="c-input-increment__wrapper">
                                                                         <input name="bidAmountPreview" type="text" data-cy="bidding-controls-value" disabled className="c-input c-input-increment__input c-input--hide-spinner u-text-center u-text-bolder u-text-unselectable" defaultValue placeholder="Amount" />
                                                                         <a data-cy="bidding-controls-edit-button">
                                                                         </a>
                                                                     </div>
-                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-increment">
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>+</font></font>
+                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-increment" style={customStyle.rightPriceButton}>
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(35, 61, 62, 1)'}}>+</font></font>
                                                                     </button>
                                                                 </div>
                                                                 <div className="o-level o-level--centered">
