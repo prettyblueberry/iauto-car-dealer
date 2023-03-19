@@ -1,13 +1,83 @@
+import MKBox from "components/MKBox";
+import bgImage from "assets/image/car1.jpg"
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { read } from "api/auction";
+
+const customStyle = {
+    sideNav: {
+        width: '150%',
+        marginLeft: '-40%'
+    },
+    rightNav: {
+        width: '60%',
+        marginLeft: '-3%',
+        main: {
+            width: '100%',
+            padding: '10px',
+            paddingTop: '10px',
+            paddingBottom: '10px'
+        }
+    },
+    mainNavButton: {
+        boxShadow: "5px 0 30px rgba(1, 41, 112, 0)"
+    }
+}
+
 function HtmlRjx(){
+    const [auction, setAuction] = useState({});
+    const navigate = useNavigate();
+    const {auctionId} = useParams();
+    
+    jQuery(window).off("load");
+    jQuery(window).off("scroll");
+    useEffect(() => {
+        const abortController = new AbortController()
+        const signal = abortController.signal;
+        if(sessionStorage.getItem('jwt') === null)navigate('/authentication/sign-in/basic');
+        read({auctionId: auctionId}, signal).then((data) => {
+            if (!data) {
+                navigate('/authentication/sign-in/basic');
+            } else {
+                console.log(data);
+                if(data.bids.length === 0){
+                    // if(new Date(data.bidEnd) < new Date(auction.bidEnd)){
+                    //     data.bidEnd = auction.bidEnd;   
+                    // }
+                    console.log(data);
+                    setAuction(data);
+                    // setPrice(data.startingBid);
+                    // setSeller(data.seller.name);
+                    // if(data.seller._id === JSON.parse(localStorage.getItem('auth')).user._id)setIsSeller(true);
+                }else{
+                    // if(new Date(data.bidEnd) < new Date(auction.bidEnd)){
+                    //     data.bidEnd = auction.bidEnd;   
+                    // }
+                    console.log('here!!!')
+                    setAuction(data);
+                    // setPrice(data.bids[0].bid);
+                    // setSeller(data.seller.name);
+                    // if(data.seller._id === JSON.parse(localStorage.getItem('auth')).user._id)setIsSeller(true);
+                }
+            }
+        })
+        return function cleanup(){
+            abortController.abort()
+        }
+    }, [auctionId])
+
     return (
+        <>
+        <div style={{height: '120px', backgroundColor: 'rgba(16, 33, 39, 1)'}}></div>
         <div id="main">
             <div className="container">
                 <div className="dashboard-wrapper gdpr-active">
                     {/*here, I will take the navigation bar*/}
                     <div className="dashboard-wrapper">
                         <main className="dashboard-main container is-big">
+                            {/* Left sidebar */}
                             <aside className="c-sidenav">
-                                <div className="u-padding-top">
+                                <div className="u-padding-top" style={customStyle.sideNav}>
                                     <ul className="c-sidenav__list">
                                         <li>
                                             <a data-cy="navigation-item-on-auction" data-savepage-href="/dashboard/dealer/cars-to-buy" href="/">
@@ -18,12 +88,12 @@ function HtmlRjx(){
                                                     </font>
                                                 </font>
                                                 <span className="list-counter">
-                        <font style={{verticalAlign: 'inherit'}}>
-                          <font style={{verticalAlign: 'inherit'}}>
-                            28
-                          </font>
-                        </font>
-                      </span>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                        28
+                                                    </font>
+                                                    </font>
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
@@ -35,12 +105,12 @@ function HtmlRjx(){
                                                     </font>
                                                 </font>
                                                 <span className="list-counter">
-                        <font style={{verticalAlign: 'inherit'}}>
-                          <font style={{verticalAlign: 'inherit'}}>
-                            847
-                          </font>
-                        </font>
-                      </span>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                        847
+                                                    </font>
+                                                    </font>
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
@@ -52,11 +122,11 @@ function HtmlRjx(){
                                                     </font>
                                                 </font>
                                                 <span className="list-counter no-counts">
-                        <font style={{verticalAlign: 'inherit'}}>
-                          <font style={{verticalAlign: 'inherit'}}>0
-                          </font>
-                        </font>
-                      </span>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                    <font style={{verticalAlign: 'inherit'}}>0
+                                                    </font>
+                                                    </font>
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
@@ -68,9 +138,10 @@ function HtmlRjx(){
                                                     </font>
                                                 </font>
                                                 <span className="list-counter no-counts">
-                        <font style={{verticalAlign: 'inherit'}}>
-                          <font style={{verticalAlign: 'inherit'}}>0</font>
-                        </font></span>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                        <font style={{verticalAlign: 'inherit'}}>0</font>
+                                                    </font>
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
@@ -82,10 +153,10 @@ function HtmlRjx(){
                                                     </font>
                                                 </font>
                                                 <span className="list-counter no-counts">
-                        <font style={{verticalAlign: 'inherit'}}>
-                          <font style={{verticalAlign: 'inherit'}}>0</font>
-                        </font>
-                      </span>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                    <font style={{verticalAlign: 'inherit'}}>0</font>
+                                                    </font>
+                                                </span>
                                             </a>
                                         </li>
                                         <li><span className="menu-separator" /></li>
@@ -103,62 +174,70 @@ function HtmlRjx(){
                                     </ul>
                                 </div>
                             </aside>
+                            {/* main content */}
                             <section className="dashboard-content">
                                 <div className="c-car-details">
+                                    {/* basic content */}
                                     <div className="c-car-details__left">
                                         <div className="c-car-detail__module c-car-detail__module--gallery">
                                             <div className="nettbil-imagegallery" data-cy="car-images-gallery">
                                                 <div className="slider-wrapper">
                                                     <div className="slider-fullscreen-background">
                                                         <div className="slick-slider slick-initialized" dir="ltr">
-                                                            <button type="button" data-role="none" className="slick-arrow slick-prev">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
+                                                            <button type="button" data-role="none" className="slick-arrow slick-prev" style={customStyle.mainNavButton}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px'}}>
                                                                     <path d="M0 0h24v24H0z" fill="none" />
                                                                     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
                                                                 </svg>
                                                             </button>
                                                             <div className="slick-list" style={{height: '400px'}}>
-                                                                <div className="slick-track" style={{width: '21719px', left: '-1174px', opacity: 1}}>
+                                                                {auction.image && 
+                                                                    <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[0]};base64,${auction.image.data[0]}`}/>
+                                                                }
+
+                                                                {/* <div className="slick-track" style={{width: '21719px', left: '-1174px', opacity: 1}}>
                                                                     <div data-index={-1} tabIndex={-1} className="slick-slide slick-cloned" aria-hidden="true" style={{width: '587px'}}>
                                                                         <div>
                                                                             <div className="slider-img-wrapper" tabIndex={-1} style={{width: '100%', display: 'inline-block'}}>
-                                                                                <img data-savepage-src="https://images-20210209174033434400000001.s3.eu-north-1.amazonaws.com/KH79288-16790522627175483878139296334426-878221ec86630c98ccb28f28c1551f4056fbe625d459494c014a14b9487eccfc.display.jpeg" alt="Volvo" data-cy="car-images-slide-17" />
+                                                                                <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0"  src={bgImage}/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div data-index={0} className="slick-slide slick-current" tabIndex={-1} aria-hidden="true" style={{outline: 'none', width: '587px'}}>
                                                                         <div>
                                                                             <div className="slider-img-wrapper" tabIndex={-1} style={{width: '100%', display: 'inline-block'}}>
-                                                                                <img data-savepage-src="https://images-20210209174033434400000001.s3.eu-north-1.amazonaws.com/KH79288-16790518348269091875852560350134-94de23e3140de0d6291223ffe65594258bda33d92032d4a8c512eb9aa56adaf4.display.jpeg" alt="Volvo" data-cy="car-images-slide-0" />
+                                                                                <img data-savepage-src="https://localhost:3000/assets/image/car2.jpg" alt="Volvo" data-cy="car-images-slide-0"  src="assets/image/car2.jpg"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> */}
                                                             </div>
-                                                            <button type="button" data-role="none" className="slick-arrow slick-next">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
+                                                            <button type="button" data-role="none" className="slick-arrow slick-next" style={customStyle.mainNavButton}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px', boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'}}>
                                                                     <path d="M0 0h24v24H0z" fill="none" />
                                                                     <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
                                                                 </svg>
                                                             </button>
                                                         </div>
                                                         <span className="current-slide">
-                            <span className="current-index">
-                              <font style={{verticalAlign: 'inherit'}}>
-                                <font style={{verticalAlign: 'inherit'}}>
-                                  1 / 18
-                                </font>
-                              </font>
-                            </span>
-                          </span>
-                                                        <button type="button" className="slider-go-fullscreen">
+                                                            <span className="current-index">
+                                                            <font style={{verticalAlign: 'inherit'}}>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                1 / 18
+                                                                </font>
+                                                            </font>
+                                                            </span>
+                                                        </span>
+                                                        <button type="button" className="slider-go-fullscreen" style={customStyle.mainNavButton}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" fill="currentColor" viewBox="0 0 24 24" xmlSpace="preserve">
                                                                 <path id="play" d="m 3.4285714,15.428571 -3.42857145,0 0,8.571429 8.57142905,0 0,-3.428571 -5.1428577,0 0,-5.142858 z M -5e-8,8.5714287 l 3.42857145,0 0,-5.1428573 5.1428577,0 L 8.5714291,0 -4.9999999e-8,0 l 0,8.5714287 z M 20.571428,20.571429 l -5.142857,0 0,3.428571 L 24,24 l 0,-8.571429 -3.428572,0 0,5.142858 z M 15.428571,2e-7 l 0,3.4285714 5.142857,0 0,5.1428571 3.428572,0 L 24,2e-7 l -8.571429,0 z">
                                                                     <animate id="animation-to" begin="indefinite" fill="freeze" attributeName="d" dur="0.15s" to="m 5.0000001e-8,18.857143 5.14285695,0 0,5.142857 3.428572,0 0,-8.571429 -8.571428950000001,0 0,3.428572 z M 5.142857,5.1428572 l -5.14285695,0 0,3.4285714 8.571428949999999,0 0,-8.571428500000001 -3.428572,0 0,5.142857100000001 z M 15.428571,24 l 3.428572,0 0,-5.142857 5.142857,0 0,-3.428572 -8.571429,0 0,8.571429 z m 3.428572,-18.8571428 0,-5.1428571 -3.428572,0 0,8.5714285 8.571429,0 0,-3.4285714 -5.142857,0 z" />
                                                                     <animate id="animation-from" begin="indefinite" fill="freeze" attributeName="d" dur="0.15s" to="m 3.4285714,15.428571 -3.42857145,0 0,8.571429 8.57142905,0 0,-3.428571 -5.1428577,0 0,-5.142858 z M -5e-8,8.5714287 l 3.42857145,0 0,-5.1428573 5.1428577,0 L 8.5714291,0 -4.9999999e-8,0 l 0,8.5714287 z M 20.571428,20.571429 l -5.142857,0 0,3.428571 L 24,24 l 0,-8.571429 -3.428572,0 0,5.142858 z M 15.428571,2e-7 l 0,3.4285714 5.142857,0 0,5.1428571 3.428572,0 L 24,2e-7 l -8.571429,0 z" />
                                                                 </path>
                                                             </svg>
-                                                        </button><button type="button" className="custom-navigation custom-prev" /><button type="button" className="custom-navigation custom-next" />
+                                                        </button>
+                                                        <button type="button" className="custom-navigation custom-prev" />
+                                                        <button type="button" className="custom-navigation custom-next" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -351,98 +430,113 @@ function HtmlRjx(){
                                             </div>
                                         </div>
                                     </div>
+                                    {/* bidding panel */}
                                     <div className="c-car-details__right">
                                         <div className="c-car-detail__module is-relative">
                                             <div className="u-hidden@until-tablet" />
-                                            <div className="is-relative">
-                                                <div>
-                                                    <div className="o-level o-level--spaced">
-                                                        <div className="o-level__item">
-                                                            <div className="c-stat">
-                                                                <div className="c-stat__label">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Highest bid</font></font>
+                                                <div className="is-relative">
+                                                    <div>
+                                                        <div className="o-level o-level--spaced">
+                                                            <div className="o-level__item">
+                                                                <div className="c-stat">
+                                                                    <div className="c-stat__label">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Highest bid</font></font>
+                                                                    </div>
+                                                                    <div className="c-stat__value c-stat__value--large">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK 3,000</font></font>
+                                                                    </div>
                                                                 </div>
-                                                                <div className="c-stat__value c-stat__value--large">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK 3,000</font></font>
+                                                            </div>
+                                                            <div className="o-level__item u-1/2 u-text-right">
+                                                                <div className="c-stat">
+                                                                    <div className="c-stat__label">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Closing</font></font>
+                                                                    </div>
+                                                                    <div className="c-stat__value">
+                                                                        <div className="auction-time-wrapper" data-cy="timer-static">
+                                                                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>20.03.2023 at </font><font style={{verticalAlign: 'inherit'}}>10:09 a.m</font></font></span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="o-level__item u-1/2 u-text-right">
-                                                            <div className="c-stat">
-                                                                <div className="c-stat__label">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Closing</font></font>
+                                                        <div className="c-divider c-divider--horizontal" />
+                                                        <div className="c-bidding-controls">
+                                                            <div className="u-h6 u-margin-bottom-small u-color-bwg-tint-1">
+                                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Place a bid</font></font>
+                                                            </div>
+                                                            <div className="u-margin-bottom">
+                                                                <div className="c-input-increment">
+                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-decrement">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>-</font></font>
+                                                                    </button>
+                                                                    <div className="c-input-increment__wrapper">
+                                                                        <input name="bidAmountPreview" type="text" data-cy="bidding-controls-value" disabled className="c-input c-input-increment__input c-input--hide-spinner u-text-center u-text-bolder u-text-unselectable" defaultValue placeholder="Amount" />
+                                                                        <a data-cy="bidding-controls-edit-button">
+                                                                        </a>
+                                                                    </div>
+                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-increment">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>+</font></font>
+                                                                    </button>
                                                                 </div>
-                                                                <div className="c-stat__value">
-                                                                    <div className="auction-time-wrapper" data-cy="timer-static">
-                                                                        <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>20.03.2023 at </font><font style={{verticalAlign: 'inherit'}}>10:09 a.m</font></font></span>
+                                                                <div className="o-level o-level--centered">
+                                                                    <span className="u-h8 u-margin-top-tiny">
+                                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                                            <font style={{verticalAlign: 'inherit'}}>Proposal</font>
+                                                                            <span className="is-inline">
+                                                                                <font style={{verticalAlign: 'inherit'}}>NOK 4,000</font>
+                                                                            </span>
+                                                                            <font style={{verticalAlign: 'inherit'}}>( </font>
+                                                                            <font style={{verticalAlign: 'inherit'}}>minimum </font>
+                                                                            <font style={{verticalAlign: 'inherit'}}>)</font>
+                                                                        </font>
+                                                                    <span className="is-inline"><font style={{verticalAlign: 'inherit'}} /></span>
+                                                                    <font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /></span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="c-quickbids o-level o-level--equal o-level--margin-tiny" style={customStyle.rightNav}>
+                                                                <div className="o-level__item" style={customStyle.rightNav}>
+                                                                    <button type="button" data-cy="168242-bid-1000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}} >+ NOK 1,000</font></font>
+                                                                    </button>
+                                                                </div>
+                                                                <div className="o-level__item" style={customStyle.rightNav}>
+                                                                    <button type="button" data-cy="168242-bid-3000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}}>+ NOK 3,000</font></font>
+                                                                    </button>
+                                                                </div>
+                                                                <div className="o-level__item" style={customStyle.rightNav}>
+                                                                    <button type="button" data-cy="168242-bid-5000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}}>+ NOK 5,000</font></font>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div className="o-level o-level--equal o-level--margin-tiny u-margin-bottom-small u-margin-top" style={{display: 'flex'}}>
+                                                                <div className="o-level__item">
+                                                                    <button disabled type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--disabled" style={customStyle.rightNav.main}>
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', fontSize: '14px'}}>Make an offer</font></font>
+                                                                    </button>
+                                                                </div>
+                                                                <div className="o-level__item">
+                                                                    <button disabled type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined c-btn--disabled"  style={{width: '100%', marginLeft: '-5%', padding: '10px'}}>
+                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 120, 100, 1)', fontSize: '14px'}}>Give auto bid</font></font>
+                                                                    </button>
+                                                                    <div className="u-text-center u-margin-top-tiny">
+                                                                        <span className="c-tooltip">
+                                                                            <span className="c-tooltip__trigger">
+                                                                                <span className="u-text-underlined">
+                                                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                                                        <font style={{verticalAlign: 'inherit'}}>What is Autobid?</font>
+                                                                                    </font>
+                                                                                </span>
+                                                                            </span>
+                                                                        </span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="c-divider c-divider--horizontal" />
-                                                    <div className="c-bidding-controls">
-                                                        <div className="u-h6 u-margin-bottom-small u-color-bwg-tint-1">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Place a bid</font></font>
-                                                        </div>
-                                                        <div className="u-margin-bottom">
-                                                            <div className="c-input-increment">
-                                                                <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-decrement">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>-</font></font>
-                                                                </button>
-                                                                <div className="c-input-increment__wrapper">
-                                                                    <input name="bidAmountPreview" type="text" data-cy="bidding-controls-value" disabled className="c-input c-input-increment__input c-input--hide-spinner u-text-center u-text-bolder u-text-unselectable" defaultValue placeholder="Amount" />
-                                                                    <a data-cy="bidding-controls-edit-button">
-                                                                    </a>
-                                                                </div>
-                                                                <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-increment">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>+</font></font>
-                                                                </button>
-                                                            </div>
-                                                            <div className="o-level o-level--centered">
-                              <span className="u-h8 u-margin-top-tiny"><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Proposal </font><span className="is-inline"><font style={{verticalAlign: 'inherit'}}>NOK 4,000</font></span><font style={{verticalAlign: 'inherit'}}>
-                                    ( </font><font style={{verticalAlign: 'inherit'}}>minimum </font><font style={{verticalAlign: 'inherit'}}>)</font></font>
-                                <span className="is-inline"><font style={{verticalAlign: 'inherit'}} /></span>
-                                <font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /></span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="c-quickbids o-level o-level--equal o-level--margin-tiny">
-                                                            <div className="o-level__item">
-                                                                <button type="button" data-cy="168242-bid-1000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>+ NOK 1,000</font></font>
-                                                                </button>
-                                                            </div>
-                                                            <div className="o-level__item">
-                                                                <button type="button" data-cy="168242-bid-3000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>+ NOK 3,000</font></font>
-                                                                </button>
-                                                            </div>
-                                                            <div className="o-level__item">
-                                                                <button type="button" data-cy="168242-bid-5000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>+ NOK 5,000</font></font>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div className="o-level o-level--equal o-level--margin-tiny u-margin-bottom-small u-margin-top">
-                                                            <div className="o-level__item">
-                                                                <button disabled type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--disabled">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Make an offer</font></font>
-                                                                </button>
-                                                            </div>
-                                                            <div className="o-level__item">
-                                                                <button disabled type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined c-btn--disabled">
-                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Give auto bid</font></font>
-                                                                </button>
-                                                                <div className="u-text-center u-margin-top-tiny">
-                                <span className="c-tooltip"><span className="c-tooltip__trigger"><span className="u-text-underlined"><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>What is Autobid?</font></font></span>
-                                  </span>
-                                </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                            </div>
                                         </div>
                                         <div className="c-car-detail__module">
                                             <div className="o-level o-level--spaced u-margin-bottom">
@@ -460,9 +554,16 @@ function HtmlRjx(){
                                                             <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Bidder 3</font></font>
                                                         </div>
                                                         <div className="u-color-bwg-tint-1 u-h7">
-                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>17.03
-                                </font></font></span>
-                                                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>14:12:51</font></font></span>
+                                                            <span>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>17.03</font>
+                                                                </font>
+                                                            </span>
+                                                            <span>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>14:12:51</font>
+                                                                </font>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div className="right-info o-level__item o-level o-level--right">
@@ -474,34 +575,56 @@ function HtmlRjx(){
                                                 <div className="c-bid-list__item o-level o-level--spaced o-level--equal">
                                                     <div className="o-level__item">
                                                         <div className="u-h6 u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Bidder 2</font></font>
+                                                            <font style={{verticalAlign: 'inherit'}}>
+                                                                <font style={{verticalAlign: 'inherit'}}>Bidder 2</font>
+                                                            </font>
                                                         </div>
                                                         <div className="u-color-bwg-tint-1 u-h7">
-                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>17.03
-                                </font></font></span>
-                                                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>14:00:22</font></font></span>
+                                                            <span>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>17.03</font>
+                                                                </font>
+                                                            </span>
+                                                            <span>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>14:00:22</font>
+                                                                </font>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div className="right-info o-level__item o-level o-level--right">
                                                         <h3 className="u-h5 u-text-bolder u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK 2,000</font></font>
+                                                            <font style={{verticalAlign: 'inherit'}}>
+                                                                <font style={{verticalAlign: 'inherit'}}>NOK 2,000</font>
+                                                            </font>
                                                         </h3>
                                                     </div>
                                                 </div>
                                                 <div className="c-bid-list__item o-level o-level--spaced o-level--equal">
                                                     <div className="o-level__item">
                                                         <div className="u-h6 u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Bidder 1</font></font>
+                                                            <font style={{verticalAlign: 'inherit'}}>
+                                                                <font style={{verticalAlign: 'inherit'}}>Bidder 1</font>
+                                                            </font>
                                                         </div>
                                                         <div className="u-color-bwg-tint-1 u-h7">
-                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>17.03
-                                </font></font></span>
-                                                            <span><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>13:21:38</font></font></span>
+                                                            <span>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>17.03</font>
+                                                                </font>
+                                                            </span>
+                                                            <span>
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>13:21:38</font>
+                                                                </font>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div className="right-info o-level__item o-level o-level--right">
                                                         <h3 className="u-h5 u-text-bolder u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK 1,000</font></font>
+                                                            <font style={{verticalAlign: 'inherit'}}>
+                                                                <font style={{verticalAlign: 'inherit'}}>NOK 1,000</font>
+                                                            </font>
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -515,7 +638,7 @@ function HtmlRjx(){
                 </div>
             </div>
         </div>
-
+        </>     
     );
 }
 

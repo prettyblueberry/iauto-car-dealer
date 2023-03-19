@@ -455,6 +455,19 @@ function HtmlRJX() {
                                             Create Auction
                                         </Link>
                                       </li>
+                                      <li
+                                        className="
+                                          menu-item
+                                          menu-item-type-post_type
+                                          menu-item-object-page menu-item-922
+                                        "
+                                      >
+                                        <Link
+                                          to="pages/auction-pages/bidding-auction"
+                                          >
+                                            Bidding auction
+                                        </Link>
+                                      </li>
                                     </ul>
                                     </li>
                                     <li className="
