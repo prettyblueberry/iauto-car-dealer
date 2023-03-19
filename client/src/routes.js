@@ -60,6 +60,7 @@ const routes = [
   {
     name: "AUCTION",
     icon: <Icon>diamond</Icon>,
+    dropdown: true,
     collapse: [
       {
         name: "BIDDING AUCTION",
