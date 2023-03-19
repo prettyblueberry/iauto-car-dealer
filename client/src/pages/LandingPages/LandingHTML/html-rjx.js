@@ -3422,7 +3422,7 @@ function HtmlRJX() {
                                                         stm-template-front-loop
                                                         ev-filter-loop
                                                     " key={new Date() + index}>
-                                                        <Link to={"pages/auction-pages/bidding-auction/" + auction._id} className="rmv_txt_drctn xx">
+                                                        <Link to={"/pages/auction-pages/bidding-auction/" + auction._id} className="rmv_txt_drctn xx">
                                                             <div className="image">
                                                                 <div className="interactive-hoverable">
                                                                     <div className="hoverable-wrap">
