@@ -91,6 +91,7 @@ function HtmlRJX() {
                                                 </ul>
                                             </li>
                                         } else {
+                                            console.log("1", r);
                                             return <li key={i} className="
                                               menu-item
                                               menu-item-type-post_type

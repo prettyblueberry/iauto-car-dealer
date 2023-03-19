@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { read } from "api/auction";
 import { Link } from "@mui/material";
 import AuctionCountdown from "components/VehicleCards/VehicleAuctionCard/AuctionCountdown";
+import MKInput from "components/MKInput";
 
 const customStyle = {
     sideNav: {
@@ -18,7 +19,7 @@ const customStyle = {
             width: '100%',
             padding: '10px',
             paddingTop: '10px',
-            paddingBottom: '10px'
+            paddingBottom: '5px'
         }
     },
     mainNavButton: {
@@ -26,6 +27,10 @@ const customStyle = {
     },
     rightPriceButton: {
         boxShadow: "5px 0 30px rgba(1, 41, 112, 0)"
+    },
+    rightSideInput: {
+        textAlign: 'center',
+        backgroundColor: 'rgba(231, 239, 239, 1)',
     }
 }
 
@@ -36,7 +41,9 @@ function HtmlRjx(){
     const [remain, setRemain] = useState('');
     const [bidEnd, setBidEnd] = useState('');
     const [bid, setBid] = useState(0);
-    const [mine, setMine] = useState(0);
+    const [myBid, setMyBid] = useState(0);
+    const [enableBid, setEnableBid] = useState(false);
+
     const navigate = useNavigate();
     const {auctionId} = useParams();
     
@@ -62,24 +69,28 @@ function HtmlRjx(){
                     }
                     setRound(data.bids.length);
                     if(data.bids.length === 0){
-                        setMine(0);
+                        // setMine(0);
                         setBid(data.startingBid);
+                        setMyBid(data.startingBid);
                     }else{
                         setBid(data.bids[0].bid);
-                        data.bids.forEach(bid => {
-                            if(bid.bidder._id === JSON.parse(localStorage.getItem('auth')).user._id){
-                                setMine(bid.bidder.name);
-                            }
-                        });
+                        setMyBid(data.bids[0].bid);
+                        // data.bids.forEach(bid => {
+                        //     if(bid.bidder._id === JSON.parse(localStorage.getItem('auth')).user._id){
+                        //         setMine(bid.bidder.name);
+                        //     }
+                        // });
                     }
-                    setMine(0);
+                    // setMine(0);
                     setBidEnd(data.bidEnd);
                 }else{    //not started yet??
                     setAuction(data);
                     setStatus('Preparing')
                     setRemain('');
                     setRound(0);
-                    setMine(0);
+                    setBid(data.startingBid);
+                    setMyBid(data.startingBid);
+                    // setMine(0);
                     setBidEnd(data.bidEnd);
                 }
             }else{
@@ -91,6 +102,33 @@ function HtmlRjx(){
         }
     }, [auctionId])
 
+    useEffect(() => {
+        if(myBid > bid)setEnableBid(true);
+        else setEnableBid(false);
+    }, [myBid])
+    
+    const onPlusBtnClick = () => {
+        setMyBid(myBid + 1000);
+    }
+    const onMinusBtnClick = () => {
+        setMyBid(myBid - 1000)
+    }
+    const onClickBtnPlus = (value) => {
+        setMyBid(myBid + value)
+    }
+    const onChangeMyBid = (ev) => {
+        setMyBid(ev.target.value);
+    }
+    const onLeaveMyBid = () => {
+        setMyBid(myBid - myBid % 1000);
+    }
+    const onClickBidBtn = () => {
+        console.log(myBid)
+    }
+    const onClickAutoBid = () => {
+        console.log(myBid);
+
+    }
     return (
         <>
         <div style={{height: '120px', backgroundColor: 'rgba(16, 33, 39, 1)'}}></div>
@@ -497,15 +535,13 @@ function HtmlRjx(){
                                                             </div>
                                                             <div className="u-margin-bottom">
                                                                 <div className="c-input-increment">
-                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-decrement" style={customStyle.rightPriceButton}>
+                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-decrement" style={customStyle.rightPriceButton} onClick={onMinusBtnClick}>
                                                                         <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(35, 61, 62, 1)'}}>-</font></font>
                                                                     </button>
                                                                     <div className="c-input-increment__wrapper">
-                                                                        <input name="bidAmountPreview" type="text" data-cy="bidding-controls-value" disabled className="c-input c-input-increment__input c-input--hide-spinner u-text-center u-text-bolder u-text-unselectable" defaultValue placeholder="Amount" />
-                                                                        <a data-cy="bidding-controls-edit-button">
-                                                                        </a>
+                                                                        <input  type="price" placeholder="Amount" value={myBid} onChange={onChangeMyBid} onBlur={onLeaveMyBid} style={customStyle.rightSideInput}/>
                                                                     </div>
-                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-increment" style={customStyle.rightPriceButton}>
+                                                                    <button type="button" className="c-input-increment__button u-text-unselectable" data-cy="bidding-controls-increment" style={customStyle.rightPriceButton} onClick={onPlusBtnClick}>
                                                                         <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(35, 61, 62, 1)'}}>+</font></font>
                                                                     </button>
                                                                 </div>
@@ -514,10 +550,10 @@ function HtmlRjx(){
                                                                         <font style={{verticalAlign: 'inherit'}}>
                                                                             <font style={{verticalAlign: 'inherit'}}>Proposal</font>
                                                                             <span className="is-inline">
-                                                                                <font style={{verticalAlign: 'inherit'}}>NOK 4,000</font>
+                                                                                <font style={{verticalAlign: 'inherit'}}> unit 1000</font>
                                                                             </span>
                                                                             <font style={{verticalAlign: 'inherit'}}>( </font>
-                                                                            <font style={{verticalAlign: 'inherit'}}>minimum </font>
+                                                                            <font style={{verticalAlign: 'inherit'}}>minimum: {bid} </font>
                                                                             <font style={{verticalAlign: 'inherit'}}>)</font>
                                                                         </font>
                                                                     <span className="is-inline"><font style={{verticalAlign: 'inherit'}} /></span>
@@ -526,31 +562,41 @@ function HtmlRjx(){
                                                             </div>
                                                             <div className="c-quickbids o-level o-level--equal o-level--margin-tiny" style={customStyle.rightNav}>
                                                                 <div className="o-level__item" style={customStyle.rightNav}>
-                                                                    <button type="button" data-cy="168242-bid-1000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
+                                                                    <button type="button" data-cy="168242-bid-1000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold" onClick={() => onClickBtnPlus(1000)}>
                                                                         <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}} >+ NOK 1,000</font></font>
                                                                     </button>
                                                                 </div>
                                                                 <div className="o-level__item" style={customStyle.rightNav}>
-                                                                    <button type="button" data-cy="168242-bid-3000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
+                                                                    <button type="button" data-cy="168242-bid-3000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold" onClick={() => onClickBtnPlus(3000)}>
                                                                         <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}}>+ NOK 3,000</font></font>
                                                                     </button>
                                                                 </div>
                                                                 <div className="o-level__item" style={customStyle.rightNav}>
-                                                                    <button type="button" data-cy="168242-bid-5000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold">
+                                                                    <button type="button" data-cy="168242-bid-5000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold" onClick={() => onClickBtnPlus(5000)}>
                                                                         <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}}>+ NOK 5,000</font></font>
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                             <div className="o-level o-level--equal o-level--margin-tiny u-margin-bottom-small u-margin-top" style={{display: 'flex'}}>
                                                                 <div className="o-level__item">
-                                                                    <button disabled type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--disabled" style={customStyle.rightNav.main}>
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', fontSize: '14px'}}>Make an offer</font></font>
-                                                                    </button>
+                                                                    {!enableBid? 
+                                                                        <button type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--disabled" style={customStyle.rightNav.main} onClick={onClickBidBtn}>
+                                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', fontSize: '14px'}}>Make an offer</font></font>
+                                                                        </button>:
+                                                                        <button type="button" data-cy="place-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary" style={customStyle.rightNav.main} onClick={onClickBidBtn}>
+                                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', fontSize: '14px'}}>Make an offer</font></font>
+                                                                        </button>
+                                                                    }
                                                                 </div>
                                                                 <div className="o-level__item">
-                                                                    <button disabled type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined c-btn--disabled"  style={{width: '100%', marginLeft: '-5%', padding: '10px'}}>
-                                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 120, 100, 1)', fontSize: '14px'}}>Give auto bid</font></font>
-                                                                    </button>
+                                                                    {!enableBid? 
+                                                                        <button type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined c-btn--disabled"  style={{width: '100%', marginLeft: '-5%', padding: '10px', paddingBottom: '5px'}} onClick={onClickAutoBid}>
+                                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 120, 100, 1)', fontSize: '14px'}}>Give auto bid</font></font>
+                                                                        </button>:
+                                                                        <button type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined"  style={{width: '100%', marginLeft: '-5%', padding: '10px', paddingBottom: '5px'}} onClick={onClickAutoBid}>
+                                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 120, 100, 1)', fontSize: '14px'}}>Give auto bid</font></font>
+                                                                        </button>
+                                                                    }
                                                                     <div className="u-text-center u-margin-top-tiny">
                                                                         <span className="c-tooltip">
                                                                             <span className="c-tooltip__trigger">
@@ -574,90 +620,39 @@ function HtmlRjx(){
                                                     <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Bid history</font></font>
                                                 </h3>
                                                 <h3 className="u-h4 u-text-bolder">
-                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>3 bids</font></font>
+                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{round} bids</font></font>
                                                 </h3>
                                             </div>
                                             <ul className="c-bid-list c-bid-list--scrollable">
-                                                <div className="c-bid-list__item o-level o-level--spaced o-level--equal">
-                                                    <div className="o-level__item">
-                                                        <div className="u-h6 u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Bidder 3</font></font>
+                                                {
+                                                    auction.bids &&
+                                                    auction.bids.map((bid, index) => {
+                                                        <div className="c-bid-list__item o-level o-level--spaced o-level--equal" key={new Date() + bid.bidder.name}>
+                                                            <div className="o-level__item">
+                                                                <div className="u-h6 u-color-black">
+                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{bid.bidder.name}</font></font>
+                                                                </div>
+                                                                <div className="u-color-bwg-tint-1 u-h7">
+                                                                    <span>
+                                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                                            <font style={{verticalAlign: 'inherit'}}>{bid.time.split('T')[0]}</font>
+                                                                        </font>
+                                                                    </span>
+                                                                    <span>
+                                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                                            <font style={{verticalAlign: 'inherit'}}>{bid.time.split('T')[0].split('.')[0]}</font>
+                                                                        </font>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="right-info o-level__item o-level o-level--right">
+                                                                <h3 className="u-h5 u-text-bolder u-color-black">
+                                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK {bid.bid}</font></font>
+                                                                </h3>
+                                                            </div>
                                                         </div>
-                                                        <div className="u-color-bwg-tint-1 u-h7">
-                                                            <span>
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>17.03</font>
-                                                                </font>
-                                                            </span>
-                                                            <span>
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>14:12:51</font>
-                                                                </font>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="right-info o-level__item o-level o-level--right">
-                                                        <h3 className="u-h5 u-text-bolder u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NOK 3,000</font></font>
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                                <div className="c-bid-list__item o-level o-level--spaced o-level--equal">
-                                                    <div className="o-level__item">
-                                                        <div className="u-h6 u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                <font style={{verticalAlign: 'inherit'}}>Bidder 2</font>
-                                                            </font>
-                                                        </div>
-                                                        <div className="u-color-bwg-tint-1 u-h7">
-                                                            <span>
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>17.03</font>
-                                                                </font>
-                                                            </span>
-                                                            <span>
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>14:00:22</font>
-                                                                </font>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="right-info o-level__item o-level o-level--right">
-                                                        <h3 className="u-h5 u-text-bolder u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                <font style={{verticalAlign: 'inherit'}}>NOK 2,000</font>
-                                                            </font>
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                                <div className="c-bid-list__item o-level o-level--spaced o-level--equal">
-                                                    <div className="o-level__item">
-                                                        <div className="u-h6 u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                <font style={{verticalAlign: 'inherit'}}>Bidder 1</font>
-                                                            </font>
-                                                        </div>
-                                                        <div className="u-color-bwg-tint-1 u-h7">
-                                                            <span>
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>17.03</font>
-                                                                </font>
-                                                            </span>
-                                                            <span>
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>13:21:38</font>
-                                                                </font>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="right-info o-level__item o-level o-level--right">
-                                                        <h3 className="u-h5 u-text-bolder u-color-black">
-                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                <font style={{verticalAlign: 'inherit'}}>NOK 1,000</font>
-                                                            </font>
-                                                        </h3>
-                                                    </div>
-                                                </div>
+                                                    })
+                                                }
                                             </ul>
                                         </div>
                                     </div>
