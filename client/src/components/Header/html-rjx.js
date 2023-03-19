@@ -9,9 +9,9 @@ function HtmlRJX() {
                     <div className="col-md-2 col-sm-12 col-xs-12">
                         <div className="stm-header-left">
                             <div className="logo-main" style={{marginTop: '4px'}}>
-                                <a className="bloglogo" href="https://auction.iauto.no">
+                                <Link to="/" className="bloglogo">
                                     <img src="/assets/logo.png" style={{width: 'px'}} title="Home" alt="Logo"/>
-                                </a>
+                                </Link>
                                 <div className="mobile-menu-trigger">
                                     <span/>
                                     <span/>
