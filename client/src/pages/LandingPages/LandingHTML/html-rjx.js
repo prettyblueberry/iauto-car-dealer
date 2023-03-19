@@ -384,7 +384,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/audi-logo.png"
+                                                            <img src="/assets/audi-logo.png"
                                                                  alt="Audi 2021 E-tron GT 320 "/>
                                                             <h3 className="heading-font">Audi 2021 E-tron GT
                                                                 320</h3>
@@ -437,7 +437,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/mb-logo.png"
+                                                            <img src="/assets/mb-logo.png"
                                                                  alt="Mercedes-Benz 2023 EQE 350 "/>
                                                             <h3 className="heading-font">Mercedes-Benz 2023 EQE
                                                                 350</h3>
@@ -487,7 +487,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/porsche_logo.png"
+                                                            <img src="/assets/porsche_logo.png"
                                                                  alt="Porsche 2020 Taycan 340 "/>
                                                             <h3 className="heading-font">Porsche 2020 Taycan
                                                                 340</h3>
@@ -538,7 +538,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/jaguar_logo.png"
+                                                            <img src="/assets/jaguar_logo.png"
                                                                  alt="Jaguar 2022 I-Pace 412 "/>
                                                             <h3 className="heading-font">Jaguar 2022 I-Pace 412</h3>
                                                         </div>
@@ -587,7 +587,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/vw_logo.png"
+                                                            <img src="/assets/vw_logo.png"
                                                                  alt="Volkswagen 2021 ID3 300 "/>
                                                             <h3 className="heading-font">Volkswagen 2021 ID3
                                                                 300</h3>
@@ -638,7 +638,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/audi-logo.png"
+                                                            <img src="/assets/audi-logo.png"
                                                                  alt="Audi 2021 E-tron GT 320 "/>
                                                             <h3 className="heading-font">Audi 2021 E-tron GT
                                                                 320</h3>
@@ -689,7 +689,7 @@ function HtmlRJX() {
                                                 <div className="slider_listing_attrs_wrapper">
                                                     <div className="slider_listing_attrs">
                                                         <div className="logo_title">
-                                                            <img src="./assets/mb-logo.png"
+                                                            <img src="/assets/mb-logo.png"
                                                                  alt="Mercedes-Benz 2023 EQE 350 "/>
                                                             <h3 className="heading-font">Mercedes-Benz 2023 EQE
                                                                 350</h3>
@@ -768,10 +768,10 @@ function HtmlRJX() {
                                 </h1>
                                 <div className="stm_ev_photo_collage stm_collage_62678">
                                     <div className="collage_wrap" style={{height: '660px'}}>
-                                        <img src="./assets/collage-1.jpg" alt="Photo collage"/>
-                                        <img src="./assets/collage-2.jpg" style={{top: '169px'}}
+                                        <img src="/assets/collage-1.jpg" alt="Photo collage"/>
+                                        <img src="/assets/collage-2.jpg" style={{top: '169px'}}
                                              alt="Photo collage"/>
-                                        <img src="./assets/collage-3.jpg" style={{top: '383px'}}
+                                        <img src="/assets/collage-3.jpg" style={{top: '383px'}}
                                              alt="Photo collage"/>
                                     </div>
                                 </div>
@@ -977,7 +977,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-01-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -985,7 +985,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-5f-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-5f-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -993,7 +993,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-18-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-18-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1001,7 +1001,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-24-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-24-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1013,7 +1013,7 @@ function HtmlRJX() {
                                                                                             <p>3 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-57-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-57-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1066,7 +1066,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-05-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-05-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1074,7 +1074,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-5a-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-5a-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1082,7 +1082,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-7f-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-7f-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1090,7 +1090,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-8b-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-8b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1102,7 +1102,7 @@ function HtmlRJX() {
                                                                                             <p>6 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-9b-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-9b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1156,7 +1156,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-1e-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-1e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1164,7 +1164,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-22-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-22-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1172,7 +1172,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-58-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-58-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1180,7 +1180,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan-2021-1600-05-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan-2021-1600-05-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1192,7 +1192,7 @@ function HtmlRJX() {
                                                                                             <p>7 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan-2021-1600-8e-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan-2021-1600-8e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1246,7 +1246,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/02-536x382.jpg"
+                                                                                            src="/assets/02-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1254,7 +1254,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/01-536x382.jpg"
+                                                                                            src="/assets/01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1262,7 +1262,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/03-536x382.jpg"
+                                                                                            src="/assets/03-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1270,7 +1270,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/04-536x382.jpg"
+                                                                                            src="/assets/04-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1278,7 +1278,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/05-536x382.jpg"
+                                                                                            src="/assets/05-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1333,7 +1333,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-01-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -1341,7 +1341,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-4d-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-4d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -1349,7 +1349,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-5d-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-5d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -1357,7 +1357,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-6c-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-6c-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -1369,7 +1369,7 @@ function HtmlRJX() {
                                                                                             <p>6 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-18-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-18-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -1423,7 +1423,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-0d-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-0d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -1431,7 +1431,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-1b-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-1b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -1439,7 +1439,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-1d-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-1d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -1447,7 +1447,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-1e-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-1e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -1459,7 +1459,7 @@ function HtmlRJX() {
                                                                                             <p>9 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-02-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-02-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -1513,7 +1513,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-01-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -1521,7 +1521,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-0d-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-0d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -1529,7 +1529,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-0c-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-0c-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -1537,7 +1537,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -1549,7 +1549,7 @@ function HtmlRJX() {
                                                                                             <p>3 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -1604,7 +1604,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-03-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-03-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -1612,7 +1612,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0c-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0c-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -1620,7 +1620,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0e-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -1628,7 +1628,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0f-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0f-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -1640,7 +1640,7 @@ function HtmlRJX() {
                                                                                             <p>1 more photo</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0a-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0a-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -1694,7 +1694,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-01-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1702,7 +1702,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-5f-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-5f-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1710,7 +1710,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-18-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-18-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1718,7 +1718,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-24-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-24-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1730,7 +1730,7 @@ function HtmlRJX() {
                                                                                             <p>3 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Audi-e-tron_GT_quattro-2022-1600-57-536x382.jpg"
+                                                                                            src="/assets/Audi-e-tron_GT_quattro-2022-1600-57-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Audi E-tron GT"/>
                                                                                     </div>
@@ -1783,7 +1783,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-05-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-05-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1791,7 +1791,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-5a-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-5a-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1799,7 +1799,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-7f-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-7f-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1807,7 +1807,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-8b-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-8b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1819,7 +1819,7 @@ function HtmlRJX() {
                                                                                             <p>6 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Jaguar-I-Pace-2019-1600-9b-536x382.jpg"
+                                                                                            src="/assets/Jaguar-I-Pace-2019-1600-9b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Jaguar I Pace"/>
                                                                                     </div>
@@ -1873,7 +1873,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-1e-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-1e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1881,7 +1881,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-22-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-22-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1889,7 +1889,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-58-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan_4S_Cross_Turismo-2022-1600-58-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1897,7 +1897,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan-2021-1600-05-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan-2021-1600-05-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1909,7 +1909,7 @@ function HtmlRJX() {
                                                                                             <p>7 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Porsche-Taycan-2021-1600-8e-536x382.jpg"
+                                                                                            src="/assets/Porsche-Taycan-2021-1600-8e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Porsche Taycan 4S"/>
                                                                                     </div>
@@ -1963,7 +1963,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/02-536x382.jpg"
+                                                                                            src="/assets/02-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1971,7 +1971,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/01-536x382.jpg"
+                                                                                            src="/assets/01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1979,7 +1979,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/03-536x382.jpg"
+                                                                                            src="/assets/03-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1987,7 +1987,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/04-536x382.jpg"
+                                                                                            src="/assets/04-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -1995,7 +1995,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/05-536x382.jpg"
+                                                                                            src="/assets/05-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz 2023 EQE"/>
                                                                                     </div>
@@ -2050,7 +2050,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-01-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -2058,7 +2058,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-4d-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-4d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -2066,7 +2066,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-5d-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-5d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -2074,7 +2074,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-6c-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-6c-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -2086,7 +2086,7 @@ function HtmlRJX() {
                                                                                             <p>6 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Toyota-Prius-2019-1600-18-536x382.jpg"
+                                                                                            src="/assets/Toyota-Prius-2019-1600-18-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Toyota Prius"/>
                                                                                     </div>
@@ -2140,7 +2140,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-0d-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-0d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -2148,7 +2148,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-1b-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-1b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -2156,7 +2156,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-1d-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-1d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -2164,7 +2164,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-1e-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-1e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -2176,7 +2176,7 @@ function HtmlRJX() {
                                                                                             <p>9 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Nissan-Leaf-2018-1600-02-536x382.jpg"
+                                                                                            src="/assets/Nissan-Leaf-2018-1600-02-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Nissan Leaf"/>
                                                                                     </div>
@@ -2230,7 +2230,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-01-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-01-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -2238,7 +2238,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-0d-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-0d-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -2246,7 +2246,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-0c-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-0c-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -2254,7 +2254,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -2266,7 +2266,7 @@ function HtmlRJX() {
                                                                                             <p>3 more photos</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-536x382.jpg"
+                                                                                            src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Mercedes-Benz EQS"/>
                                                                                     </div>
@@ -2321,7 +2321,7 @@ function HtmlRJX() {
                                                                                     className="hoverable-unit active">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-03-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-03-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -2329,7 +2329,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0c-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0c-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -2337,7 +2337,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0e-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0e-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -2345,7 +2345,7 @@ function HtmlRJX() {
                                                                                 <div className="hoverable-unit">
                                                                                     <div className="thumb">
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0f-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0f-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -2357,7 +2357,7 @@ function HtmlRJX() {
                                                                                             <p>1 more photo</p>
                                                                                         </div>
                                                                                         <img
-                                                                                            src="./assets/Chevrolet-Bolt_EUV-2022-1600-0a-536x382.jpg"
+                                                                                            src="/assets/Chevrolet-Bolt_EUV-2022-1600-0a-536x382.jpg"
                                                                                             className="lazy img-responsive"
                                                                                             alt="Chevrolet Bolt"/>
                                                                                     </div>
@@ -2443,7 +2443,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-01-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-01-510x320.jpg 2x
-                                      " src="./assets/Volkswagen-e-Golf-2017-1600-01-255x160.jpg"
+                                      " src="/assets/Volkswagen-e-Golf-2017-1600-01-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Volkswagen e-Golf"/>
                                                                 </div>
@@ -2455,7 +2455,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-0e-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-0e-510x320.jpg 2x
-                                      " src="./assets/Volkswagen-e-Golf-2017-1600-0e-255x160.jpg"
+                                      " src="/assets/Volkswagen-e-Golf-2017-1600-0e-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Volkswagen e-Golf"/>
                                                                 </div>
@@ -2467,7 +2467,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-1e-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-1e-510x320.jpg 2x
-                                      " src="./assets/Volkswagen-e-Golf-2017-1600-1e-255x160.jpg"
+                                      " src="/assets/Volkswagen-e-Golf-2017-1600-1e-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Volkswagen e-Golf"/>
                                                                 </div>
@@ -2479,7 +2479,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-15-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-15-510x320.jpg 2x
-                                      " src="./assets/Volkswagen-e-Golf-2017-1600-15-255x160.jpg"
+                                      " src="/assets/Volkswagen-e-Golf-2017-1600-15-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Volkswagen e-Golf"/>
                                                                 </div>
@@ -2495,7 +2495,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-20-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Volkswagen-e-Golf-2017-1600-20-510x320.jpg 2x
-                                      " src="./assets/Volkswagen-e-Golf-2017-1600-20-255x160.jpg"
+                                      " src="/assets/Volkswagen-e-Golf-2017-1600-20-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Volkswagen e-Golf"/>
                                                                 </div>
@@ -2564,7 +2564,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-01-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-01-510x320.jpg 2x
-                                      " src="./assets/Toyota-Prius-2019-1600-01-255x160.jpg"
+                                      " src="/assets/Toyota-Prius-2019-1600-01-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Toyota Prius"/>
                                                                 </div>
@@ -2576,7 +2576,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-4d-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-4d-510x320.jpg 2x
-                                      " src="./assets/Toyota-Prius-2019-1600-4d-255x160.jpg"
+                                      " src="/assets/Toyota-Prius-2019-1600-4d-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Toyota Prius"/>
                                                                 </div>
@@ -2588,7 +2588,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-5d-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-5d-510x320.jpg 2x
-                                      " src="./assets/Toyota-Prius-2019-1600-5d-255x160.jpg"
+                                      " src="/assets/Toyota-Prius-2019-1600-5d-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Toyota Prius"/>
                                                                 </div>
@@ -2600,7 +2600,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-6c-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-6c-510x320.jpg 2x
-                                      " src="./assets/Toyota-Prius-2019-1600-6c-255x160.jpg"
+                                      " src="/assets/Toyota-Prius-2019-1600-6c-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Toyota Prius"/>
                                                                 </div>
@@ -2616,7 +2616,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-18-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Toyota-Prius-2019-1600-18-510x320.jpg 2x
-                                      " src="./assets/Toyota-Prius-2019-1600-18-255x160.jpg"
+                                      " src="/assets/Toyota-Prius-2019-1600-18-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Toyota Prius"/>
                                                                 </div>
@@ -2688,7 +2688,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-04-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-04-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_X-2017-1600-04-255x160.jpg"
+                                      " src="/assets/Tesla-Model_X-2017-1600-04-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model X"/>
                                                                 </div>
@@ -2700,7 +2700,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-0f-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-0f-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_X-2017-1600-0f-255x160.jpg"
+                                      " src="/assets/Tesla-Model_X-2017-1600-0f-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model X"/>
                                                                 </div>
@@ -2712,7 +2712,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-1b-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-1b-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_X-2017-1600-1b-255x160.jpg"
+                                      " src="/assets/Tesla-Model_X-2017-1600-1b-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model X"/>
                                                                 </div>
@@ -2724,7 +2724,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-1c-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-1c-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_X-2017-1600-1c-255x160.jpg"
+                                      " src="/assets/Tesla-Model_X-2017-1600-1c-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model X"/>
                                                                 </div>
@@ -2740,7 +2740,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-0a-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_X-2017-1600-0a-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_X-2017-1600-0a-255x160.jpg"
+                                      " src="/assets/Tesla-Model_X-2017-1600-0a-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model X"/>
                                                                 </div>
@@ -2809,7 +2809,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/main-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/main-510x320.jpg 2x
-                                      " src="./assets/main-255x160.jpg" className="lazy img-responsive"
+                                      " src="/assets/main-255x160.jpg" className="lazy img-responsive"
                                                                         alt="Tesla Model S"/>
                                                                 </div>
                                                             </div>
@@ -2820,7 +2820,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S_UK-Version-2013-1600-88-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S_UK-Version-2013-1600-88-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_S_UK-Version-2013-1600-88-255x160.jpg"
+                                      " src="/assets/Tesla-Model_S_UK-Version-2013-1600-88-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model S"/>
                                                                 </div>
@@ -2832,7 +2832,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S_UK-Version-2013-1600-92-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S_UK-Version-2013-1600-92-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_S_UK-Version-2013-1600-92-255x160.jpg"
+                                      " src="/assets/Tesla-Model_S_UK-Version-2013-1600-92-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model S"/>
                                                                 </div>
@@ -2844,7 +2844,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S-2021-1600-0a-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S-2021-1600-0a-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_S-2021-1600-0a-255x160.jpg"
+                                      " src="/assets/Tesla-Model_S-2021-1600-0a-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model S"/>
                                                                 </div>
@@ -2860,7 +2860,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S-2021-1600-0c-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Tesla-Model_S-2021-1600-0c-510x320.jpg 2x
-                                      " src="./assets/Tesla-Model_S-2021-1600-0c-255x160.jpg"
+                                      " src="/assets/Tesla-Model_S-2021-1600-0c-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Tesla Model S"/>
                                                                 </div>
@@ -2929,7 +2929,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-0b-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-0b-510x320.jpg 2x
-                                      " src="./assets/Peugeot-e-2008-2020-1600-0b-255x160.jpg"
+                                      " src="/assets/Peugeot-e-2008-2020-1600-0b-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Peugeot e2008"/>
                                                                 </div>
@@ -2941,7 +2941,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-1f-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-1f-510x320.jpg 2x
-                                      " src="./assets/Peugeot-e-2008-2020-1600-1f-255x160.jpg"
+                                      " src="/assets/Peugeot-e-2008-2020-1600-1f-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Peugeot e2008"/>
                                                                 </div>
@@ -2953,7 +2953,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-2e-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-2e-510x320.jpg 2x
-                                      " src="./assets/Peugeot-e-2008-2020-1600-2e-255x160.jpg"
+                                      " src="/assets/Peugeot-e-2008-2020-1600-2e-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Peugeot e2008"/>
                                                                 </div>
@@ -2965,7 +2965,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-3d-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-3d-510x320.jpg 2x
-                                      " src="./assets/Peugeot-e-2008-2020-1600-3d-255x160.jpg"
+                                      " src="/assets/Peugeot-e-2008-2020-1600-3d-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Peugeot e2008"/>
                                                                 </div>
@@ -2981,7 +2981,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-12-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Peugeot-e-2008-2020-1600-12-510x320.jpg 2x
-                                      " src="./assets/Peugeot-e-2008-2020-1600-12-255x160.jpg"
+                                      " src="/assets/Peugeot-e-2008-2020-1600-12-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Peugeot e2008"/>
                                                                 </div>
@@ -3051,7 +3051,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-0d-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-0d-510x320.jpg 2x
-                                      " src="./assets/Nissan-Leaf-2018-1600-0d-255x160.jpg"
+                                      " src="/assets/Nissan-Leaf-2018-1600-0d-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Nissan Leaf"/>
                                                                 </div>
@@ -3063,7 +3063,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-1b-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-1b-510x320.jpg 2x
-                                      " src="./assets/Nissan-Leaf-2018-1600-1b-255x160.jpg"
+                                      " src="/assets/Nissan-Leaf-2018-1600-1b-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Nissan Leaf"/>
                                                                 </div>
@@ -3075,7 +3075,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-1d-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-1d-510x320.jpg 2x
-                                      " src="./assets/Nissan-Leaf-2018-1600-1d-255x160.jpg"
+                                      " src="/assets/Nissan-Leaf-2018-1600-1d-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Nissan Leaf"/>
                                                                 </div>
@@ -3087,7 +3087,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-1e-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-1e-510x320.jpg 2x
-                                      " src="./assets/Nissan-Leaf-2018-1600-1e-255x160.jpg"
+                                      " src="/assets/Nissan-Leaf-2018-1600-1e-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Nissan Leaf"/>
                                                                 </div>
@@ -3103,7 +3103,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-02-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Nissan-Leaf-2018-1600-02-510x320.jpg 2x
-                                      " src="./assets/Nissan-Leaf-2018-1600-02-255x160.jpg"
+                                      " src="/assets/Nissan-Leaf-2018-1600-02-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Nissan Leaf"/>
                                                                 </div>
@@ -3176,7 +3176,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-01-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-01-510x320.jpg 2x
-                                      " src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-01-255x160.jpg"
+                                      " src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-01-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Mercedes-Benz EQS"/>
                                                                 </div>
@@ -3188,7 +3188,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-0d-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-0d-510x320.jpg 2x
-                                      " src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-0d-255x160.jpg"
+                                      " src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-0d-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Mercedes-Benz EQS"/>
                                                                 </div>
@@ -3200,7 +3200,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-0c-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-0c-510x320.jpg 2x
-                                      " src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-0c-255x160.jpg"
+                                      " src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-0c-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Mercedes-Benz EQS"/>
                                                                 </div>
@@ -3212,7 +3212,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-510x320.jpg 2x
-                                      " src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-255x160.jpg"
+                                      " src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-1-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Mercedes-Benz EQS"/>
                                                                 </div>
@@ -3228,7 +3228,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-1b-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Mercedes-Benz-EQS53_AMG-2022-1600-1b-510x320.jpg 2x
-                                      " src="./assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-255x160.jpg"
+                                      " src="/assets/Mercedes-Benz-EQS53_AMG-2022-1600-1b-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Mercedes-Benz EQS"/>
                                                                 </div>
@@ -3301,7 +3301,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-01-510x320.jpg 2x
-                                      " src="./assets/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg"
+                                      " src="/assets/Hyundai-Ioniq_5-2022-1600-01-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Hyundai Ioniq"/>
                                                                 </div>
@@ -3313,7 +3313,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-1b-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-1b-510x320.jpg 2x
-                                      " src="./assets/Hyundai-Ioniq_5-2022-1600-1b-255x160.jpg"
+                                      " src="/assets/Hyundai-Ioniq_5-2022-1600-1b-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Hyundai Ioniq"/>
                                                                 </div>
@@ -3325,7 +3325,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-3c-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-3c-510x320.jpg 2x
-                                      " src="./assets/Hyundai-Ioniq_5-2022-1600-3c-255x160.jpg"
+                                      " src="/assets/Hyundai-Ioniq_5-2022-1600-3c-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Hyundai Ioniq"/>
                                                                 </div>
@@ -3337,7 +3337,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-4b-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-4b-510x320.jpg 2x
-                                      " src="./assets/Hyundai-Ioniq_5-2022-1600-4b-255x160.jpg"
+                                      " src="/assets/Hyundai-Ioniq_5-2022-1600-4b-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Hyundai Ioniq"/>
                                                                 </div>
@@ -3353,7 +3353,7 @@ function HtmlRJX() {
                                                                         srcSet="
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-5e-255x160.jpg 1x,
                                         https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/Hyundai-Ioniq_5-2022-1600-5e-510x320.jpg 2x
-                                      " src="./assets/Hyundai-Ioniq_5-2022-1600-5e-255x160.jpg"
+                                      " src="/assets/Hyundai-Ioniq_5-2022-1600-5e-255x160.jpg"
                                                                         className="lazy img-responsive"
                                                                         alt="Hyundai Ioniq"/>
                                                                 </div>
@@ -3422,7 +3422,7 @@ function HtmlRJX() {
                                                         stm-template-front-loop
                                                         ev-filter-loop
                                                     " key={new Date() + index}>
-                                                        <Link to={"pages/auction-pages/bidding-auction/" + auction._id} className="rmv_txt_drctn xx">
+                                                        <Link to={"/pages/auction-pages/bidding-auction/" + auction._id} className="rmv_txt_drctn xx">
                                                             <div className="image">
                                                                 <div className="interactive-hoverable">
                                                                     <div className="hoverable-wrap">
@@ -3761,7 +3761,7 @@ function HtmlRJX() {
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
                                                         <img width={84} height={71}
-                                                             src="./assets/nissan-logo-white.png"
+                                                             src="/assets/nissan-logo-white.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="nissan-logo-white"/>
                                                     </div>
@@ -3771,7 +3771,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={56} height={72} src="./assets/Tesla_Motors.png"
+                                                        <img width={56} height={72} src="/assets/Tesla_Motors.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Tesla_Motors"/>
                                                     </div>
@@ -3781,7 +3781,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={70} height={70} src="./assets/Path_109.png"
+                                                        <img width={70} height={70} src="/assets/Path_109.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Path_109"/>
                                                     </div>
@@ -3791,7 +3791,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={74} height={74} src="./assets/Group_454.png"
+                                                        <img width={74} height={74} src="/assets/Group_454.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Group_454"/>
                                                     </div>
@@ -3802,7 +3802,7 @@ function HtmlRJX() {
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
                                                         <img width={74} height={74}
-                                                             src="./assets/BMW-logo-fallback.png"
+                                                             src="/assets/BMW-logo-fallback.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="BMW-logo-fallback"/>
                                                     </div>
@@ -3812,7 +3812,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={120} height={72} src="./assets/audi@1x.png"
+                                                        <img width={120} height={72} src="/assets/audi@1x.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="audi@1x"/>
                                                     </div>
@@ -3823,7 +3823,7 @@ function HtmlRJX() {
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
                                                         <img width={84} height={71}
-                                                             src="./assets/nissan-logo-white.png"
+                                                             src="/assets/nissan-logo-white.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="nissan-logo-white"/>
                                                     </div>
@@ -3833,7 +3833,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={56} height={72} src="./assets/Tesla_Motors.png"
+                                                        <img width={56} height={72} src="/assets/Tesla_Motors.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Tesla_Motors"/>
                                                     </div>
@@ -3843,7 +3843,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={70} height={70} src="./assets/Path_109.png"
+                                                        <img width={70} height={70} src="/assets/Path_109.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Path_109"/>
                                                     </div>
@@ -3853,7 +3853,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={74} height={74} src="./assets/Group_454.png"
+                                                        <img width={74} height={74} src="/assets/Group_454.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Group_454"/>
                                                     </div>
@@ -3864,7 +3864,7 @@ function HtmlRJX() {
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
                                                         <img width={74} height={74}
-                                                             src="./assets/BMW-logo-fallback.png"
+                                                             src="/assets/BMW-logo-fallback.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="BMW-logo-fallback"/>
                                                     </div>
@@ -3874,7 +3874,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={120} height={72} src="./assets/audi@1x.png"
+                                                        <img width={120} height={72} src="/assets/audi@1x.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="audi@1x"/>
                                                     </div>
@@ -3885,7 +3885,7 @@ function HtmlRJX() {
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
                                                         <img width={84} height={71}
-                                                             src="./assets/nissan-logo-white.png"
+                                                             src="/assets/nissan-logo-white.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="nissan-logo-white"/>
                                                     </div>
@@ -3895,7 +3895,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={56} height={72} src="./assets/Tesla_Motors.png"
+                                                        <img width={56} height={72} src="/assets/Tesla_Motors.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Tesla_Motors"/>
                                                     </div>
@@ -3905,7 +3905,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={70} height={70} src="./assets/Path_109.png"
+                                                        <img width={70} height={70} src="/assets/Path_109.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Path_109"/>
                                                     </div>
@@ -3915,7 +3915,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={74} height={74} src="./assets/Group_454.png"
+                                                        <img width={74} height={74} src="/assets/Group_454.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="Group_454"/>
                                                     </div>
@@ -3926,7 +3926,7 @@ function HtmlRJX() {
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
                                                         <img width={74} height={74}
-                                                             src="./assets/BMW-logo-fallback.png"
+                                                             src="/assets/BMW-logo-fallback.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="BMW-logo-fallback"/>
                                                     </div>
@@ -3936,7 +3936,7 @@ function HtmlRJX() {
                                                  style={{width: '181.667px', marginRight: '10px'}}>
                                                 <div className="brands-carousel-item">
                                                     <div className="brands-carousel-item-inner">
-                                                        <img width={120} height={72} src="./assets/audi@1x.png"
+                                                        <img width={120} height={72} src="/assets/audi@1x.png"
                                                              className="attachment-full" alt="" loading="lazy"
                                                              title="audi@1x"/>
                                                     </div>
@@ -3976,7 +3976,7 @@ function HtmlRJX() {
                                             className="col-md-4 col-sm-6 col-xs-12 col-xxs-12 ev_shop_products_item">
                                             <div className="image">
                                                 <img width={350} height={356}
-                                                     src="./assets/wallbox-pulsar-plus-ocpp-evc-5m-type-1-74kw-white-350x356.jpg"
+                                                     src="/assets/wallbox-pulsar-plus-ocpp-evc-5m-type-1-74kw-white-350x356.jpg"
                                                      className="attachment-stm-img-350-356 size-stm-img-350-356"
                                                      alt="Wallbox type 1 7.4 kW" decoding="async" loading="lazy"
                                                      data-retina="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/wallbox-pulsar-plus-ocpp-evc-5m-type-1-74kw-white-798x466.jpg"/>
@@ -4002,7 +4002,7 @@ function HtmlRJX() {
                                             className="col-md-4 col-sm-6 col-xs-12 col-xxs-12 ev_shop_products_item">
                                             <div className="image">
                                                 <img width={350} height={356}
-                                                     src="./assets/products-1780-350x356.jpg"
+                                                     src="/assets/products-1780-350x356.jpg"
                                                      className="attachment-stm-img-350-356 size-stm-img-350-356"
                                                      alt="Zeta Type XL Racing Seat" decoding="async" loading="lazy"
                                                      data-retina="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/products-1780-798x466.jpg"/>
@@ -4029,7 +4029,7 @@ function HtmlRJX() {
                                         <div
                                             className="col-md-4 col-sm-6 col-xs-12 col-xxs-12 ev_shop_products_item">
                                             <div className="image">
-                                                <img width={350} height={356} src="./assets/1-350x356.jpg"
+                                                <img width={350} height={356} src="/assets/1-350x356.jpg"
                                                      className="attachment-stm-img-350-356 size-stm-img-350-356"
                                                      alt="Wallbox eMH3" decoding="async" loading="lazy"
                                                      data-retina="https://motors.stylemixthemes.com/ev-dealership/wp-content/uploads/sites/21/2021/11/1-798x466.jpg"/>
@@ -4578,7 +4578,7 @@ function HtmlRJX() {
                                                                                 zIndex: 0
                                                                             }}>
                                                                                 <img alt=""
-                                                                                     src="./assets/pin_location.png"
+                                                                                     src="/assets/pin_location.png"
                                                                                      draggable="false" style={{
                                                                                     position: 'absolute',
                                                                                     left: '0px',
@@ -4615,7 +4615,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt" style={{
+                                                                                         src="/assets/vt" style={{
                                                                                         width: '256px',
                                                                                         height: '256px',
                                                                                         userSelect: 'none',
@@ -4635,7 +4635,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(1)"
+                                                                                         src="/assets/vt(1)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4656,7 +4656,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(2)"
+                                                                                         src="/assets/vt(2)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4677,7 +4677,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(3)"
+                                                                                         src="/assets/vt(3)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4698,7 +4698,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(4)"
+                                                                                         src="/assets/vt(4)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4719,7 +4719,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(5)"
+                                                                                         src="/assets/vt(5)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4740,7 +4740,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(6)"
+                                                                                         src="/assets/vt(6)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4761,7 +4761,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(7)"
+                                                                                         src="/assets/vt(7)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4782,7 +4782,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(8)"
+                                                                                         src="/assets/vt(8)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4803,7 +4803,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(9)"
+                                                                                         src="/assets/vt(9)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4824,7 +4824,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(10)"
+                                                                                         src="/assets/vt(10)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4845,7 +4845,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(11)"
+                                                                                         src="/assets/vt(11)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4866,7 +4866,7 @@ function HtmlRJX() {
                                                                                 }}>
                                                                                     <img draggable="false" alt=""
                                                                                          role="presentation"
-                                                                                         src="./assets/vt(12)"
+                                                                                         src="/assets/vt(12)"
                                                                                          style={{
                                                                                              width: '256px',
                                                                                              height: '256px',
@@ -4937,7 +4937,7 @@ function HtmlRJX() {
                                                                                     zIndex: 0
                                                                                 }} tabIndex={-1}>
                                                                                     <img alt=""
-                                                                                         src="./assets/transparent.png"
+                                                                                         src="/assets/transparent.png"
                                                                                          draggable="false" style={{
                                                                                         width: '85px',
                                                                                         height: '85px',
@@ -5085,7 +5085,7 @@ function HtmlRJX() {
                                                                     top: '0px',
                                                                     left: '0px',
                                                                     border: 'none'
-                                                                }} src="./assets/saved_resource.html"/>
+                                                                }} src="/assets/saved_resource.html"/>
                                                                 <div style={{
                                                                     pointerEvents: 'none',
                                                                     width: '100%',
