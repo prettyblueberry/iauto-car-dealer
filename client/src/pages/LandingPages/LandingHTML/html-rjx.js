@@ -31,6 +31,7 @@ function HtmlRJX() {
     }, 1000);
 
     useEffect(()=>{
+        //init swiper
         document.addEventListener("DOMContentLoaded", function () {
             const swiper = new Swiper(".swiper", {
                 autoplay: {
@@ -48,6 +49,7 @@ function HtmlRJX() {
             });
         });
 
+        // landing height of image why electronic ...
         (function ($) {
             $(window).on("load", function () {
                 var total_height = 660;
@@ -66,6 +68,7 @@ function HtmlRJX() {
             });
         })(jQuery);
 
+        // landing init of featured items
         (function ($) {
             "use strict";
 
@@ -187,6 +190,7 @@ function HtmlRJX() {
             });
         })(jQuery);
 
+        // landing init height of car info in recently added block
         (function ($) {
             $(document).on("ready", function () {
                 var heights = [];
@@ -210,6 +214,7 @@ function HtmlRJX() {
             });
         })(jQuery);
 
+        // landing init counter
         jQuery(window).on("load", function ($) {
             var counter_64996 = new countUp("counter_64996", 0, 15514, 0, 2.5, {
                 useEasing: true,
@@ -224,6 +229,7 @@ function HtmlRJX() {
             });
         });
 
+        // landing init counter
         jQuery(window).on("load", function ($) {
             var counter_88415 = new countUp("counter_88415", 0, 1201, 0, 2.5, {
                 useEasing: true,
@@ -238,6 +244,7 @@ function HtmlRJX() {
             });
         });
 
+        // landing init counter
         jQuery(window).on("load", function ($) {
             var counter_46374 = new countUp("counter_46374", 0, 2150, 0, 2.5, {
                 useEasing: true,
@@ -252,6 +259,7 @@ function HtmlRJX() {
             });
         });
 
+        // landing init counter
         jQuery(window).on("load", function ($) {
             var counter_22579 = new countUp("counter_22579", 0, 3800, 0, 2.5, {
                 useEasing: true,
@@ -266,6 +274,7 @@ function HtmlRJX() {
             });
         });
 
+        // landing init car trademark
         (function ($) {
             "use strict";
 
