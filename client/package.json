@@ -47,7 +47,8 @@
     "tiled-hexagons": "^1.0.2",
     "typed.js": "2.0.12",
     "uuid": "8.3.2",
-    "web-vitals": "1.0.1"
+    "web-vitals": "1.0.1",
+    "yup": "^0.23.0"
   },
   "scripts": {
     "start": "react-scripts start",
