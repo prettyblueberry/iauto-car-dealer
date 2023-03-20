@@ -1,4 +1,5 @@
 import { url } from "constant/url"
+import auth from '../auth/auth-helper'
 
 const create = async (params, credentials, auction) => {
     try {
@@ -29,6 +30,34 @@ const create = async (params, credentials, auction) => {
       console.log(err)
     }
   }
+
+  const summary = async (signal) => {
+    const auth = JSON.parse(localStorage.getItem('auth'));
+    try {
+      let response = await fetch( url.baseUrl + url.port + '/api/auctions/summary/' + auth.user._id, {
+        method: 'GET',
+        signal: signal
+      })
+      console.log("read Auctions API:");
+      return response.json()
+    }catch(err) {
+      console.log(err)
+    }
+  }
+
+  const list = async (signal, filter) => {
+    const auth = JSON.parse(localStorage.getItem('auth'));
+    try {
+      let response = await fetch( url.baseUrl + url.port + '/api/auctions/list/' + filter + "/" + auth.user._id, {
+        method: 'GET',
+        signal: signal
+      })
+      return response.json()
+    }catch(err) {
+      console.log(err)
+    }
+  }
+
   
   const listBySeller = async (params, credentials, signal) => {
     try {
@@ -113,6 +142,8 @@ const create = async (params, credentials, auction) => {
     listByBidder,
     read,
     update,
-    remove
+    remove,
+    summary,
+    list
   }
   

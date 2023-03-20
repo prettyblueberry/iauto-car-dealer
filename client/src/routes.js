@@ -43,9 +43,11 @@ import Icon from "@mui/material/Icon";
 import Rental from "layouts/pages/landing-pages/rental";
 import SignInBasicPage from "layouts/authentication/sign-in/basic";
 import SignUpCoverPage from "layouts/authentication/sign-up/cover";
-import BiddingAuctionPage from "layouts/pages/auction-pages/bidding-auction";
 import CreateAuctionPage from "layouts/pages/auction-pages/create-auction";
+import ListAuctionPage from "layouts/pages/auction-pages/list-auction";
 import ProfilePage from "layouts/User/Profile"
+
+
 
 const routes = [
 
@@ -58,20 +60,52 @@ const routes = [
     component: <Rental />
   },
   {
-    name: "AUCTION",
+    name: "BID AUCTION",
     icon: <Icon>diamond</Icon>,
     dropdown: true,
     collapse: [
       {
-        name: "BIDDING AUCTION",
-        route: "/pages/auction-pages/bidding-auction/:auctionId",
-        component: <BiddingAuctionPage />,
+        name: "Active Auctions",
+        route: "/pages/auction-pages/bidding-auction/list/active",
+        component: <ListAuctionPage />,
+        exact: true
       },
       {
-        name: "CREATE AUCTION",
+        name: "My Bids",
+        route: "/pages/auction-pages/bidding-auction/list/my-bids",
+        component: <ListAuctionPage />,
+        exact: true
+      },
+      {
+        name: "My Winning Bids",
+        route: "/pages/auction-pages/bidding-auction/list/my-winnings",
+        component: <ListAuctionPage />,
+        exact: true
+      }
+    ]
+  },
+  {
+    name: "MANAGE AUCTION",
+    icon: <Icon>diamond</Icon>,
+    dropdown: true,
+    collapse: [
+      {
+        name: "Create Auctions",
         route: "/pages/auction-pages/create-auction",
         component: <CreateAuctionPage />,
       },
+      {
+        name: "My Active Auctions",
+        route: "/pages/auction-pages/bidding-auction/list/my-actives",
+        component: <ListAuctionPage />,
+        exact: true
+      },
+      {
+        name: "My Auctions",
+        route: "/pages/auction-pages/bidding-auction/list/my-auctions",
+        component: <ListAuctionPage />,
+        exact: true
+      }
     ]
   },
   {

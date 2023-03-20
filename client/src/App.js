@@ -28,6 +28,7 @@ import routes from "routes";
 import Presentation from "./layouts/pages/landing-pages/rental";
 import SignInBasicPage from "./layouts/authentication/sign-in/basic"
 import Header from "./components/Header";
+import BiddingAuctionPage from "./layouts/pages/auction-pages/bidding-auction";
 // Material Kit 2 PRO React routes
 
 export default function App() {
@@ -45,19 +46,12 @@ export default function App() {
         return getRoutes(route.collapse);
       }
 
-      if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={index} />;
+      if (route.route && route.component) {
+        return <Route path={route.route} element={route.component} key={index} exact={route.exact?true:false} />;
       }
 
       return null;
     });
-
-  const MUIPages = <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Routes>
-          {getRoutes(routes)}
-      </Routes>
-  </ThemeProvider>;
 
   return (
       <ThemeProvider theme={theme}>
@@ -65,6 +59,7 @@ export default function App() {
           <Routes>
               {getRoutes(routes)}
               <Route path="/" exact element={<Presentation />} key="presentation"/>
+              <Route path="/pages/auction-pages/bidding-auction/:auctionId" exact element={<BiddingAuctionPage/>} />
           </Routes>
       </ThemeProvider>
       // <>
