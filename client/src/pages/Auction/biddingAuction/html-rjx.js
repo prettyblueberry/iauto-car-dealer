@@ -13,6 +13,8 @@ import Divider from "@mui/material/Divider";
 import MKButton from "components/MKButton";
 import LayoutAuction from "../layoutAuction";
 import zIndex from "@mui/material/styles/zIndex";
+import boxShadow from "assets/theme/functions/boxShadow";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const io = require('socket.io-client')
 // const socket = io('https://api.iauto.no');
@@ -22,6 +24,7 @@ const customStyle = {
         width: '150%',
         marginLeft: '-40%'
     },
+
     rightNav: {
         width: '60%',
         marginLeft: '-3%',
@@ -32,12 +35,53 @@ const customStyle = {
             paddingBottom: '5px'
         }
     },
+
     mainNavButton: {
-        boxShadow: "5px 0 30px rgba(1, 41, 112, 0)"
+        height: '60px',
+        width: '60px',
+        // marginTop: '35%',
+        borderRadius: '30px',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        boxShadow: '5px 0 30px rgba(1, 41, 112, 0)',
+        marginTop: '-60px',
+        // marginTop: '40%',
+        // zIndex: '3',
+        // flow: 'Right',
+        // width: '50px',
+        // marginLeft: '80%'
     },
+
+    mainNavButton1: {
+        height: '60px',
+        width: '60px',
+        marginTop: '35%',
+        borderRadius: '30px',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'
+        // marginTop: '40%',
+        // zIndex: '3',
+        // flow: 'Right',
+        // width: '50px',
+        // marginLeft: '80%'
+    },
+
+    mainNavButton2: {
+        height: '60px',
+        width: '60px',
+        marginTop: '35%',
+        borderRadius: '30px',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'
+        // display: 'relative',
+        // top: '50%',
+        // flow: 'Right',
+        // marginLeft: '20%'
+    },
+
     rightPriceButton: {
         boxShadow: "5px 0 30px rgba(1, 41, 112, 0)"
     },
+
     rightSideInput: {
         textAlign: 'center',
         backgroundColor: 'rgba(231, 239, 239, 1)',
@@ -78,7 +122,8 @@ function HtmlRjx(){
     const navigate = useNavigate();
     const {auctionId} = useParams();
     const jwt = auth.isAuthenticated();
-    
+    const handle = useFullScreenHandle();
+
     jQuery(window).off("load");
     jQuery(window).off("scroll");
     
@@ -231,8 +276,15 @@ function HtmlRjx(){
         navigate('/');
     }
     const onClickCountImage = (val) => {
-        console.log('clickCountBtn');
-        setCountImage((countImage + val) % auction.image.data.length)
+        console.log(countImage);
+        let count = countImage + Number(val);
+        console.log(count);
+        if(Number(count) <  0)count = Math.abs(auction.image.data.length - 1);
+        setCountImage(count % auction.image.data.length)
+    }
+    const fullscreenMode = () => {
+        
+
     }
     return (
         <>
@@ -245,41 +297,60 @@ function HtmlRjx(){
                                 <div className="slider-wrapper">
                                     <div className="slider-fullscreen-background">
                                         <div className="slick-slider slick-initialized" dir="ltr">
-                                            <div onClick={() =>onClickCountImage(-1)}>
-                                            <button id="mainNavLeft" type="button" data-role="none" className="slick-arrow slick-prev" style={customStyle.mainNavButton} >
-                                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px'}}>
-                                                    <path d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-                                                </svg>
-                                            </button>
-                                            </div>
-                                            <div className="slick-list" style={{height: '400px'}}>
+                                            <div className="slick-list" handle={handle}>
                                                 {auction.image &&
-                                                    <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[countImage]};base64,${auction.image.data[countImage]}`}/>
-                                                }
-                                            </div >
-                                            <div onClick={() =>onClickCountImage(1)}>
-                                            <button type="button" id="mainNavRight" data-role="none" className="slick-arrow slick-next" style={customStyle.mainNavButton} >
-                                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px', boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'}}>
-                                                    <path d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-                                                </svg>
-                                            </button>
-                                            <div width="500px" height="500px" style={{backgroundColor: 'rgba(0,0,0,1)'}}></div>
+                                                    <MKBox
+                                                        sx={({
+                                                        functions: { rgba, linearGradient },
+                                                        palette: { black },
+                                                        borders: { borderRadius },
+                                                        }) => ({
+                                                        backgroundImage: `${linearGradient(
+                                                            rgba(black.main, 0),
+                                                            rgba(black.main, 0)
+                                                        )}, url(${`data:${auction.image.contentType[countImage]};base64,${auction.image.data[countImage]}`})`,
+                                                        backgroundSize: "cover",
+                                                        backgroundPosition: "center",
+                                                        borderRadius: 0,
+                                                        height: '400px',
+                                                        width: '100%',
+                                                        paddingLeft: '10px',
+                                                        paddingRight: '10px'
+                                                        })}
+                                                        display="flex"
+                                                        justifyContent="space-between"
+                                                    >
+                                                        <button id="mainNavLeft" type="button" data-role="none"  style={customStyle.mainNavButton1} onClick={() => onClickCountImage(-1)}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="white" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px'}}>
+                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                                                            </svg>
+                                                        </button>
+                                                        <button type="button" id="mainNavRight" data-role="none" style={customStyle.mainNavButton2} onClick={() => onClickCountImage(1)}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="white" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px', boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'}}>
+                                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                                                            </svg>
+                                                        </button>
+                                                    </MKBox>
+                                                    // <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[countImage]};base64,${auction.image.data[countImage]}`}/>
+                                                }                                            
                                             </div>
                                             <button style={{backgroundColor: 'rgba(0,0,0,0)', zIndex: '3', marginTop: '-100px', width: '100px', height: '100px'}}/>
                                         </div>
                                         <span className="current-slide">
-                                                                <span className="current-index">
-                                                                <font style={{verticalAlign: 'inherit'}}>
-                                                                    <font style={{verticalAlign: 'inherit'}}>
-                                                                    1 / 18
-                                                                    </font>
-                                                                </font>
-                                                                </span>
-                                                            </span>
-                                        <button type="button" className="slider-go-fullscreen" style={customStyle.mainNavButton}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" fill="currentColor" viewBox="0 0 24 24" xmlSpace="preserve">
+                                            <span className="current-index">
+                                                <font style={{verticalAlign: 'inherit'}}>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                        {auction.image && 
+                                                            countImage + 1 + '/' +  auction.image.data.length
+                                                        }
+                                                    </font>
+                                                </font>
+                                            </span>
+                                        </span>
+                                        <button type="button" style={customStyle.mainNavButton} onClick={handle.enter}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" fill="currentColor" viewBox="0 0 24 24" xmlSpace="preserve" width="45" height={20} style={{marginLeft: '-20px'}}>
                                                 <path id="play" d="m 3.4285714,15.428571 -3.42857145,0 0,8.571429 8.57142905,0 0,-3.428571 -5.1428577,0 0,-5.142858 z M -5e-8,8.5714287 l 3.42857145,0 0,-5.1428573 5.1428577,0 L 8.5714291,0 -4.9999999e-8,0 l 0,8.5714287 z M 20.571428,20.571429 l -5.142857,0 0,3.428571 L 24,24 l 0,-8.571429 -3.428572,0 0,5.142858 z M 15.428571,2e-7 l 0,3.4285714 5.142857,0 0,5.1428571 3.428572,0 L 24,2e-7 l -8.571429,0 z">
                                                     <animate id="animation-to" begin="indefinite" fill="freeze" attributeName="d" dur="0.15s" to="m 5.0000001e-8,18.857143 5.14285695,0 0,5.142857 3.428572,0 0,-8.571429 -8.571428950000001,0 0,3.428572 z M 5.142857,5.1428572 l -5.14285695,0 0,3.4285714 8.571428949999999,0 0,-8.571428500000001 -3.428572,0 0,5.142857100000001 z M 15.428571,24 l 3.428572,0 0,-5.142857 5.142857,0 0,-3.428572 -8.571429,0 0,8.571429 z m 3.428572,-18.8571428 0,-5.1428571 -3.428572,0 0,8.5714285 8.571429,0 0,-3.4285714 -5.142857,0 z" />
                                                     <animate id="animation-from" begin="indefinite" fill="freeze" attributeName="d" dur="0.15s" to="m 3.4285714,15.428571 -3.42857145,0 0,8.571429 8.57142905,0 0,-3.428571 -5.1428577,0 0,-5.142858 z M -5e-8,8.5714287 l 3.42857145,0 0,-5.1428573 5.1428577,0 L 8.5714291,0 -4.9999999e-8,0 l 0,8.5714287 z M 20.571428,20.571429 l -5.142857,0 0,3.428571 L 24,24 l 0,-8.571429 -3.428572,0 0,5.142858 z M 15.428571,2e-7 l 0,3.4285714 5.142857,0 0,5.1428571 3.428572,0 L 24,2e-7 l -8.571429,0 z" />
@@ -481,18 +552,18 @@ function HtmlRjx(){
                                                 </button>
                                             </div>
                                             <div className="o-level o-level--centered">
-                                                                        <span className="u-h8 u-margin-top-tiny">
-                                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                                <font style={{verticalAlign: 'inherit'}}>Proposal</font>
-                                                                                <span className="is-inline">
-                                                                                    <font style={{verticalAlign: 'inherit'}}> unit 1000</font>
-                                                                                </span>
-                                                                                <font style={{verticalAlign: 'inherit'}}>( </font>
-                                                                                <font style={{verticalAlign: 'inherit'}}>minimum: {bid} </font>
-                                                                                <font style={{verticalAlign: 'inherit'}}>)</font>
-                                                                            </font>
-                                                                        <span className="is-inline"><font style={{verticalAlign: 'inherit'}} /></span>
-                                                                        <font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /></span>
+                                                <span className="u-h8 u-margin-top-tiny">
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                        <font style={{verticalAlign: 'inherit'}}>Proposal</font>
+                                                        <span className="is-inline">
+                                                            <font style={{verticalAlign: 'inherit'}}> unit 1000</font>
+                                                        </span>
+                                                        <font style={{verticalAlign: 'inherit'}}>( </font>
+                                                        <font style={{verticalAlign: 'inherit'}}>minimum: {bid} </font>
+                                                        <font style={{verticalAlign: 'inherit'}}>)</font>
+                                                    </font>
+                                                <span className="is-inline"><font style={{verticalAlign: 'inherit'}} /></span>
+                                                <font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /><font style={{verticalAlign: 'inherit'}} /></span>
                                             </div>
                                         </div>
                                         <div className="c-quickbids o-level o-level--equal o-level--margin-tiny" style={customStyle.rightNav}>
