@@ -3419,7 +3419,7 @@ function HtmlRJX() {
                                     </div>
                                     <br/>
                                     <div className="title_nav">
-                                    <div className="title heading-font" style={{fontSize: '50px', fontFamily: 'rubic verdana' ,fontWeight: 'bold'}}>Recently Auctions</div>
+                                    <div className="title heading-font" style={{fontSize: '50px', fontFamily: 'rubic verdana' ,fontWeight: 'bold'}}>All Auctions</div>
                                     </div>
                                     <div className="row car-listing-row">
                                         <Grid  sx={{ mt: 3 }}>
