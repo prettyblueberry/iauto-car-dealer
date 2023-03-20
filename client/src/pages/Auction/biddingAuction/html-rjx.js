@@ -755,7 +755,7 @@ function HtmlRjx(){
                 bgColor="white"
                 shadow="xl"
                 >
-                <MKBox display="flex" alginItems="center" justifyContent="space-between" p={2}>
+                <MKBox display="flex" alignItems="center" justifyContent="space-between" p={2}>
                     <MKTypography variant="h5">Completed Auction</MKTypography>
                 </MKBox>
                 <Divider sx={{ my: 0 }} />
