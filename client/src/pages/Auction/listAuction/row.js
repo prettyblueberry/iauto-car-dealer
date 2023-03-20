@@ -1,4 +1,5 @@
-function CarAuctionRow(){
+function CarAuctionRow(data){
+    console.log(data);
     return <div className="single-car-listing " data-cy="car-item-167903">
         <div className="c-single-car has-topbar-">
             <article className="c-car-item ">

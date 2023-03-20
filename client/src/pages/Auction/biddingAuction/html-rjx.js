@@ -12,6 +12,7 @@ import MKTypography from "components/MKTypography";
 import Divider from "@mui/material/Divider";
 import MKButton from "components/MKButton";
 import LayoutAuction from "../layoutAuction";
+import zIndex from "@mui/material/styles/zIndex";
 
 const io = require('socket.io-client')
 // const socket = io('https://api.iauto.no');
@@ -72,6 +73,7 @@ function HtmlRjx(){
     const [enableBid, setEnableBid] = useState(false);
     const [isAutomatic, setIsAutomatic] = useState(false);
     const [completeAuction, setCompleteAuction] = useState(false);
+    const [countImage, setCountImage] = useState(0);
 
     const navigate = useNavigate();
     const {auctionId} = useParams();
@@ -86,7 +88,7 @@ function HtmlRjx(){
             setCompleteAuction(true);
         }
     }, 1000);
-
+    
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal;
@@ -228,6 +230,10 @@ function HtmlRjx(){
     const onClickOkBtn = () => {
         navigate('/');
     }
+    const onClickCountImage = (val) => {
+        console.log('clickCountBtn');
+        setCountImage((countImage + val) % auction.image.data.length)
+    }
     return (
         <>
             <LayoutAuction>
@@ -239,23 +245,29 @@ function HtmlRjx(){
                                 <div className="slider-wrapper">
                                     <div className="slider-fullscreen-background">
                                         <div className="slick-slider slick-initialized" dir="ltr">
-                                            <button type="button" data-role="none" className="slick-arrow slick-prev" style={customStyle.mainNavButton}>
+                                            <div onClick={() =>onClickCountImage(-1)}>
+                                            <button id="mainNavLeft" type="button" data-role="none" className="slick-arrow slick-prev" style={customStyle.mainNavButton} >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px'}}>
                                                     <path d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
                                                 </svg>
                                             </button>
+                                            </div>
                                             <div className="slick-list" style={{height: '400px'}}>
                                                 {auction.image &&
-                                                    <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[0]};base64,${auction.image.data[0]}`}/>
+                                                    <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[countImage]};base64,${auction.image.data[countImage]}`}/>
                                                 }
-                                            </div>
-                                            <button type="button" data-role="none" className="slick-arrow slick-next" style={customStyle.mainNavButton}>
+                                            </div >
+                                            <div onClick={() =>onClickCountImage(1)}>
+                                            <button type="button" id="mainNavRight" data-role="none" className="slick-arrow slick-next" style={customStyle.mainNavButton} >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" style={{marginLeft: '-8px', marginTop: '4px', boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'}}>
                                                     <path d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
                                                 </svg>
                                             </button>
+                                            <div width="500px" height="500px" style={{backgroundColor: 'rgba(0,0,0,1)'}}></div>
+                                            </div>
+                                            <button style={{backgroundColor: 'rgba(0,0,0,0)', zIndex: '3', marginTop: '-100px', width: '100px', height: '100px'}}/>
                                         </div>
                                         <span className="current-slide">
                                                                 <span className="current-index">
@@ -284,28 +296,7 @@ function HtmlRjx(){
                             <div className="u-hidden@from-tablet" />
                             <div className="c-car-detail__module--section">
                                 <h2 className="u-h2 u-margin-bottom">
-                                    <font style={{verticalAlign: 'inherit'}}>
-                                        <font style={{verticalAlign: 'inherit'}}>
-                                            Volvo
-                                        </font>
-                                    </font>
-                                    <font style={{verticalAlign: 'inherit'}}>
-                                        <font style={{verticalAlign: 'inherit'}}>
-                                            XC90 D5 2.4 (185 HP HP) AWD |
-                                        </font>
-                                        <font style={{verticalAlign: 'inherit'}}>
-                                            Momentum |
-                                        </font>
-                                        <font style={{verticalAlign: 'inherit'}}>
-                                            Leather |
-                                        </font>
-                                        <font style={{verticalAlign: 'inherit'}}>
-                                            CC |
-                                        </font>
-                                        <font style={{verticalAlign: 'inherit'}}>
-                                            HF
-                                        </font>
-                                    </font>
+                                    {auction.itemName?auction.itemName: ''}
                                 </h2>
                                 <div className="u-margin-bottom">
                                     <button type="button" data-cy="see-report" className="c-btn c-btn--color-primary c-btn--full c-btn--medium">
@@ -317,34 +308,42 @@ function HtmlRjx(){
                                         <div className="u-1/2 u-margin-right-tiny">
                                             <ul className="c-car-detail__equipment-list">
                                                 <li>
-                                                    <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Reg. no
-                                                    </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>.:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    KH79288</font></font>
+                                                    <strong>
+                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                            <font style={{verticalAlign: 'inherit'}}>Reg. no</font>
+                                                        </font>
+                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                            <font style={{verticalAlign: 'inherit'}}>.:</font>
+                                                        </font>
+                                                    </strong>
+                                                    <font style={{verticalAlign: 'inherit'}}>
+                                                        <font style={{verticalAlign: 'inherit'}}>{auction.description? auction.description.reg: ''}</font>
+                                                    </font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Model year
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    2011</font></font>
+                                                    {auction.description? auction.description.modelYear: ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Mileage
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    247,000 km</font></font>
+                                                    {auction.description? auction.description.mileage: ''} km</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Fuel
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    Diesel</font></font>
+                                                    {auction.description? auction.description.fuel: ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Wheel drive
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    All</font></font>
+                                                    {auction.description? auction.description.wheelDrive: ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Used imported
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    Yes</font></font>
+                                                    {auction.description? auction.description.usedImport === 10? 'Yes': 'No': ''}</font></font>
                                                 </li>
                                             </ul>
                                         </div>
@@ -353,33 +352,33 @@ function HtmlRjx(){
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>VIN
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    YV1CZ7146B1583698</font></font>
+                                                    {auction.description? auction.description.vin: ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Volume
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong>
                                                     <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                        2.4 l</font></font>
+                                                    {auction.description? auction.description.volume: ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Power
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    185 hp</font></font>
+                                                    {auction.description? auction.description.power: ''} hp</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Transmission
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    Automatic</font></font>
+                                                    {auction.description? auction.description.transmission === 10? 'Manual': 'Automatic': ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Colour
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    Black</font></font>
+                                                    {auction.description? auction.description.color: ''}</font></font>
                                                 </li>
                                                 <li>
                                                     <strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Next EU control
                                                     </font></font><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>:</font></font></strong><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>
-                                                    12.01.2024</font></font>
+                                                    {auction.description? auction.description.eu: ''}</font></font>
                                                 </li>
                                             </ul>
                                         </div>
@@ -416,52 +415,11 @@ function HtmlRjx(){
                                             <h3>
                                                 <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Equipment list&nbsp;</font></font>
                                             </h3>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Exterior color BLACK SAPPHIRE METALLIC</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Seat cover/equipment OFFBLACK/LEATHER</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>2B04 Zusatzheizung (without timer)</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>KG02 Speed ​​control system</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NM02 Heated driver and passenger seat</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>NM02 HEATED SEAT Heated seat</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>VA02 CONTROL UNIT RTI With control unit
-                                                    RTI</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>VJ03 GPS Global Positioning Sys GPS with
-                                                    RTI</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>VP04 PARK ASSISTANCE With parking assistance
-                                                    rear (REM)
-                                                </font></font><em><font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>The equipment list is based on information
-                                                from the seller and from online suppliers
-                                                such as Partslink and CarID. </font><font style={{verticalAlign: 'inherit'}}>Errors may occur.</font></font></em>&nbsp;
-                                            </p>
+                                            {auction.description? auction.description.equipmentList: ''}
                                             <h3>
                                                 <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Comment from the car's current owner&nbsp;</font></font>
                                             </h3>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Errors or omissions: Webasto&nbsp;</font></font>
-                                            </p>
-                                            <p>
-                                                <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Nettbil does not have documentation. </font><font style={{verticalAlign: 'inherit'}}>The bidder must take the risk of how the
-                                                    comments are interpreted. </font><font style={{verticalAlign: 'inherit'}}>Use the appraisal report and photos as a
-                                                    basis for assessing the service history and
-                                                    the car's technical condition and
-                                                    equipment.</font></font>
-                                            </p>
+                                            {auction.description? auction.description.comment: ''}
                                         </div>
                                     </div>
                                 </div>
@@ -575,15 +533,15 @@ function HtmlRjx(){
                                                     </button>
                                                 }
                                                 <div className="u-text-center u-margin-top-tiny">
-                                                                            <span className="c-tooltip">
-                                                                                <span className="c-tooltip__trigger">
-                                                                                    <span className="u-text-underlined">
-                                                                                        <font style={{verticalAlign: 'inherit'}}>
-                                                                                            <font style={{verticalAlign: 'inherit'}}>What is Autobid?</font>
-                                                                                        </font>
-                                                                                    </span>
-                                                                                </span>
-                                                                            </span>
+                                                    <span className="c-tooltip">
+                                                        <span className="c-tooltip__trigger">
+                                                            <span className="u-text-underlined">
+                                                                <font style={{verticalAlign: 'inherit'}}>
+                                                                    <font style={{verticalAlign: 'inherit'}}>What is Autobid?</font>
+                                                                </font>
+                                                            </span>
+                                                        </span>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -609,16 +567,16 @@ function HtmlRjx(){
                                                     <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{bid.bidder.name}</font></font>
                                                 </div>
                                                 <div className="u-color-bwg-tint-1 u-h7">
-                                                                        <span>
-                                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                                <font style={{verticalAlign: 'inherit'}}>{bid.time.split('T')[0]}</font>
-                                                                            </font>
-                                                                        </span>
                                                     <span>
-                                                                            <font style={{verticalAlign: 'inherit'}}>
-                                                                                <font style={{verticalAlign: 'inherit'}}>{bid.time.split('T')[0].split('.')[0]}</font>
-                                                                            </font>
-                                                                        </span>
+                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                            <font style={{verticalAlign: 'inherit'}}>{bid.time.split('T')[0]}</font>
+                                                        </font>
+                                                    </span>
+                                                    <span>
+                                                        <font style={{verticalAlign: 'inherit'}}>
+                                                            <font style={{verticalAlign: 'inherit'}}>{bid.time.split('T')[1].split('.')[0]}</font>
+                                                        </font>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className="right-info o-level__item o-level o-level--right">

@@ -14,6 +14,8 @@ const create = (req, res) => {
         message: "Image could not be uploaded"
       })
     }
+    let description = JSON.parse(fields.description);
+    fields.description = description;
     let auction = new Auction(fields)
     auction.seller= req.profile
     console.log(files);
