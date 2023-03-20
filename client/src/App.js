@@ -28,6 +28,7 @@ import routes from "routes";
 import Presentation from "./layouts/pages/landing-pages/rental";
 import SignInBasicPage from "./layouts/authentication/sign-in/basic"
 import Header from "./components/Header";
+import BiddingAuctionPage from "./layouts/pages/auction-pages/bidding-auction";
 // Material Kit 2 PRO React routes
 
 export default function App() {
