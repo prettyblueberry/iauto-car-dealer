@@ -16,25 +16,15 @@ const create = (req, res) => {
     }
     let auction = new Auction(fields)
     auction.seller= req.profile
-    if(files.image1 && files.image2 && files.image3 && files.image4){
-      // let path = [];
-      // path.push(files.image1.path);
-      // path.push(files.image2.path);
-      // path.push(files.image3.path);
-      // path.push(files.image4.path);
-      let type = [];
-      type.push(files.image1.type);
-      type.push(files.image2.type);
-      type.push(files.image3.type);
-      type.push(files.image4.type);
-      let imageData = [];
-      imageData.push(fs.readFileSync(files.image1.path));
-      imageData.push(fs.readFileSync(files.image2.path));
-      imageData.push(fs.readFileSync(files.image3.path));
-      imageData.push(fs.readFileSync(files.image4.path));
-      auction.image.data = imageData;
-      auction.image.contentType = type;
-    }
+    console.log(files);
+    let type = [];
+    let imageData = [];
+    Object.keys(files).forEach(key => {
+      type.push(files[key].type);
+      imageData.push(fs.readFileSync(files[key].path));
+    });
+    auction.image.data = imageData;
+    auction.image.contentType = type;
     try {
       let result = await auction.save()
       res.status(200).json(result)
