@@ -97,8 +97,9 @@ const routes = [
       },
       {
         name: "My Auctions",
-        route: "/pages/auction-pages/bidding-auction/list?filter=my-winnings",
+        route: "/pages/auction-pages/bidding-auction/list/my-auctions",
         component: <ListAuctionPage />,
+        exact: true
       }
     ]
   },
