@@ -43,6 +43,7 @@ import { signin } from "api/auth";
 import Snackbar from "@mui/material/Snackbar";
 // @mui icons
 import CloseIcon from "@mui/icons-material/Close";
+import { TextField } from "@mui/material";
 
 const toastStyles = ({
   palette: { success },
@@ -158,10 +159,12 @@ const toastTemplate = (
         <MKBox pt={4} pb={3} px={3}>
           <MKBox component="form" role="form">
             <MKBox mb={2}>
-              <MKInput type="email" label="Email" fullWidth onChange={handleChange('email')}/>
+              <label>Email</label>
+              <input type="email" label="Email" fullWidth onChange={handleChange('email')} sx={{borderRadius: 0, outline: 'none', border: '1px solid rgba(0,0,0,0)', padding: '1px'}}/>
             </MKBox>
             <MKBox mb={2}>
-              <MKInput type="password" label="Password" fullWidth onChange={handleChange('password')}/>
+            <label>Password</label>
+              <input type="password" label="Password" fullWidth onChange={handleChange('password')}/>
             </MKBox>
             <MKBox display="flex" alignItems="center" ml={-1}>
               <Switch checked={values.remember} onChange={handleChange('remember')} />
