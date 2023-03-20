@@ -128,10 +128,60 @@ const listOpen = async (req, res) => {
   }
 }
 
+const summaryCounts = async (req, res) => {
+  try {
+    let countAuctionsOpen = await Auction.find({'bidStart' : { $lt: Date.now() } , 'bidEnd': { $gt: Date.now() }}).count({})
+    let countMyBids = await Auction.find({}).elemMatch('bids', { 'bidder': req.params.userId}).count({})
+    let countMyWinnings = await Auction.find({});
+
+    res.json({countAuctionsOpen, countMyBids})
+  } catch (err){
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err)
+    })
+  }
+}
 
 const listBySeller = async (req, res) => {
   try {
     let auctions = await Auction.find({seller: req.profile._id}).populate('seller', '_id name').populate('bids.bidder', '_id name')
+    res.json(auctions)
+  } catch (err){
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err)
+    })
+  }
+}
+
+const list = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const filter = req.params.filter;
+    console.log("userId, filter", userId, filter);
+    let auctions;
+    switch(filter){
+      case "active":
+        auctions = await Auction.find({'bidStart' : { $lt: Date.now() } , 'bidEnd': { $gt: Date.now() }}).sort('bidStart').populate('seller', '_id name').populate('bids.bidder', '_id name');
+        break;
+      case "my-bids":
+        auctions = await Auction.find({}).elemMatch('bids', { 'bidder': userId}).sort('bidStart').populate('seller', '_id name').populate('bids.bidder', '_id name')
+        break;
+      case "my-winnings":
+        auctions = await Auction.find({}).elemMatch('bids', { 'bidder': userId}).sort('bidStart').populate('seller', '_id name').populate('bids.bidder', '_id name')
+        break;
+      case "my-actives":
+        auctions = await Auction.find({
+          "seller": userId,
+          'bidStart' : { $lt: Date.now() },
+          'bidEnd': { $gt: Date.now() }
+        }).sort('bidStart').populate('seller', '_id name').populate('bids.bidder', '_id name')
+        break;
+      case "my-auctions":
+        auctions = await Auction.find({
+          "seller": userId
+        }).sort('bidStart').populate('seller', '_id name').populate('bids.bidder', '_id name')
+        break;
+    }
     res.json(auctions)
   } catch (err){
     return res.status(400).json({
@@ -171,5 +221,7 @@ export default {
   read,
   update,
   isSeller,
-  remove
+  remove,
+  summaryCounts,
+  list
 }

@@ -8,6 +8,12 @@ const router = express.Router()
 router.route('/api/auctions')
   .get(auctionCtrl.listOpen)
 
+router.route('/api/auctions/summary/:userId')
+  .get(auctionCtrl.summaryCounts)
+
+router.route('/api/auctions/list/:filter/:userId')
+  .get(auctionCtrl.list)
+
 router.route('/api/auctions/bid/:userId')
   .get(auctionCtrl.listByBidder)
 
