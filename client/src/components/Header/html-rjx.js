@@ -116,8 +116,8 @@ function HtmlRJX() {
                                    title="View compared items">
                                     <i className="icon-ap-compare"/>
                                     <span className="list-badge">
-                        <span className="stm-current-cars-in-compare">0</span>
-                      </span>
+                                        <span className="stm-current-cars-in-compare">0</span>
+                                    </span>
                                 </a>
                             </div>
                             <div className="pull-right hdn-767">
@@ -125,8 +125,8 @@ function HtmlRJX() {
                                     <a href="https://auction.iauto.no" title="Watch shop items">
                                         <i className="stm-icon-shopping-cart-1"/>
                                         <span className="list-badge">
-                          <span className="stm-current-items-in-cart"> </span>
-                        </span>
+                                            <span className="stm-current-items-in-cart"> </span>
+                                        </span>
                                     </a>
                                 </div>
                             </div>

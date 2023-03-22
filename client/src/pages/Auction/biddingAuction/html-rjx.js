@@ -17,8 +17,8 @@ import boxShadow from "assets/theme/functions/boxShadow";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const io = require('socket.io-client')
-// const socket = io('https://api.iauto.no');
-const socket = io('http://localhost:3001');
+const socket = io('https://api.iauto.no');
+// const socket = io('https://localhost:3001');
 const customStyle = {
     sideNav: {
         width: '150%',
