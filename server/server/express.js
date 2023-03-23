@@ -13,7 +13,6 @@ import orderRoutes from './routes/order.routes'
 import auctionRoutes from './routes/auction.routes'
 
 // modules for server side rendering
-import React from 'react'
 //end
 
 //comment out before building for production

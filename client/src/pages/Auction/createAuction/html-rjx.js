@@ -8,7 +8,7 @@ import MKButton from "components/MKButton";
 import MKBox from "components/MKBox";
 import {create} from 'api/auction';
 import auth from "api/auth/auth-helper";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -90,12 +90,19 @@ function HtmlRjx(){
         bidEnd: '',
         error: ''
     });
-    useEffect(() => {
-        jQuery("#wrapper").css("min-height", "");
-        if(localStorage.getItem('auth') === null)navigate('/authentication/sign-in/basic');
-     },[]);
     const jwt = auth.isAuthenticated()
     const navigate = useNavigate();
+    const location = useLocation();
+    useEffect(() => {
+        if(localStorage.getItem('auth') === null){
+            navigate('/authentication/sign-in/basic');
+        } 
+           
+        jQuery("#wrapper").css("min-height", "");
+     },[]);
+
+    
+    
     const handleChange = name => event => {
         console.log(event.target.value);
         let value = event.target.value;
@@ -125,7 +132,7 @@ function HtmlRjx(){
         }
         let auctionData = new FormData();
         values.itemName && auctionData.append('itemName', values.itemName);
-        auctionData.append('description', description);
+        auctionData.append('description', JSON.stringify(description));
         values.startingBid && auctionData.append('startingBid', values.startingBid);
         values.bidStart && auctionData.append('bidStart', values.bidStart);
         values.bidEnd && auctionData.append('bidEnd', values.bidEnd);

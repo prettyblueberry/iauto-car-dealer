@@ -116,13 +116,16 @@ function Cover() {
         <MKBox p={3}>
           <MKBox component="form" role="form">
             <MKBox mb={2}>
-              <MKInput type="text" label="Name" fullWidth onChange={handleChange("name")} outline={false}/>
+              <label>Name</label>
+              <input type="text" label="Name" fullWidth onChange={handleChange("name")} outline={false}/>
             </MKBox>
             <MKBox mb={2}>
-              <MKInput type="email" label="Email" fullWidth onChange={handleChange("email")}/>
+              <label>Email</label>
+              <input type="email" label="Email" fullWidth onChange={handleChange("email")}/>
             </MKBox>
             <MKBox mb={2}>
-              <MKInput type="password" label="Password" fullWidth onChange={handleChange("password")}/>
+              <label>Password</label>
+              <input type="password" label="Password" fullWidth onChange={handleChange("password")}/>
             </MKBox>
             {values.error && (
               <MKTypography component="p" color="info">

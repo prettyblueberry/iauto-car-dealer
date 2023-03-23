@@ -1,9 +1,12 @@
-function CarAuctionRow(){
+function CarAuctionRow(data){
+    console.log(data);
     return <div className="single-car-listing " data-cy="car-item-167903">
         <div className="c-single-car has-topbar-">
             <article className="c-car-item ">
-                <div className="c-car-item__image"><a href="/dashboard/car-detail/167903">
-                    <figure><img src="https://images-20210209174033434400000001.s3.eu-north-1.amazonaws.com/81870ff1194be42bea2bf5252764514cc87e207380b3acbe91342815f5f087c9.thumb.jpg" alt="Hyundai IONIQ 5 | Skinn | HUD | ACC | V.Pumpe | R.Kam" data-id={167903} data-cy="car-image" /></figure>
+                <div className="c-car-item__image"><a href="#">
+                    <figure>
+                        <img src={`data:${data.data.image.contentType[0]};base64,${data.data.image.data[0]}`} alt="Hyundai IONIQ 5 | Skinn | HUD | ACC | V.Pumpe | R.Kam" data-id={167903} data-cy="car-image" />
+                        </figure>
                 </a></div>
                 <div className="c-car-item__content">
                     {/*<div className="c-favorite-button fadeIn " data-cy="like-toggle-inactive">*/}
@@ -15,13 +18,12 @@ function CarAuctionRow(){
                     <div className="c-car-item__content-top">
                         <div className="c-car-item__content-top-left">
                             <div className="c-car-item__information">
-                                <div className="c-car-item__title"><a href="/dashboard/car-detail/167903"><h2 className="u-h5 u-margin-bottom-tiny" data-id={167903}>Hyundai IONIQ 5 | Skinn | HUD |
-                                    ACC | V.Pumpe | R.Kam</h2></a></div>
+                                <div className="c-car-item__title"><a href="/dashboard/car-detail/167903"><h2 className="u-h5 u-margin-bottom-tiny" data-id={167903}>{data.data.itemName}</h2></a></div>
                                 <div className="c-car-item__details">
                                     <ul>
-                                        <li>2022</li>
-                                        <li>5 000 km</li>
-                                        <li>Automat</li>
+                                        <li>{data.data.description.modelYear}</li>
+                                        <li>{data.data.description.mileage} km</li>
+                                        <li>{data.data.description.transmission}</li>
                                         <li>Elektrisitet</li>
                                     </ul>
                                 </div>
@@ -34,17 +36,17 @@ function CarAuctionRow(){
                                     <div className="o-level auction-time-wrapper--bordered u-text-bold">
                                         <span>Avsluttes:&nbsp;</span>
                                         <div className="auction-time-wrapper" data-cy="timer-static">
-                                            <span>I morgen kl. 10:00</span></div>
+                                            <span>{data.data.bidEnd}</span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="c-car-item__price-details"><span className="u-h6">Høyeste bud</span><span className="u-h3 u-text-bold">15&nbsp;000 NOK</span></div>
+                            <div className="c-car-item__price-details"><span className="u-h6">Høyeste bud</span><span className="u-h3 u-text-bold">{data.data.bids.length !== 0? data.data.bids[0].bid: data.data.startingBid} NOK</span></div>
                         </div>
                     </div>
                     <div className="c-car-item__content-bottom o-level o-level--spaced-end">
                         <div className="c-car-item__content-bottom-left">
                             <div className="c-car-item__location">Økernveien 99 NAF</div>
-                            <div className="c-tag c-car-item__regnr">CH17656</div>
+                            <div className="c-tag c-car-item__regnr">{data.data.description.reg}</div>
                         </div>
                         <div className="c-car-details__actions">
                             <div className="o-level o-level--right">

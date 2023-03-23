@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Mixed } from 'mongoose'
 import VehicleInfoSchema from "./vehicle-info.schema";
 import { cAuctionStatus } from '../../config/constants'
 
@@ -9,7 +9,7 @@ const AuctionSchema = new mongoose.Schema({
     required: 'Item name is required'
   },
   description: {
-    type: String,
+    type: mongoose.Schema.Types.Mixed,
     trim: true
   },
   image: {
