@@ -88,12 +88,14 @@ const update = async (req, res) => {
 };
 
 const remove = async (req, res) => {
+  console.log(req.body);
   try {
     let user = req.profile;
     let deletedUser = await user.remove();
     deletedUser.hashed_password = undefined;
     deletedUser.salt = undefined;
-    res.json(deletedUser);
+    console.log(deletedUser);
+    // res.json(deletedUser);
   } catch (err) {
     return res.status(400).json({
       error: errorHandler.getErrorMessage(err),

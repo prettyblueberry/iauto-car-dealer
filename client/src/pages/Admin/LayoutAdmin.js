@@ -31,7 +31,6 @@ function LayoutAdmin () {
     const [selectedRow, setSelectedRow] = useState(false);
     const {adminId} = useParams();
     const location= useLocation();
-    console.log(location.pathname)
     const navigationList = ['User', 'All Auctions', 'Upcoming Auctions', 'Active Auctions', 'Closed Auctions']
     const navigationUrls = ['user', 'all', 'upcoming', 'active', 'closed']
     return (
@@ -80,13 +79,13 @@ function LayoutAdmin () {
                         return (
                             location.pathname.split('/')[3] === navigationUrls[index]?
                             <MKButton 
-                                sx={{...navStyle.boxStyle, backgroundColor: 'rgba(255,255,255,1)'}}
+                                sx={{...navStyle.boxStyle, backgroundColor: 'rgba(255,255,255,0.8)', outline: 'none'}}
                                 key={new Date() + index}
                             >
                                 <Link to={'/pages/admin-page/' + navigationUrls[index]}><MKTypography sx={navStyle.textStyle}>{item}</MKTypography></Link>
                             </MKButton> :
                             <MKButton 
-                                sx={{...navStyle.boxStyle}}
+                                sx={{...navStyle.boxStyle, outline: 'none'}}
                                 key={new Date() + index}
                             >
                                 <Link to={'/pages/admin-page/' + navigationUrls[index]}><MKTypography sx={navStyle.textStyle}>{item}</MKTypography></Link>

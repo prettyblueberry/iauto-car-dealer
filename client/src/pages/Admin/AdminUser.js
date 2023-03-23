@@ -28,12 +28,6 @@ export default function UserManageGrid() {
     }, []);
 
     const onSaveRow = (id, updatedRow, rows, oldRow) =>{
-        // sellerController.saveRow(updatedRow).then((res)=>{
-        //     const dbRow = res.data;
-        //     setRows(rows.map(r => (r.id === updatedRow.id ? {...dbRow}: r)));
-        // }).catch((err)=>{
-        //     setRows(rows);
-        // });
         const jwt = auth.isAuthenticated()
         update({
             userId: updatedRow._id
@@ -50,13 +44,7 @@ export default function UserManageGrid() {
     };
 
     const onDeleteRow = (id, oldRow, rows) => {
-        // sellerController.deleteRow(id).then((res)=>{
-        //     const dbRow = res.data;
-        //     setRows(rows.filter(r=> r.id !== dbRow.id));
-        // }).catch((err)=>{
-        //     setRows(rows);
-        // });
-
+    
         const jwt = auth.isAuthenticated()
         remove({
             userId: id
