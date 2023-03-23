@@ -1,7 +1,8 @@
+import { useRef, useEffect, useState } from 'react';
 import MKBox from 'components/MKBox';
 import BrandImage from 'assets/image/brandAdmin.jpg'
 import navigationBarAdmin from 'assets/image/navigationBar.jpg'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import MKTypography from 'components/MKTypography';
 import MKButton from 'components/MKButton';
 
@@ -27,8 +28,12 @@ const navStyle = {
     }
 }
 function LayoutAdmin () {
+    const [selectedRow, setSelectedRow] = useState(false);
     const {adminId} = useParams();
+    const location= useLocation();
+    console.log(location.pathname)
     const navigationList = ['User', 'All Auctions', 'Upcoming Auctions', 'Active Auctions', 'Closed Auctions']
+    const navigationUrls = ['user', 'all', 'upcoming', 'active', 'closed']
     return (
         <>
             <div style={{height: '80px', backgroundColor: 'rgba(16, 33, 39, 1)'}}></div>
@@ -73,18 +78,18 @@ function LayoutAdmin () {
                 {
                     navigationList.map((item, index) => {
                         return (
-                            item === adminId?
+                            location.pathname.split('/')[3] === navigationUrls[index]?
                             <MKButton 
                                 sx={{...navStyle.boxStyle, backgroundColor: 'rgba(255,255,255,1)'}}
                                 key={new Date() + index}
                             >
-                                <Link to='/'><MKTypography sx={navStyle.textStyle}>{item}</MKTypography></Link>
+                                <Link to={'/pages/admin-page/' + navigationUrls[index]}><MKTypography sx={navStyle.textStyle}>{item}</MKTypography></Link>
                             </MKButton> :
                             <MKButton 
                                 sx={{...navStyle.boxStyle}}
                                 key={new Date() + index}
                             >
-                                <Link to='/'><MKTypography sx={navStyle.textStyle}>{item}</MKTypography></Link>
+                                <Link to={'/pages/admin-page/' + navigationUrls[index]}><MKTypography sx={navStyle.textStyle}>{item}</MKTypography></Link>
                             </MKButton>
                         )
                     })
