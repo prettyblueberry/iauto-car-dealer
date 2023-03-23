@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import routes from "../../routes";
-
+import { UserMenuMobile, UserMenuNormal } from "./UserMenu";
 function HtmlRJX() {
     return (<div id="header" className="transparent-header">
         <div className="header-main header-main-ev_dealer header-listing-fixed">
@@ -22,6 +22,7 @@ function HtmlRJX() {
                         <div className="mobile-menu-holder" style={{height: '379px'}}>
                             <div className="mobile-menu-wrap">
                                 <ul className="header-menu clearfix">
+                                    {<UserMenuMobile/>}
                                     {routes.map((r, i) => {
                                         if(r.dropdown){
                                             return <li key={i} className="
@@ -91,7 +92,6 @@ function HtmlRJX() {
                                                 </ul>
                                             </li>
                                         } else {
-                                            console.log("1", r);
                                             return <li key={i} className="
                                               menu-item
                                               menu-item-type-post_type
@@ -111,25 +111,26 @@ function HtmlRJX() {
                                 <div className="ph-title heading-font">Call-centre:</div>
                                 <div className="phone heading-font">(878) 967-4455</div>
                             </div>
-                            <div className="stm-compare">
-                                <a className="lOffer-compare" href="https://auction.iauto.no"
-                                   title="View compared items">
-                                    <i className="icon-ap-compare"/>
-                                    <span className="list-badge">
-                                        <span className="stm-current-cars-in-compare">0</span>
-                                    </span>
-                                </a>
-                            </div>
                             <div className="pull-right hdn-767">
                                 <div className="help-bar-shop">
                                     <a href="https://auction.iauto.no" title="Watch shop items">
                                         <i className="stm-icon-shopping-cart-1"/>
                                         <span className="list-badge">
-                                            <span className="stm-current-items-in-cart"> </span>
-                                        </span>
+                          <span className="stm-current-items-in-cart"> </span>
+                        </span>
                                     </a>
                                 </div>
                             </div>
+                            <div className="stm-compare" style={{marginLeft: 20}}>
+                                <a className="lOffer-compare" href="https://auction.iauto.no"
+                                   title="View compared items">
+                                    <i className="icon-ap-compare"/>
+                                    <span className="list-badge">
+                        <span className="stm-current-cars-in-compare">0</span>
+                      </span>
+                                </a>
+                            </div>
+                            {<UserMenuNormal />}
                         </div>
                     </div>
                 </div>
