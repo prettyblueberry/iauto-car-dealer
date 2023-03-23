@@ -95,6 +95,9 @@ const columns = [
     { field: 'no', headerName: 'No', width: 50 , align:"center", type:'number', editable: false},
     { field: 'email', headerName: 'Email', width: 300 , headerAlign:'center', type:'string',  align:"center", editable: true},
     { field: 'name', headerName: 'Name', width:150,  headerAlign:'center', type:'string', editable: true, align: "center"},
+    { field: 'role', headerName: 'Role', width:150,  headerAlign:'center', type:'singleSelect', editable: true, align: "center", valueOptions: [
+        "customer", "company", "admin", "dealer"
+    ]}
 ];
 
 
