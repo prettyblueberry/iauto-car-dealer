@@ -11,6 +11,7 @@ export default (server) => {
             socket.leave(data.room)
         })
         socket.on('new bid', data => {
+            console.log(data);
             bid(data.bidInfo, data.room)
         })
     })
