@@ -46,9 +46,6 @@ import SignUpCoverPage from "layouts/authentication/sign-up/cover";
 import CreateAuctionPage from "layouts/pages/auction-pages/create-auction";
 import ListAuctionPage from "layouts/pages/auction-pages/list-auction";
 import ProfilePage from "layouts/User/Profile"
-import UserAdminPage from "./layouts/User/UserAdmin";
-
-
 
 const routes = [
 
@@ -109,12 +106,7 @@ const routes = [
       }
     ]
   },
-  {
-    name: "Users",
-    icon:  <Icon>contacts</Icon>,
-    route: "/users",
-    component: <UserAdminPage />,
-  },
+  
   {
     name: "account",
     icon: <Icon>contacts</Icon>,

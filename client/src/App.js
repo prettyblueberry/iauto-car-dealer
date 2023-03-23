@@ -29,6 +29,7 @@ import Presentation from "./layouts/pages/landing-pages/rental";
 import SignInBasicPage from "./layouts/authentication/sign-in/basic"
 import Header from "./components/Header";
 import BiddingAuctionPage from "./layouts/pages/auction-pages/bidding-auction";
+import AdminUserPage from "./layouts/Admin/User";
 // Material Kit 2 PRO React routes
 
 export default function App() {
@@ -60,6 +61,7 @@ export default function App() {
               {getRoutes(routes)}
               <Route path="/" exact element={<Presentation />} key="presentation"/>
               <Route path="/pages/auction-pages/bidding-auction/:auctionId" exact element={<BiddingAuctionPage/>} />
+              <Route path="/pages/admin-page/user" exact element={<AdminUserPage />} />
           </Routes>
       </ThemeProvider>
       // <>

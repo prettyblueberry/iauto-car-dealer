@@ -17238,7 +17238,7 @@ html body .button,
 .stm-template-listing button,
 #main button.heading-font,
 #main .load-more-btn {
-  color: #fff;
+  /* color: #fff; */
 }
 .stm-button:hover,
 input[type="submit"]:hover,
@@ -17250,7 +17250,7 @@ html body .button:hover,
 #main button.heading-font:hover,
 .stm-template-listing button:hover,
 #main .load-more-btn:hover {
-  color: #fff;
+  /* color: #fff; */
 }
 .notification-wrapper {
   display: block;

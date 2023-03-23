@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import FullEditDataGrid from "mui-datagrid-full-edit";
 import {list, update, remove } from "api/user";
 import auth from 'api/auth/auth-helper'
+import AdminHeader from './LayoutAdmin'
+import { Card, Container } from '@mui/material';
 
 export default function UserManageGrid() {
     const [rows, setRawRows] = useState([]);
@@ -12,6 +14,7 @@ export default function UserManageGrid() {
         return setRawRows([...rows.map((r, i)=>({...r, no: i + 1, id: r._id}))]);
     };
     useEffect(() => {
+        jQuery("#wrapper").css("min-height", "");
         const abortController = new AbortController()
         const signal = abortController.signal
         list(signal).then((result) => {
@@ -75,18 +78,26 @@ export default function UserManageGrid() {
     };
 
     return (
-        <FullEditDataGrid
-            columns={columns}
-            rows={rows}
-            onSaveRow={onSaveRow}
-            onDeleteRow={onDeleteRow}
-            createRowData={createRowData}
-            loading={loading}
-            onProcessRowUpdateError={(error) => {
-                console.error(error);
-              }
-            }
-        />
+        <>
+        <AdminHeader />
+        <Card sx={{paddingTop: '40px', paddingBottom: '40px'}}>
+        <Container>
+            <FullEditDataGrid
+                columns={columns}
+                rows={rows}
+                onSaveRow={onSaveRow}
+                onDeleteRow={onDeleteRow}
+                createRowData={createRowData}
+                defaultPageSize={10}
+                loading={loading}
+                onProcessRowUpdateError={(error) => {
+                    console.error(error);
+                }
+                }
+            />
+        </Container>
+        </Card>
+        </>
     );
 }
 

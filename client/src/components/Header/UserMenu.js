@@ -8,7 +8,7 @@ const submenus4Normal = [
 
 const submenus4Admin = [
     <Link to="/pages/user/profile">Profile</Link>,
-    <Link to="/admin">Admin Panel</Link>,
+    <Link to="/pages/admin-page/user">Admin Panel</Link>,
     <Link to="/sign-out">Logout</Link>
 ];
 
