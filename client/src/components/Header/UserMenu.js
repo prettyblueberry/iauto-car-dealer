@@ -17,7 +17,7 @@ const UserName = ({ auth }) =>
 
 const useAuth = () => {
     const auth = localStorage.getItem("auth");
-    let submenus;
+    let submenus = submenus4Normal;
     let Title = null;
     let isLogin = false;
     if(auth === null){
@@ -25,9 +25,10 @@ const useAuth = () => {
     } else {
         Title = <UserName auth={auth} />;
         isLogin = true;
+        if(auth.user)
+            if(auth.user.role === "admin") submenus = submenus4Admin;
+
     }
-    if(auth.user.role === "admin") submenus = submenus4Admin;
-    else submenus = submenus4Normal;
 
     return [isLogin, Title, submenus];
 }
