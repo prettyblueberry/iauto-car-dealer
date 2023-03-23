@@ -25,8 +25,9 @@ const useAuth = () => {
     } else {
         Title = <UserName auth={auth} />;
         isLogin = true;
-        if(auth.user)
-            if(auth.user.role === "admin") submenus = submenus4Admin;
+        const parsedAuth = JSON.parse(auth);
+        if(parsedAuth.user)
+            if(parsedAuth.user.role === "admin") submenus = submenus4Admin;
 
     }
 
