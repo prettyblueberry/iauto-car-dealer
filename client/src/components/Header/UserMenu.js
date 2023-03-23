@@ -1,12 +1,14 @@
 import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
 
 const LoginButton = <Link to='/authentication/sign-in/basic'>Login</Link>
 const submenus = [
-    <Link to="/">Admin Panel</Link>,
-    <Link to="/users">Users</Link>,
-    <Link to="/">Logout</Link>,
+    <Link to="/pages/user/profile">Profile</Link>,
+    <Link to="/admin">Admin Panel</Link>,
+    <Link to="/sign-out">Logout</Link>
 ];
+
+const UserName = ({ auth }) =>
+    <a>{JSON.parse(auth).user.name}</a>;
 
 const useAuth = () => {
     const auth = localStorage.getItem("auth");
@@ -15,7 +17,7 @@ const useAuth = () => {
     if(auth === null){
         Title = LoginButton;
     } else {
-        Title = <a>{JSON.parse(auth).user.name}</a>
+        Title = <UserName auth={auth} />;
         isLogin = true;
     }
     return [isLogin, Title];
