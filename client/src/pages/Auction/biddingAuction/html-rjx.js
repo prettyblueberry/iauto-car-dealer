@@ -17,8 +17,8 @@ import boxShadow from "assets/theme/functions/boxShadow";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const io = require('socket.io-client')
-const socket = io('https://api.iauto.no');
-// const socket = io('https://localhost:3001');
+// const socket = io('https://api.iauto.no');
+const socket = io('http://localhost:3001');
 const customStyle = {
     sideNav: {
         width: '150%',
@@ -635,7 +635,7 @@ function HtmlRjx(){
                                         return (<div className="c-bid-list__item o-level o-level--spaced o-level--equal" key={new Date() + index}>
                                             <div className="o-level__item">
                                                 <div className="u-h6 u-color-black">
-                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{bid.bidder.name}</font></font>
+                                                    {bid.bidder && <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>{bid.bidder.name}</font></font> }
                                                 </div>
                                                 <div className="u-color-bwg-tint-1 u-h7">
                                                     <span>
