@@ -42,7 +42,7 @@ export function UserMenuMobile(){
             ">
             {Title}{ isLogin ? <span className="arrow"><i className="fas fa-angle-right"/></span> : ''}
             {isLogin ? <ul className="sub-menu">
-                {submenus.map(m => <li className="
+                {submenus.map((m, i) => <li key={i} className="
                   menu-item
                   menu-item-type-post_type
                   menu-item-object-page menu-item-920">
@@ -53,7 +53,7 @@ export function UserMenuMobile(){
 }
 
 export function UserMenuNormal(){
-    const [isLogin, Title] = useAuth();
+    const [isLogin, Title, submenus] = useAuth();
     return <div className="main-menu">
         <ul className="header-menu clearfix">
             <li className="menu-item
@@ -63,7 +63,7 @@ export function UserMenuNormal(){
                   menu-item-900">
                 {Title}
                 {isLogin ? <ul className="sub-menu" style={{marginLeft:-100}}>
-                    {submenus.map(m => <li className="menu-item
+                    {submenus.map((m, i) => <li key={i} className="menu-item
                       menu-item-type-post_type
                       menu-item-object-page menu-item-922" >
                         {m}
