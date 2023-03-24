@@ -68,11 +68,12 @@ export default function UserManageGrid() {
                 // setValues({...values, error: data.error})
                 console.log("error!");
             } else {
-                data.sellerId = item.seller._id;
-                data.seller = item.seller.name;
+                console.log(data);
+                data.sellerId = updatedRow.sellerId;
+                data.seller = updatedRow.seller;
                 if(data.winner){
-                    data.winnerId = item.winner._id
-                    data.winner = item.winner.name
+                    data.winnerId = updatedRow.winnerId;
+                    data.winner = updatedRow.winner;
                 }
                 setRows(rows.map(r => (r.id === updatedRow.id ? {...data}: r)));
             }

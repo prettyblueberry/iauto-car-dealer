@@ -34,6 +34,7 @@ import AdminAllPage from "./layouts/Admin/AllAuction";
 import AdminUpcomingPage from "./layouts/Admin/UpcomingAuction";
 import AdminActivePage from "./layouts/Admin/ActiveAuction";
 import AdminClosedPage from "./layouts/Admin/ClosedAuction";
+import SignOut from './layouts/authentication/SignOut';
 // Material Kit 2 PRO React routes
 
 export default function App() {
@@ -70,6 +71,7 @@ export default function App() {
               <Route path="/pages/admin-page/upcoming" exact element={<AdminUpcomingPage />} />
               <Route path="/pages/admin-page/active" exact element={<AdminActivePage />} />
               <Route path="/pages/admin-page/closed" exact element={<AdminClosedPage />} />
+              <Route path="/sign-out" exact element={<SignOut />} />
           </Routes>
       </ThemeProvider>
       // <>

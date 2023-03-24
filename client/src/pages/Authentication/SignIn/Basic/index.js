@@ -161,11 +161,11 @@ const toastTemplate = (
           <MKBox component="form" role="form">
             <MKBox mb={2}>
               <label>Email</label>
-              <input type="email" label="Email" fullWidth onChange={handleChange('email')} sx={{borderRadius: 0, outline: 'none', border: '1px solid rgba(0,0,0,0)', padding: '1px'}}/>
+              <input type="email" label="Email"  onChange={handleChange('email')} sx={{borderRadius: 0, outline: 'none', border: '1px solid rgba(0,0,0,0)', padding: '1px'}}/>
             </MKBox>
             <MKBox mb={2}>
             <label>Password</label>
-              <input type="password" label="Password" fullWidth onChange={handleChange('password')}/>
+              <input type="password" label="Password"  onChange={handleChange('password')}/>
             </MKBox>
             <MKBox display="flex" alignItems="center" ml={-1}>
               <Switch checked={values.remember} onChange={handleChange('remember')} />
