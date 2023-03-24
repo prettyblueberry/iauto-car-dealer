@@ -15,10 +15,12 @@ import LayoutAuction from "../layoutAuction";
 import zIndex from "@mui/material/styles/zIndex";
 import boxShadow from "assets/theme/functions/boxShadow";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import screenImage from 'assets/image/screen.png'
+import { useMediaQuery } from 'react-responsive'
 
 const io = require('socket.io-client')
-// const socket = io('https://api.iauto.no');
-const socket = io('http://localhost:3001');
+const socket = io('https://api.iauto.no');
+// const socket = io('http://localhost:3001');
 const customStyle = {
     sideNav: {
         width: '150%',
@@ -32,7 +34,10 @@ const customStyle = {
             width: '100%',
             padding: '10px',
             paddingTop: '10px',
-            paddingBottom: '5px'
+            paddingBottom: '5px',
+            borderRadius: 0,
+            backgroundColor: 'rgba(16, 33, 39, 1)',
+            border: 'none'
         }
     },
 
@@ -54,7 +59,7 @@ const customStyle = {
     mainNavButton1: {
         height: '60px',
         width: '60px',
-        marginTop: '35%',
+        marginTop: '25%',
         borderRadius: '30px',
         backgroundColor: 'rgba(0,0,0,0.5)',
         boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'
@@ -68,7 +73,7 @@ const customStyle = {
     mainNavButton2: {
         height: '60px',
         width: '60px',
-        marginTop: '35%',
+        marginTop: '25%',
         borderRadius: '30px',
         backgroundColor: 'rgba(0,0,0,0.5)',
         boxShadow: '5px 0 30px rgba(1, 41, 112, 0)'
@@ -87,6 +92,11 @@ const customStyle = {
         backgroundColor: 'rgba(231, 239, 239, 1)',
     }
 }
+
+
+
+
+
 
 
 function useInterval(callback, delay) {
@@ -124,6 +134,31 @@ function HtmlRjx(){
     const jwt = auth.isAuthenticated();
     const handle = useFullScreenHandle();
 
+    let sreenFit =  {
+        width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '48%'
+    };
+    const isScreen0 = useMediaQuery({ query: '(min-width: 1356px)' })
+    const isScreen1 = useMediaQuery({ query: '(min-width: 1280px)' })
+    const isScreen2 = useMediaQuery({ query: '(min-width: 1050px)' })
+    const isScreen3 = useMediaQuery({ query: '(min-width: 860px)' })
+    const isScreen4 = useMediaQuery({ query: '(min-width: 768px)' })
+    const isScreen5 = useMediaQuery({ query: '(min-width: 650px)' })
+    const isScreen6 = useMediaQuery({ query: '(min-width: 520px)' })
+    const isScreen7 = useMediaQuery({ query: '(min-width: 430px)' })
+    const isScreen8 = useMediaQuery({ query: '(min-width: 350px)' })
+    const isScreen9 = useMediaQuery({ query: '(min-width: 260px)' })
+
+    if(isScreen9)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '34%'}
+    if(isScreen8)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '22%', marginLeft: '-1%'}
+    if(isScreen7)  sreenFit =  {width: '83%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '19%', marginLeft: '7.5%'}
+    if(isScreen6)  sreenFit =  {width: '63%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '14%', marginLeft: '18%'}
+    if(isScreen5)  sreenFit =  {width: '56%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '11.8%', marginLeft: '21.3%'}
+    if(isScreen4)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '21%', marginLeft: '3%', marginRight: '5%'}
+    if(isScreen3)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '18%', marginLeft: '10%', marginRight: '11.5%'}
+    if(isScreen2)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '19%', marginLeft: '8%', marginRight: '9.5%'}
+    if(isScreen1)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '19%', marginLeft: '9%', marginRight: '10.5%'}
+    if(isScreen0)  sreenFit =  {width: '100%', backgroundColor: 'rgba(0,0,0,0)', marginTop: '16%', marginLeft: '14.5%', marginRight: '15.8%'}
+    
     jQuery(window).off("load");
     jQuery(window).off("scroll");
     
@@ -295,10 +330,33 @@ function HtmlRjx(){
                         <div className="c-car-detail__module c-car-detail__module--gallery">
                             <div className="nettbil-imagegallery" data-cy="car-images-gallery">
                                 <div className="slider-wrapper">
-                                    <div className="slider-fullscreen-background">
-                                        <div className="slick-slider slick-initialized" dir="ltr">
+                                <MKBox
+                                    sx={({
+                                    functions: { rgba, linearGradient },
+                                    palette: { black },
+                                    borders: { borderRadius },
+                                    }) => ({
+                                    backgroundImage: `${linearGradient(
+                                        rgba(black.main, 0),
+                                        rgba(black.main, 0)
+                                    )}, url(${screenImage})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    borderRadius: 0,
+                                    height: '400px',
+                                    width: '100%',
+                                    paddingLeft: '10px',
+                                    paddingRight: '10px'
+                                    })}
+                                    display="flex"
+                                    justifyContent="space-between"
+                                >
+                                    <div  style={sreenFit}>
+                                        <div  dir="ltr">
                                             <div className="slick-list" handle={handle}>
+                                            
                                                 {auction.image &&
+                                                
                                                     <MKBox
                                                         sx={({
                                                         functions: { rgba, linearGradient },
@@ -312,7 +370,7 @@ function HtmlRjx(){
                                                         backgroundSize: "cover",
                                                         backgroundPosition: "center",
                                                         borderRadius: 0,
-                                                        height: '400px',
+                                                        height: '210px',
                                                         width: '100%',
                                                         paddingLeft: '10px',
                                                         paddingRight: '10px'
@@ -333,8 +391,9 @@ function HtmlRjx(){
                                                             </svg>
                                                         </button>
                                                     </MKBox>
+                                            
                                                     // <img data-savepage-src={bgImage} alt="Volvo" data-cy="car-images-slide-0" height="100%" width="100%" src={`data:${auction.image.contentType[countImage]};base64,${auction.image.data[countImage]}`}/>
-                                                }                                            
+                                                }    
                                             </div>
                                             <button style={{backgroundColor: 'rgba(0,0,0,0)', zIndex: '3', marginTop: '-100px', width: '100px', height: '100px'}}/>
                                         </div>
@@ -360,6 +419,7 @@ function HtmlRjx(){
                                         <button type="button" className="custom-navigation custom-prev" />
                                         <button type="button" className="custom-navigation custom-next" />
                                     </div>
+                                </MKBox>
                                 </div>
                             </div>
                         </div>
@@ -370,7 +430,7 @@ function HtmlRjx(){
                                     {auction.itemName?auction.itemName: ''}
                                 </h2>
                                 <div className="u-margin-bottom">
-                                    <button type="button" data-cy="see-report" className="c-btn c-btn--color-primary c-btn--full c-btn--medium">
+                                    <button type="button" data-cy="see-report" className="c-btn c-btn--color-primary c-btn--full c-btn--medium" style={{borderRadius: 0, backgroundColor: 'black', border: 'none'}}>
                                         <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>See test report</font></font>
                                     </button>
                                 </div>
@@ -569,17 +629,17 @@ function HtmlRjx(){
                                         <div className="c-quickbids o-level o-level--equal o-level--margin-tiny" style={customStyle.rightNav}>
                                             <div className="o-level__item" style={customStyle.rightNav}>
                                                 <button type="button" data-cy="168242-bid-1000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold" onClick={() => onClickBtnPlus(1000)}>
-                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}} >+ NOK 1,000</font></font>
+                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(16, 33, 39, 1)'}} >+ NOK 1,000</font></font>
                                                 </button>
                                             </div>
                                             <div className="o-level__item" style={customStyle.rightNav}>
                                                 <button type="button" data-cy="168242-bid-3000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold" onClick={() => onClickBtnPlus(3000)}>
-                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}}>+ NOK 3,000</font></font>
+                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(16, 33, 39, 1)'}}>+ NOK 3,000</font></font>
                                                 </button>
                                             </div>
                                             <div className="o-level__item" style={customStyle.rightNav}>
                                                 <button type="button" data-cy="168242-bid-5000" className="c-btn c-btn--confirm c-btn--full c-btn--color-primary-tint-2 c-btn--bold" onClick={() => onClickBtnPlus(5000)}>
-                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 148, 125, 1)'}}>+ NOK 5,000</font></font>
+                                                    <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(16, 33, 39, 1)'}}>+ NOK 5,000</font></font>
                                                 </button>
                                             </div>
                                         </div>
@@ -596,11 +656,11 @@ function HtmlRjx(){
                                             </div>
                                             <div className="o-level__item">
                                                 {!enableBid?
-                                                    <button type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined c-btn--disabled"  style={{width: '100%', marginLeft: '-5%', padding: '10px', paddingBottom: '5px'}} onClick={onClickAutoBid}>
-                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 120, 100, 1)', fontSize: '14px'}}>Give auto bid</font></font>
+                                                    <button type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined c-btn--disabled"  style={{width: '100%', marginLeft: '-5%', padding: '10px', paddingBottom: '5px', borderRadius: 0, border: '1px solid rgba(16, 33, 39, 1)'}} onClick={onClickAutoBid}>
+                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(16, 33, 39, 1)', fontSize: '14px'}}>Give auto bid</font></font>
                                                     </button>:
-                                                    <button type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined"  style={{width: '100%', marginLeft: '-5%', padding: '10px', paddingBottom: '5px'}} onClick={onClickAutoBid}>
-                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 120, 100, 1)', fontSize: '14px'}}>Give auto bid</font></font>
+                                                    <button type="button" data-cy="place-auto-bid" className="c-btn c-btn--medium c-btn--full c-btn--color-primary c-btn--outlined"  style={{width: '100%', marginLeft: '-5%', padding: '10px', paddingBottom: '5px',  borderRadius: 0, backgroundColor: 'rgba(16, 33, 39, 1)', border: 'none'}} onClick={onClickAutoBid}>
+                                                        <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit', color: 'rgba(255, 255, 255, 1)', fontSize: '14px'}}>Give auto bid</font></font>
                                                     </button>
                                                 }
                                                 <div className="u-text-center u-margin-top-tiny">

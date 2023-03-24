@@ -10,6 +10,8 @@ import {create} from 'api/auction';
 import auth from "api/auth/auth-helper";
 import { useNavigate, useLocation } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import CloseIcon from "@mui/icons-material/Close";
 
 const customStyle = {
@@ -67,6 +69,7 @@ const toastStyles = ({
   });
 
 function HtmlRjx(){
+    const [open, setOpen] = useState(false);
     const [imageFiles, setImageFiles] = useState({});
     const [redirect, setRedirect] = useState(false);
     const [values, setValues] = useState({
@@ -101,7 +104,12 @@ function HtmlRjx(){
         jQuery("#wrapper").css("min-height", "");
      },[]);
 
-    
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleToggle = () => {
+        setOpen(!open);
+    };
     
     const handleChange = name => event => {
         console.log(event.target.value);
@@ -113,7 +121,7 @@ function HtmlRjx(){
         console.log(data);
     }
     const onClickSubmit = () => {
-        console.log(values, imageFiles);
+        handleToggle();
         let description = {
             reg: values.reg,
             modelYear: values.modelYear,
@@ -451,6 +459,12 @@ function HtmlRjx(){
                                                                             <font style={{verticalAlign: 'inherit'}}><font style={{verticalAlign: 'inherit'}}>Submit</font></font>
                                                                         </button>
                                                                     </div>
+                                                                    <Backdrop
+                                                                        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                                                                        open={open}
+                                                                    >
+                                                                        <CircularProgress color="inherit" />
+                                                                    </Backdrop>
                                                                     <Snackbar
                                                                         anchorOrigin={{ vertical: "top", horizontal: "center" }}
                                                                         open={redirect}

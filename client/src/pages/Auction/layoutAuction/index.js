@@ -61,7 +61,7 @@ function LayoutAuction({children}){
                                                     <span className="list-counter">
                                                     <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
-                                                        28
+                                                        
                                                     </font>
                                                     </font>
                                                 </span>
@@ -77,7 +77,7 @@ function LayoutAuction({children}){
                                                     </font>
                                                     <span className="list-counter no-counts">
                                                     <font style={{verticalAlign: 'inherit'}}>
-                                                        <font style={{verticalAlign: 'inherit'}}>0</font>
+                                                        <font style={{verticalAlign: 'inherit'}}></font>
                                                     </font>
                                                 </span>
                                                 </Link>
@@ -93,7 +93,7 @@ function LayoutAuction({children}){
                                                     <span className="list-counter">
                                                     <font style={{verticalAlign: 'inherit'}}>
                                                     <font style={{verticalAlign: 'inherit'}}>
-                                                        847
+                                                        
                                                     </font>
                                                     </font>
                                                 </span>
@@ -121,7 +121,7 @@ function LayoutAuction({children}){
                                                     </font>
                                                     <span className="list-counter no-counts">
                                                     <font style={{verticalAlign: 'inherit'}}>
-                                                        <font style={{verticalAlign: 'inherit'}}>0</font>
+                                                        <font style={{verticalAlign: 'inherit'}}></font>
                                                     </font>
                                                 </span>
                                                 </Link>
