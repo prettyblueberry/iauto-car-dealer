@@ -18,7 +18,6 @@ const create = (req, res) => {
     fields.description = description;
     let auction = new Auction(fields)
     auction.seller= req.profile
-    console.log(files);
     let type = [];
     let imageData = [];
     Object.keys(files).forEach(key => {
@@ -74,34 +73,50 @@ const update = (req, res) => {
   let form = new formidable.IncomingForm()
   form.keepExtensions = true
   form.parse(req, async (err, fields, files) => {
-    if (err) {
-      res.status(400).json({
-        message: "Photo could not be uploaded"
-      })
-    }
-    let auction = req.auction
-    auction = extend(auction, fields)
-    auction.updated = Date.now()
-    if(files.image){
-      auction.image.data = fs.readFileSync(files.image.path)
-      auction.image.contentType = files.image.type
-    }
     try {
-      let result = await auction.save()
-      res.json(result)
-    }catch (err){
+      let auction = req.auction;
+      auction = extend(auction, fields);
+      auction.updated = Date.now();
+      auction.save();
+      res.json(auction);
+    } catch (err) {
       return res.status(400).json({
-        error: errorHandler.getErrorMessage(err)
-      })
+        error: errorHandler.getErrorMessage(err),
+      });
     }
   })
+  
+  // let form = new formidable.IncomingForm()
+  // form.keepExtensions = true
+  // form.parse(req, async (err, fields, files) => {
+  //   if (err) {
+  //     res.status(400).json({
+  //       message: "Photo could not be uploaded"
+  //     })
+  //   }
+  //   let auction = req.auction
+  //   auction = extend(auction, fields)
+  //   auction.updated = Date.now()
+  //   if(files.image){
+  //     auction.image.data = fs.readFileSync(files.image.path)
+  //     auction.image.contentType = files.image.type
+  //   }
+  //   try {
+  //     let result = await auction.save()
+  //     res.json(result)
+  //   }catch (err){
+  //     return res.status(400).json({
+  //       error: errorHandler.getErrorMessage(err)
+  //     })
+  //   }
+  // })
 }
 
 const remove = async (req, res) => {
   try {
     let auction = req.auction
     let deletedAuction = auction.remove()
-    res.json(deletedAuction)
+    res.json(auction._id);
   } catch (err) {
     return res.status(400).json({
       error: errorHandler.getErrorMessage(err)
@@ -149,7 +164,6 @@ const list = async (req, res) => {
   try {
     const userId = req.params.userId;
     const filter = req.params.filter;
-    console.log("userId, filter", userId, filter);
     let auctions;
     switch(filter){
       case "active":

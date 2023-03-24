@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
 import FullEditDataGrid from "mui-datagrid-full-edit";
-import {list, update, remove } from "api/user";
 import auth from 'api/auth/auth-helper'
 import AdminHeader from './LayoutAdmin'
 import { Card, Container } from '@mui/material';
-import { listOpen } from 'api/auction';
+import { listOpen, update, remove } from 'api/auction';
 
 export default function UserManageGrid() {
     const [rows, setRawRows] = useState([]);
@@ -48,19 +47,35 @@ export default function UserManageGrid() {
         // }).catch((err)=>{
         //     setRows(rows);
         // });
-        // const jwt = auth.isAuthenticated()
-        // update({
-        //     userId: updatedRow._id
-        // }, {
-        //     t: jwt.token
-        // }, updatedRow).then((data) => {
-        //     if (data && data.error) {
-        //         // setValues({...values, error: data.error})
-        //         console.log("error!");
-        //     } else {
-        //         setRows(rows.map(r => (r.id === updatedRow.id ? {...data}: r)));
-        //     }
-        // })
+        const jwt = auth.isAuthenticated()
+        console.log(updatedRow);
+        const formData = new FormData();
+        // formData.append('_id', updatedRow._id);
+        formData.append('itemName', updatedRow.itemName);
+        formData.append('bidStart', updatedRow.bidStart);
+        formData.append('bidEnd', updatedRow.bidEnd);
+        formData.append('startingBid', updatedRow.startingBid);
+        formData.append('seller', updatedRow.sellerId);
+        if(updatedRow.winnerId)
+        formData.append('winner', updatedRow.winnerId);
+        update({
+            auctionId: updatedRow._id
+        }, {
+            t: jwt.token
+        }, formData).then((data) => {
+            if (data && data.error) {
+                // setValues({...values, error: data.error})
+                console.log("error!");
+            } else {
+                data.sellerId = item.seller._id;
+                data.seller = item.seller.name;
+                if(data.winner){
+                    data.winnerId = item.winner._id
+                    data.winner = item.winner.name
+                }
+                setRows(rows.map(r => (r.id === updatedRow.id ? {...data}: r)));
+            }
+        })
     };
 
     const onDeleteRow = (id, oldRow, rows) => {
@@ -71,18 +86,25 @@ export default function UserManageGrid() {
         //     setRows(rows);
         // });
 
-        // const jwt = auth.isAuthenticated()
-        // remove({
-        //     userId: id
-        // }, {t: jwt.token}).then((data) => {
-        //     if (data && data.error) {
-        //         console.log(data.error)
-        //         setRows(rows);
-        //     } else {
-        //         const dbRow = data;
-        //         setRows(rows.filter(r=> r.id !== dbRow.id));
-        //     }
-        // })
+        const jwt = auth.isAuthenticated()
+        remove({
+            auctionId: id
+        }, {t: jwt.token}).then((data) => {
+            if(data !== null){
+                const dbRow = data;
+                console.log(dbRow);
+                setRows(rows.filter(r=> r.id !== dbRow));
+            }else{
+                setRows(rows);
+            }
+            // if (data && data.error) {
+            //     console.log(data.error)
+            //     setRows(rows);
+            // } else {
+            //     const dbRow = data;
+            //     setRows(rows.filter(r=> r.id !== dbRow.id));
+            // }
+        })
     };
 
     const createRowData = (rows) => {
