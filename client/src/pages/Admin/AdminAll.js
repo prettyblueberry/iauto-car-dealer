@@ -24,6 +24,7 @@ export default function UserManageGrid() {
               // setRedirectToSignin(true)
             } else {
             //   setAuctions(result);
+            result = result.filter(item => item.seller);
             result.forEach(item => {
                 item.sellerId = item.seller._id;
                 item.seller = item.seller.name;
@@ -31,7 +32,6 @@ export default function UserManageGrid() {
                     item.winnerId = item.winner._id
                     item.winner = item.winner.name
                 }
-                
             });
             setRows(result)
             }

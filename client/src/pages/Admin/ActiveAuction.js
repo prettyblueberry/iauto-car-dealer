@@ -23,6 +23,7 @@ export default function UserManageGrid() {
             } else {
             //   setAuctions(result);
             let rowData = [];
+            result = result.filter(item => item.seller);
             result.forEach(item => {
                 item.sellerId = item.seller._id;
                 item.seller = item.seller.name;
